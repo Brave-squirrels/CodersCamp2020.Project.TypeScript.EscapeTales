@@ -60,14 +60,65 @@
 
 
 .interface {
+    display: flex;
     background-color: rgb(151, 63, 12);
     /* grid-area: interface; */
     border: 1px blue solid;
     width: 100vw;
     height: 16vh;
 }
+
+.actions-number {
+    height: 50%;
+    width: calc(100vw/6);
+    border: 1px white solid;
+    /* background-color: white; */
+}
+
+.stress-card {
+    height:50%;
+    width: calc(100vw/6);
+    border: 1px white solid;
+    /* background-color: green; */
+}
+
+.evidence {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+
+.puzzle-cards {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+.puzzle {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+.coins {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+.next-lvl {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+
+.storyline {
+    width: calc(100vw/6);
+    border: 1px white solid;
+}
+
+
 .footer {
     height: 4vh;
     background-color:green;
     border: 1px red solid;
 }
+
+
