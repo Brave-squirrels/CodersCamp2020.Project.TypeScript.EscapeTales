@@ -6,13 +6,10 @@
 
 .game {
     height: 96vh;
-    /* border: 1px solid pink; */
+    border: 2px solid blue;
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
-    /* grid-template-areas: 
-    'gameboard'
-    'interface'; */
+    justify-content: center;
 }
 
 
@@ -22,39 +19,40 @@
     
     /* justify-content: center; */
     height: 80vh;
-    width: 100vw;
-    /* grid-area: gameboard; */
+    /* width: 100vw; */
     border: 2px black solid;
+    justify-content: center;
 }
 
 .storybook {
 
-    margin-left: 5vw;
+    /* margin-left: 10vw; */
     margin-right: 8vw;
     width: 20vw;
-    height: 36vw;
+    height: 40vw;
     border: 1px red solid;
     background-color: rgb(231, 231, 172);
-    max-height: 76vh;
+    max-height: 75vh;
 }
 
 
 .map {
     display:flex;
     flex-wrap: wrap;
-    width: 48vw;
-    height: 36vw;
+    width: 50vw;
+    height: 40vw;
     /* min-height: 76vh; */
     max-height: 75vh;
     max-width: 100vh;
     /* border: 1px green solid; */
+    
 }
 
 .square {   
     border: 1px orange solid;
     background-color: red;
-    width: 25%;
-    height: 33.3333%;
+    width: 20%;
+    height: 25%;
     
 }
 
@@ -63,54 +61,54 @@
     display: flex;
     background-color: rgb(151, 63, 12);
     /* grid-area: interface; */
-    border: 1px blue solid;
-    width: 100vw;
+    /* border: 1px blue solid; */
+    /* width: 100vw; */
     height: 16vh;
 }
 
 .actions-number {
     height: 50%;
-    width: calc(100vw/6);
+    width: 14vw;
     border: 1px white solid;
     /* background-color: white; */
 }
 
 .stress-card {
     height:50%;
-    width: calc(100vw/6);
+    width: 14vw;
     border: 1px white solid;
     /* background-color: green; */
 }
 
 .evidence {
-    width: calc(100vw/6);
+    width: 14vw;
     border: 1px white solid;
 }
 
 
 .puzzle-cards {
-    width: calc(100vw/6);
+    width:14vw ;
     border: 1px white solid;
 }
 
 .puzzle {
-    width: calc(100vw/6);
+    width: 14vw;
     border: 1px white solid;
 }
 
 .coins {
-    width: calc(100vw/6);
+    width: 14vw;
     border: 1px white solid;
 }
 
 .next-lvl {
-    width: calc(100vw/6);
+    width: 14.8vw;
     border: 1px white solid;
 }
 
 
 .storyline {
-    width: calc(100vw/6);
+    width: 15vw;
     border: 1px white solid;
 }
 
@@ -118,7 +116,6 @@
 .footer {
     height: 4vh;
     background-color:green;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
-
 
