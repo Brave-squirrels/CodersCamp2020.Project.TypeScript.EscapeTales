@@ -25,5 +25,4 @@ const gameState : GameState = {
 }
 
 
-
-console.log(gameState)
+module.exports = gameState
