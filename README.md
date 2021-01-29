@@ -12,8 +12,9 @@ W projekcie każdy z uczestników powinien zaprezentować praktyczną znajomoś�
     typy generyczne
     testy jednostkowe i TDD
 
-Bundler (jak poprzednio):
--npm install - instaluje node_modules
--npm run dev - serwer deweloperski
--npm run prod - uruchamianie bundlera
--npm run test - test jesta
+Bundler:
+# npm-install - indstalujemy wszystkie moduły
+# npm run dev - włączamy serwer deweloperski
+# npm run build - build projektu
+# npm run test - odpalanie testów
+# npm run testAll - odpalanie testów w trybie watch
