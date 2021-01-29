@@ -13,8 +13,8 @@ W projekcie każdy z uczestników powinien zaprezentować praktyczną znajomoś�
     testy jednostkowe i TDD
 
 Bundler:
-# npm-install - indstalujemy wszystkie moduły
-# npm run dev - włączamy serwer deweloperski
-# npm run build - build projektu
-# npm run test - odpalanie testów
-# npm run testAll - odpalanie testów w trybie watch
+* npm-install - indstalujemy wszystkie moduły
+* npm run dev - włączamy serwer deweloperski
+* npm run build - build projektu
+* npm run test - odpalanie testów
+* npm run testAll - odpalanie testów w trybie watch
