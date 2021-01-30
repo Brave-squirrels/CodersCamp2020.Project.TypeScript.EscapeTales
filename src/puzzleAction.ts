@@ -1,3 +1,5 @@
+import {readParagraph} from './board';
+
 //Puzzle solved
 document.addEventListener('click', (e:any) : void=>{
 
@@ -30,6 +32,22 @@ const solvePuzzle = (puzzleDOM: string, state: State):void=>{
     }else{
         //Incorrect
     }
+
+}
+
+//Remove puzzle
+const removePuzzle = (id: string, puzzleArray: Array<puzzleArray>, state: State):void =>{
+    const index = state.puzzle.indexOf(id);
+    state.puzzle.splice(index,1);
+    readParagraph(id, state);
+}
+
+//Get puzzle reward
+const rewardPuzzle = (id: string, puzzleArray: Array<puzzleArray>, state: State): void => {
+    
+    //Find the puzzle
+    //Use switch to get other evidence or progress
+    //update state with number of evidences or progress
 
 }
 

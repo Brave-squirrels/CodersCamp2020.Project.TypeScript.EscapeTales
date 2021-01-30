@@ -203,4 +203,4 @@ const getAreaContent = (boardField: Board, state: State) : void=>{
 }
 
 //Export for testing
-export {AreaState, getBoard, checkActions, checkStatus}
+export {AreaState, getBoard, checkActions, checkStatus, readParagraph}

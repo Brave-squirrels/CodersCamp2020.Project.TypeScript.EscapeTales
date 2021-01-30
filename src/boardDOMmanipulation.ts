@@ -52,3 +52,8 @@ const puzzleProgressContent = (): void =>{
 const stressCard = ():void =>{
     
 }
+
+//Incorrect puzzle solve
+const incorrectPuzzle = ():void =>{
+    
+}
