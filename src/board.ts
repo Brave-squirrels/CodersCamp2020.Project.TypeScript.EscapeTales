@@ -1,3 +1,5 @@
+import {newPuzzle, newPuzzleCard} from './puzzleAction';
+
 //Enum for boardArea state
 enum AreaState {
     EXPLORED = 1,
@@ -8,7 +10,8 @@ enum AreaState {
 enum ActionPoints {
     MOVE = -1,
     RESET = 6,
-    STRESSCARD = 6
+    STRESSCARD = 6,
+    CLUE = 2
 }
 
 //Trying on
@@ -57,8 +60,11 @@ document.addEventListener('click',(e: any) : void=>{
         //Getting ID of DOM element to find boardArea object
         const areaID: string = e.target.id;
 
+        //Getting current board object
+        const currentField = getBoard(areaID, boardAreas)
+
         //Get the current board object
-        if(!checkStatus(areaID, boardAreas)){
+        if(!checkStatus(currentField)){
              //End if the area is explored
              return;
         }
@@ -70,15 +76,14 @@ document.addEventListener('click',(e: any) : void=>{
         }
 
         //Function which run the movement and content events
-        mainAction(areaID, boardAreas, state);
+        mainAction(areaID, boardAreas, state, currentField);
     }
 
 })
 //BoardArea validation
 //Check the status of the current board
-const checkStatus = (areaID: string, boardAreas: Array<Board>): boolean =>{
-    const currentArea: Board = getBoard(areaID, boardAreas)!;
-    return currentArea.status === AreaState.PENDING;
+const checkStatus = (currentField: Board): boolean =>{
+    return currentField.status === AreaState.PENDING;
 }
 //Check the amount of action points in game state
 const checkActions = (state: State):boolean =>{
@@ -91,18 +96,21 @@ const checkActions = (state: State):boolean =>{
     @param {areaID} - ID get from the DOM
     @param {boardAreas} - array of all boardArea objects
     @param {state} - game state object
+    @param {currentField} - object of field we are exploring
 */
-const mainAction = (areaID: string, boardAreas: Array<Board>, state: State) : void=>{
-     //Mark the board, as explored
-     move(areaID, boardAreas);
+const mainAction = (areaID: string, boardAreas: Array<Board>, state: State, currentField: Board) : void=>{
 
-     //Remove 1 Action points
+     //Mark the board, as explored
+     move(currentField);
+
+     //Remove 1 Action point
      updateAction(ActionPoints.MOVE, state);
 
      //Read paragraph and add to the state
      readParagraph(areaID, state);
 
      //Get content from the area
+     getAreaContent(currentField, state);
 }
 
 
@@ -120,10 +128,9 @@ const getBoard = (id:string, boardAreas: Array<Board>) : Board =>{
   @param {IDofArea} - ID of area which we are exploring
   Mark area, as explored
 */
-const move = (IDofArea: string, boardAreas: Array<Board>) : void=>{
+const move = (currentBoard: Board) : void=>{
 
     //Mark the board as explored
-    const currentBoard: Board = getBoard(IDofArea, boardAreas)!;
     currentBoard.status = AreaState.EXPLORED;
 
 }
@@ -167,6 +174,31 @@ const stressCardAction = (state: State) : void=>{
 const updateAction = (numOfActions: number, state: State): void=>{
 
     state.action += numOfActions;
+
+}
+
+//Get content from current area
+/*
+    @param {boardField} - object of current boardField
+*/
+const getAreaContent = (boardField: Board, state: State) : void=>{
+
+    switch(boardField.content){
+
+        case enum.clue:
+            //Run function which tell's u that u have found a clue
+            updateAction(ActionPoints.CLUE, state);
+            break;
+        case enum.puzzle:
+            //Run function which add puzzle if not exist and get the puzzle card
+            newPuzzle(state, boardField.id);
+            newPuzzleCard(boardField.id, puzzleCardArray, puzzleArray);
+            break;
+        default:
+            //Run function whick tell's that u found nothing
+            console.log('nothing');
+
+    }
 
 }
 

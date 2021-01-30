@@ -11,6 +11,11 @@ document.addEventListener('click', (e:any) : void=>{
 
 })
 
+//Solve puzzle function
+/*
+    @param {puzzleDOM} - id of the current puzzle
+    @param {state} - gameState object
+*/
 const solvePuzzle = (puzzleDOM: string, state: State):void=>{
 
     //Getting value - password typed by the user
@@ -20,7 +25,7 @@ const solvePuzzle = (puzzleDOM: string, state: State):void=>{
 
     if(passwordValue === currentPuzzle.password){
         //Read/add paragraph to the state
-        //Get content
+        //Get reward
         //Remove puzzle from state
     }else{
         //Incorrect
@@ -28,7 +33,47 @@ const solvePuzzle = (puzzleDOM: string, state: State):void=>{
 
 }
 
-//Get the puzzle
+//Get puzzle card and main puzzle object base on id
+/*
+    @param {ID} - id of the puzzle - same as field
+    @param {puzzleArray/puzzleCardArray} - array which stores all of the puzzles/puzzle cards
+*/
 const getPuzzle = (ID: string, puzzleArray: Array<Puzzle>) : Puzzle=>{
     return puzzleArray.find(c=>c===ID);
 }
+const getPuzzleCard = (ID: string, puzzleCardArray: Array<puzzleCard>) : puzzleCard => {
+    return puzzleCardArray.find(c=>c===ID);
+}
+
+//Add puzzle to the state
+/*
+    @param {state} - gameState object
+    @param {id} - id of the filed - same as puzzle id
+*/
+const newPuzzle = (state: State, id: string): void =>{
+
+    //Check if we have active puzzle
+    if(state.puzzle.includes(id)){
+        return;
+    }
+    //If not push to the state (whick means it's active)
+    state.puzzle.push(id);
+
+}
+
+//Add puzzle card to the puzzle object
+/*
+    @param {id} - id of the filed - same as puzzleCard id
+*/
+const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>): void =>{
+
+    //Find puzzle card in array with current ID
+    const puzzleCard = getPuzzleCard(id, puzzleCardArray);
+    const puzzleObj = getPuzzle(id, puzzleArray);
+
+    //Push this ID to puzzle object (which means we got it)
+    puzzleObj.cards.push(puzzleCard.id);
+
+}
+
+export {newPuzzle, newPuzzleCard};
