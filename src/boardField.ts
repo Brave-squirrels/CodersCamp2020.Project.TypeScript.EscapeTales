@@ -1,5 +1,6 @@
 export enum TestEnum{
-    passed = 'PASSED'
+    passed = 'PASSED',
+    failed = 'FAILED'
 }
 
 
@@ -11,8 +12,24 @@ export enum TestEnum{
 export class BoardField {
     constructor(
         protected status: TestEnum, 
-        protected fieldID: string, 
-        protected paragraphID: string){}
+        readonly fieldID: string, 
+        readonly paragraphID: string){}
+
+    get getStatus(){
+        return this.status;
+    }
+
+    get getFieldID(){
+        return this.fieldID;
+    }
+
+    get getParagraphID(){
+        return this.paragraphID;
+    }
+
+    set setCurrentStatus(status: TestEnum){
+        this.status=TestEnum.failed;
+    }
 
     readParagraph(){
         // wywolanie funkcji z frontu do wczytania paragrafu
