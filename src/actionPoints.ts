@@ -1,27 +1,23 @@
 export default class ActionPoints {
   constructor(
-    private totalPoints: number = 0,
-    private currentPoints: number = totalPoints,
-    private existence: boolean = true
+    private _totalPoints: number,
+    private _currentPoints: number = _totalPoints
   ) {}
 
   get amount() {
-    return this.currentPoints;
-  }
-
-  get isExist() {
-    return this.existence;
+    return this._currentPoints;
   }
 
   resetPoints() {
-    this.currentPoints = this.totalPoints;
-    this.existence = true;
+    this._currentPoints = this._totalPoints;
+  }
+
+  addPoints(points: number) {
+    this._currentPoints += points;
   }
 
   decrementPoints() {
-    if (this.currentPoints > 0) {
-      --this.currentPoints;
-      this.existence = false;
-    } else throw new Error("Points can't be less than 0");
+    if (this._currentPoints > 0) --this._currentPoints;
+    else throw new Error("Points can't be less than 0");
   }
 }
