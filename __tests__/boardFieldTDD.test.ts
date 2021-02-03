@@ -16,15 +16,15 @@ describe('BoardField',()=>{
     });
 
     test('newField should have a getter for status',()=>{
-        expect(typeof (newField.getStatus)).toBe('string');
+        expect(typeof (newField.status)).toBe('string');
     });
 
     test('newField should have a getter of paragraphID',()=>{
-        expect(typeof (newField.getParagraphID)).toBe('string');
+        expect(typeof (newField.paragraphID)).toBe('string');
     });
 
     test('newField should have a setter for current status',()=>{
-        newField.setCurrentStatus = TestEnum.failed;
-        expect(newField.getStatus).toBe('FAILED');
+        newField.status = TestEnum.failed;
+        expect(newField.status).toBe('FAILED');
     });
 });
