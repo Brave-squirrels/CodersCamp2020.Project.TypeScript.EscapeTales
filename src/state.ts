@@ -15,7 +15,7 @@ export enum LOCATION{
        -number of actions
        -array of all discovered paragraphes ID
        -array of all discovered puzzles ID
-       -array of locations ID ???
+       -ID of actual location
        -array of all visited areas ID
        -number of actual storyline ending 
        -array of all discovered evidences ID
@@ -31,7 +31,7 @@ export class GameState {
     constructor(protected _actionNumbers : number = 5,
                 protected _userParagraphsId : string[] = [],
                 protected _userPuzzlesId : string[] = [], 
-                protected _userLocationId : LOCATION = LOCATION.FIRST, //i think should be only string
+                protected _userLocationId : LOCATION = LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
                 protected _storyline : ENDING = ENDING.HAPPYENDING, 
                 protected _userEvidencesId : string[] = []
