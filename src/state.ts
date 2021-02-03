@@ -28,60 +28,62 @@ export enum LOCATION{
 */
 export class GameState {
     
-    constructor(protected actionNumbers : number = 5,
-                protected userParagraphsId : string[] = [],
-                protected userPuzzlesId : string[] = [], 
-                protected userLocationId : LOCATION = LOCATION.FIRST,
-                protected visitedAreasId : string[] = [],
-                protected storyline : ENDING = ENDING.HAPPYENDING, 
-                protected userEvidencesId : string[] = []
+    constructor(protected _actionNumbers : number = 5,
+                protected _userParagraphsId : string[] = [],
+                protected _userPuzzlesId : string[] = [], 
+                protected _userLocationId : LOCATION = LOCATION.FIRST,
+                protected _visitedAreasId : string[] = [],
+                protected _storyline : ENDING = ENDING.HAPPYENDING, 
+                protected _userEvidencesId : string[] = []
                 ) {  }
 
 
         set setActionNumbers(newActionNumber:number){
-            this.actionNumbers = newActionNumber;
+            this._actionNumbers = newActionNumber;
         }
         set setUserParagraphsId(newParagraphsId:string){
-            this.userParagraphsId.push(newParagraphsId);
+            this._userParagraphsId.push(newParagraphsId);
         }
         set setUserPuzzlesId(newPuzzleId:string){
-            this.userPuzzlesId.push(newPuzzleId);
+            this._userPuzzlesId.push(newPuzzleId);
         }
         set setUserLocationId(newLocationId:LOCATION){
-            this.userLocationId = (newLocationId);
+            this._userLocationId = (newLocationId);
         }
         set setVisitedAreasId(newVisitedAreasId:string){
-            this.visitedAreasId.push(newVisitedAreasId);
+            this._visitedAreasId.push(newVisitedAreasId);
         }
         set setStoryline(newStoryline:ENDING){
-            this.storyline = newStoryline;
+            this._storyline = newStoryline;
         }
         set setUserEvidencesId(newEvidencesId:string){
-            this.userEvidencesId.push(newEvidencesId);
+            this._userEvidencesId.push(newEvidencesId);
         }
 
 
         get getActionsNumbers(){
-            return this.actionNumbers;
+            return this._actionNumbers;
         }
         get getUserParagraphsId(){
-            return this.userParagraphsId;
+            return this._userParagraphsId;
         }
         get getUserPuzzlesId(){
-            return this.userPuzzlesId;
+            return this._userPuzzlesId;
         }
         get getUserLocationId(){
-            return this.userLocationId;
+            return this._userLocationId;
         }
         get getVisitedAreasId(){
-            return this.visitedAreasId;
+            return this._visitedAreasId;
         }
         get getStoryline(){
-            return this.storyline;
+            return this._storyline;
         }
         get getUserEvidencesId(){
-            return this.userEvidencesId;
+            return this._userEvidencesId;
         }
 
 }
+
+
 
