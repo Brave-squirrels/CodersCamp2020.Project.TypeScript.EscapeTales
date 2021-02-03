@@ -23,12 +23,12 @@ export class BoardField {
         return this._fieldID;
     }
 
-    get ParagraphID(){
+    get paragraphID(){
         return this._paragraphID;
     }
 
-    set setCurrentStatus(status: TestEnum){
-        this._status=TestEnum.failed;
+    set status(status: TestEnum){
+        this._status=status;
     }
 
     readParagraph(){
