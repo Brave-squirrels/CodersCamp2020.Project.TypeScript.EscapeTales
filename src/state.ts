@@ -3,6 +3,12 @@ export enum ENDING{
     SADENDING
     }
 
+export enum LOCATION{
+    FIRST,
+    SECOND,
+    THIRD
+}
+
 /*
 @Class GameState:
     Actual game state, include:
@@ -25,7 +31,7 @@ export class GameState {
     constructor(protected _actionNumbers : number = 5,
                 protected _userParagraphsId : string[] = [],
                 protected _userPuzzlesId : string[] = [], 
-                protected _userLocationId : string[] = [], //i think should be only string
+                protected _userLocationId : LOCATION = LOCATION.FIRST, //i think should be only string
                 protected _visitedAreasId : string[] = [],
                 protected _storyline : ENDING = ENDING.HAPPYENDING, 
                 protected _userEvidencesId : string[] = []
@@ -41,8 +47,8 @@ export class GameState {
         set setUserPuzzlesId(newPuzzleId:string){
             this._userPuzzlesId.push(newPuzzleId);
         }
-        set setUserLocationId(newLocationId:string){
-            this._userLocationId.push(newLocationId);
+        set setUserLocationId(newLocationId:LOCATION){
+            this._userLocationId = (newLocationId);
         }
         set setVisitedAreasId(newVisitedAreasId:string){
             this._visitedAreasId.push(newVisitedAreasId);

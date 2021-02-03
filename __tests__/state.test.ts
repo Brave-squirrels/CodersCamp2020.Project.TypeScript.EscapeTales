@@ -1,6 +1,6 @@
-import {GameState, ENDING} from '../src/state'
+import {GameState, ENDING, LOCATION} from '../src/state'
 describe('Object gameState:', () => {
-    const testGameState = new GameState (3, ['A1p'], ['A1z'], ['A1'], ['A2', 'A3'], ENDING.SADENDING, ['A1d'])
+    const testGameState = new GameState (3, ['A1p'], ['A1z'], LOCATION.SECOND, ['A2', 'A3'], ENDING.SADENDING, ['A1d'])
 
     test('newField should be an instance of BoardField class',()=>{
         expect(testGameState instanceof GameState).toBe(true);
@@ -19,7 +19,7 @@ describe('Object gameState:', () => {
     })
 
     test('userLocationId should be string[]', () => {
-        (testGameState.getUserLocationId).forEach(n =>(expect(typeof(n))).toEqual('string'))
+        expect(typeof(testGameState.getUserLocationId)).toEqual('number')
     })
 
     test('visitedAreasId should be a string[]', () => {
