@@ -1,10 +1,16 @@
+/**
+ * @Class - ActionPoints
+ *  class with common properites such as
+ *  totalPoints(constant default value),
+ *  currentPoints (changing value)
+ */
 export default class ActionPoints {
   constructor(
     private _totalPoints: number,
     private _currentPoints: number = _totalPoints
   ) {}
 
-  get amount() {
+  get currentPoints() {
     return this._currentPoints;
   }
 

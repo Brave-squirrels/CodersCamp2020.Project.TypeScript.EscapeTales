@@ -1,3 +1,11 @@
+/**
+ * @Class - Paragraph
+ *  class with common properites such as
+ *  id,
+ *  location,
+ *  story line,
+ *  text
+ */
 export default class Paragraph {
   constructor(
     readonly id: string,

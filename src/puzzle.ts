@@ -1,8 +1,19 @@
+/**
+ * @Class - Puzzle
+ *  class with common properites such as
+ *  id,
+ *  paragraph,
+ *  puzzleCard (array of id),
+ *  visitedCards (array of id),
+ *  price,
+ *  solution
+ *  content
+ */
 export default class Puzzle {
   constructor(
     readonly id: string,
     private _paragraph: string,
-    private _puzzleCard: string[],
+    private _puzzleCards: string[],
     private _visitedCards: string[],
     readonly price: string,
     readonly solution: string,
@@ -18,6 +29,6 @@ export default class Puzzle {
   }
 
   addPuzzleCard(elem: string) {
-    this._puzzleCard.push(elem);
+    this._puzzleCards.push(elem);
   }
 }
