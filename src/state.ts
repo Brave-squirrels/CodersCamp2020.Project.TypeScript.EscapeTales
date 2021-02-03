@@ -20,11 +20,11 @@ export enum LOCATION{
        -number of actual storyline ending 
        -array of all discovered evidences ID
 
-    To change property use:
-        setNameOfProperty(element)
+    To add change somthing in GameState use:
+        method setNameOfProperty(element)
 
     To get property use:
-        getNameOfProperty
+        getter nameOfProperty
 */
 export class GameState {
     
@@ -38,52 +38,50 @@ export class GameState {
                 ) {  }
 
 
-        set setActionNumbers(newActionNumber:number){
+        setActionNumbers(newActionNumber:number){
             this._actionNumbers = newActionNumber;
         }
-        set setUserParagraphsId(newParagraphsId:string){
+        setUserParagraphsId(newParagraphsId:string){
             this._userParagraphsId.push(newParagraphsId);
         }
-        set setUserPuzzlesId(newPuzzleId:string){
+        setUserPuzzlesId(newPuzzleId:string){
             this._userPuzzlesId.push(newPuzzleId);
         }
-        set setUserLocationId(newLocationId:LOCATION){
+        setUserLocationId(newLocationId:LOCATION){
             this._userLocationId = (newLocationId);
         }
-        set setVisitedAreasId(newVisitedAreasId:string){
+        setVisitedAreasId(newVisitedAreasId:string){
             this._visitedAreasId.push(newVisitedAreasId);
         }
-        set setStoryline(newStoryline:ENDING){
+        setStoryline(newStoryline:ENDING){
             this._storyline = newStoryline;
         }
-        set setUserEvidencesId(newEvidencesId:string){
+        setUserEvidencesId(newEvidencesId:string){
             this._userEvidencesId.push(newEvidencesId);
         }
 
 
-        get getActionsNumbers(){
+        get actionNumbers(){
             return this._actionNumbers;
         }
-        get getUserParagraphsId(){
+        get userParagraphsId(){
             return this._userParagraphsId;
         }
-        get getUserPuzzlesId(){
+        get userPuzzlesId(){
             return this._userPuzzlesId;
         }
-        get getUserLocationId(){
+        get userLocationId(){
             return this._userLocationId;
         }
-        get getVisitedAreasId(){
+        get visitedAreasId(){
             return this._visitedAreasId;
         }
-        get getStoryline(){
+        get storyline(){
             return this._storyline;
         }
-        get getUserEvidencesId(){
+        get userEvidencesId(){
             return this._userEvidencesId;
         }
 
 }
-
-
 

@@ -7,32 +7,32 @@ describe('Object gameState:', () => {
     });
 
     test('actionNumbers should be a number', () => {
-        expect(typeof(testGameState.getActionsNumbers)).toEqual('number')
+        expect(typeof(testGameState.actionNumbers)).toEqual('number')
     })
 
     test('userParagraphsId should be a string[]', () => {
-        (testGameState.getUserParagraphsId).forEach(n =>(expect(typeof(n))).toEqual('string'))
+        (testGameState.userParagraphsId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
     test('userPuzzlesId should be a string[]', () => {
-        (testGameState.getUserPuzzlesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
+        (testGameState.userPuzzlesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
     test('userLocationId should be string[]', () => {
-        expect(typeof(testGameState.getUserLocationId)).toEqual('number')
+        expect(typeof(testGameState.userLocationId)).toEqual('number')
     })
 
     test('visitedAreasId should be a string[]', () => {
-        (testGameState.getVisitedAreasId).forEach(n =>(expect(typeof(n))).toEqual('string'))
+        (testGameState.visitedAreasId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
     test('storyline should be a Enum', () => {
-        expect(typeof(testGameState.getStoryline)).toEqual('number')
+        expect(typeof(testGameState.storyline)).toEqual('number')
     })
 
     
     test('userEvidencesId should be a string[]', () => {
-        (testGameState.getUserEvidencesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
+        (testGameState.userEvidencesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
 })
