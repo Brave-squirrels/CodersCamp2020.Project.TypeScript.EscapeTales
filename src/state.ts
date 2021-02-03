@@ -21,10 +21,10 @@ export enum LOCATION{
        -array of all discovered evidences ID
 
     To add change somthing in GameState use:
-        method setNameOfProperty(element)
+        method: setNameOfProperty(element)
 
     To get property use:
-        getter nameOfProperty
+        getter: nameOfProperty
 */
 export class GameState {
     
