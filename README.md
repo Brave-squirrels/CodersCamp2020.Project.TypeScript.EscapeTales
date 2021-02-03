@@ -3,7 +3,7 @@
 Projekt nr 3 w VI edycji kursu programowania CodersCamp 2020.
 
 W projekcie każdy z uczestników powinien zaprezentować praktyczną znajomość poniższych zagadnień związanych z TypeScript:
-
+```
 typy podstawowe
 definiowanie własnych typów
 składanie typów
@@ -12,7 +12,7 @@ implementacja / dziedziczenie / kompozycja / implementacja interfejsu
 modyfikatory dostępu
 typy generyczne
 testy jednostkowe i TDD
-
+```
 
 ## Tablica z zadaniami
 
