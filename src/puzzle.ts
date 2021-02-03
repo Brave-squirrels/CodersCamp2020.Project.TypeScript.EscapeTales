@@ -24,6 +24,14 @@ export default class Puzzle {
     return this._paragraph;
   }
 
+  get puzzleCards() {
+    return this._puzzleCards;
+  }
+
+  get visitedCards() {
+    return this._visitedCards;
+  }
+
   addVisitedCard(elem: string) {
     this._visitedCards.push(elem);
   }
