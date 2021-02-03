@@ -8,8 +8,8 @@ type fn = (n: number) => void;
 export default class StressCard {
   constructor(readonly text: string) {}
 
-  addActionPoint(callack: fn) {
-    callack(1);
+  addActionPoint(callback: fn) {
+    callback(1); // add a point to action points
     // function() -> take the evidence
   }
 
