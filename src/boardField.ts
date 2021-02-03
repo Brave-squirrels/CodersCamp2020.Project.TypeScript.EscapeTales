@@ -11,24 +11,24 @@ export enum TestEnum{
 
 export class BoardField {
     constructor(
-        protected status: TestEnum, 
-        readonly fieldID: string, 
-        readonly paragraphID: string){}
+        protected _status: TestEnum, 
+        readonly _fieldID: string, 
+        readonly _paragraphID: string){}
 
-    get getStatus(){
-        return this.status;
+    get status(){
+        return this._status;
     }
 
-    get getFieldID(){
-        return this.fieldID;
+    get fieldID(){
+        return this._fieldID;
     }
 
-    get getParagraphID(){
-        return this.paragraphID;
+    get ParagraphID(){
+        return this._paragraphID;
     }
 
     set setCurrentStatus(status: TestEnum){
-        this.status=TestEnum.failed;
+        this._status=TestEnum.failed;
     }
 
     readParagraph(){
