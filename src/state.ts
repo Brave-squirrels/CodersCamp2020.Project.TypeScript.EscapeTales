@@ -66,6 +66,10 @@ export class GameState {
             this._userEvidencesId.push(newEvidencesId);
         }
 
+        removeEvidence(){
+            this._userEvidencesId.pop();
+        }
+
 
         get actionNumbers(){
             return this._actionNumbers;

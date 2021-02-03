@@ -1,51 +1,16 @@
 import {newPuzzle, newPuzzleCard} from './puzzleAction';
-
-//Enum for boardArea state
-enum AreaState {
-    EXPLORED = 1,
-    PENDING = 0
-}
+import { BoardField,TestEnum } from './boardField';
+import {GameState} from './state';
+import {BoardFieldWithPoints} from './boardFieldWithPoints';
+import {BoardFieldWithRiddle} from './boardFieldWithRiddle';
 
 //Enum for number of actions
 enum ActionPoints {
     MOVE = -1,
     RESET = 6,
-    STRESSCARD = 6,
+    STRESSCARD = 4,
     CLUE = 2
 }
-
-//Trying on
-interface State  {
-    action: number,
-    evidences: number[],
-    paragraphsList: any
-}
-
-interface Board {
-    id: string,
-    status: AreaState
-}
-
-const board1: Board = {
-    id: '1',
-    status: AreaState.PENDING
-}
-interface Paragraph{
-    id: number,
-    text: string,
-}
-const paragraph: Paragraph = {
-    id: 1,
-    text: "olaboga"
-}
-
-const state: State = {
-    action: 6,
-    evidences: [1,2,3,4],
-    paragraphsList: []
-}
-const boardAreas = [{id: '1', status: AreaState.PENDING}];
-const paragraphs = [{ID: '1', text: 'olaboga'}];
 
 /*
     Paraghraph and area and DOM element, has the same ID
@@ -82,12 +47,12 @@ document.addEventListener('click',(e: any) : void=>{
 })
 //BoardArea validation
 //Check the status of the current board
-const checkStatus = (currentField: Board): boolean =>{
-    return currentField.status === AreaState.PENDING;
+const checkStatus = (currentField: BoardField): boolean =>{
+    return currentField.status === TestEnum.passed;
 }
 //Check the amount of action points in game state
-const checkActions = (state: State):boolean =>{
-    return state.action > 0;
+const checkActions = (state: GameState):boolean =>{
+    return state.actionNumbers > 0;
 }
 
 
@@ -98,16 +63,16 @@ const checkActions = (state: State):boolean =>{
     @param {state} - game state object
     @param {currentField} - object of field we are exploring
 */
-const mainAction = (areaID: string, boardAreas: Array<Board>, state: State, currentField: Board) : void=>{
+const mainAction = (areaID: string, boardAreas: Array<BoardField>, state: GameState, currentField: BoardField) : void=>{
 
      //Mark the board, as explored
-     move(currentField);
+     move(currentField, state);
 
      //Remove 1 Action point
      updateAction(ActionPoints.MOVE, state);
 
      //Read paragraph and add to the state
-     readParagraph(areaID, state);
+     readParagraph(areaID, state, currentField);
 
      //Get content from the area
      getAreaContent(currentField, state);
@@ -119,8 +84,8 @@ const mainAction = (areaID: string, boardAreas: Array<Board>, state: State, curr
     @param {id} - id of the boardArea object
     @param {boardAreas} - array of all the boardArea objects
 */
-const getBoard = (id:string, boardAreas: Array<Board>) : Board =>{
-    return boardAreas.find(c=>c.id===id)!;
+const getBoard = (id:string, boardAreas: Array<BoardField>) : BoardField =>{
+    return boardAreas.find((c : BoardField) =>c._fieldID===id)!;
 }
 
 //Board movement function
@@ -128,10 +93,13 @@ const getBoard = (id:string, boardAreas: Array<Board>) : Board =>{
   @param {IDofArea} - ID of area which we are exploring
   Mark area, as explored
 */
-const move = (currentBoard: Board) : void=>{
+const move = (currentBoard: BoardField, state: GameState) : void=>{
 
     //Mark the board as explored
-    currentBoard.status = AreaState.EXPLORED;
+    currentBoard.status = TestEnum.passed;
+    
+    //Add paragraph ID to the state
+    state.addParagraphsId(currentBoard._fieldID);
 
 }
 
@@ -140,14 +108,14 @@ const move = (currentBoard: Board) : void=>{
     @param {id} - id of the paragraph, which is the same as ID od DOM element nad board area ID
     @param {state} - state of the game object
 */
-const readParagraph = (id: string, state: State): void=>{
+const readParagraph = (id: string, state: GameState, currentField: BoardField): void=>{
 
     //Find current paragraph
-    const currentParagraph = paragraphs.find(c=>c.ID === id);
+    const currentParagraph = paragraphs.find((c)=>c.id === id);
     //Push current paragraph to the state
-    state.paragraphsList.push(currentParagraph);
+    state.addParagraphsId(currentParagraph.id);
     //Run read paragraph method from boarArea object
-
+    currentField.readParagraph();
 }
 
 
@@ -155,13 +123,13 @@ const readParagraph = (id: string, state: State): void=>{
 /*
     @param {state} - state object, which contains main game state data
 */
-const stressCardAction = (state: State) : void=>{
+const stressCardAction = (state: GameState) : void=>{
     
     //Add action points
     updateAction(ActionPoints.STRESSCARD, state);
     //Remove evidence if player have any
-    if(state.evidences.length !== 0){
-        state.evidences.pop();
+    if(state.userEvidencesId.length !== 0){
+        state.removeEvidence();
     }
 
 }
@@ -171,9 +139,9 @@ const stressCardAction = (state: State) : void=>{
     @param {numOfActions} - number of action's which we wanna add/remove from state
     @param {state} - state object, which contains main game state data
 */
-const updateAction = (numOfActions: number, state: State): void=>{
+const updateAction = (numOfActions: number, state: GameState): void=>{
 
-    state.action += numOfActions;
+    state.actionNumbers = (numOfActions + state.actionNumbers);
 
 }
 
@@ -181,7 +149,7 @@ const updateAction = (numOfActions: number, state: State): void=>{
 /*
     @param {boardField} - object of current boardField
 */
-const getAreaContent = (boardField: Board, state: State) : void=>{
+const getAreaContent = (boardField: BoardField, state: GameState) : void=>{
 
     switch(boardField.content){
 
@@ -203,4 +171,4 @@ const getAreaContent = (boardField: Board, state: State) : void=>{
 }
 
 //Export for testing
-export {AreaState, getBoard, checkActions, checkStatus, readParagraph}
+export {getBoard, checkActions, checkStatus, readParagraph}
