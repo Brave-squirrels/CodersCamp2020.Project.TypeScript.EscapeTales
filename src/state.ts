@@ -38,25 +38,31 @@ export class GameState {
                 ) {  }
 
 
-        setActionNumbers(newActionNumber:number){
+        set actionNumbers(newActionNumber:number){
             this._actionNumbers = newActionNumber;
         }
-        setUserParagraphsId(newParagraphsId:string){
-            this._userParagraphsId.push(newParagraphsId);
+
+        set userLocationId(newLocationId:LOCATION){
+            this._userLocationId = newLocationId;
         }
-        setUserPuzzlesId(newPuzzleId:string){
-            this._userPuzzlesId.push(newPuzzleId);
-        }
-        setUserLocationId(newLocationId:LOCATION){
-            this._userLocationId = (newLocationId);
-        }
-        setVisitedAreasId(newVisitedAreasId:string){
-            this._visitedAreasId.push(newVisitedAreasId);
-        }
-        setStoryline(newStoryline:ENDING){
+
+        set storyline(newStoryline:ENDING){
             this._storyline = newStoryline;
         }
-        setUserEvidencesId(newEvidencesId:string){
+
+        addParagraphsId(newParagraphsId:string){
+            this._userParagraphsId.push(newParagraphsId);
+        }
+
+        addPuzzlesId(newPuzzleId:string){
+            this._userPuzzlesId.push(newPuzzleId);
+        }
+        
+        addVisitedAreasId(newVisitedAreasId:string){
+            this._visitedAreasId.push(newVisitedAreasId);
+        }
+        
+        addEvidencesId(newEvidencesId:string){
             this._userEvidencesId.push(newEvidencesId);
         }
 
@@ -84,4 +90,3 @@ export class GameState {
         }
 
 }
-
