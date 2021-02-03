@@ -1,31 +1,38 @@
-const gameStatesObject = require('../src/state')
+import {GameState, ENDING} from '../src/state'
 describe('Object gameState:', () => {
+    const testGameState = new GameState (3, ['A1p'], ['A1z'], ['A1'], ['A2', 'A3'], ENDING.SADENDING, ['A1d'])
 
-    test('actionNumber should return 0', () => {
-        expect(gameStatesObject.actionNumbers).toBe(0)
+    test('newField should be an instance of BoardField class',()=>{
+        expect(testGameState instanceof GameState).toBe(true);
+    });
+
+    test('actionNumbers should be a number', () => {
+        expect(typeof(testGameState.getActionsNumbers)).toEqual('number')
     })
 
-    test('userParagraphsId should return []', () => {
-        expect(gameStatesObject.userParagraphsId).toEqual([])
+    test('userParagraphsId should be a string[]', () => {
+        (testGameState.getUserParagraphsId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
-    test('userPuzzlesId should return []', () => {
-        expect(gameStatesObject.userPuzzlesId).toEqual([])
+    test('userPuzzlesId should be a string[]', () => {
+        (testGameState.getUserPuzzlesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
-    test('userLocationId should return []', () => {
-        expect(gameStatesObject.userLocationId).toEqual([])
+    test('userLocationId should be string[]', () => {
+        (testGameState.getUserLocationId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
-    test('visitedAreasId should return []', () => {
-        expect(gameStatesObject.visitedAreasId).toEqual([])
+    test('visitedAreasId should be a string[]', () => {
+        (testGameState.getVisitedAreasId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
 
-    test('storyline should return 0', () => {
-        expect(gameStatesObject.storyline).toBe(0)
+    test('storyline should be a Enum', () => {
+        expect(typeof(testGameState.getStoryline)).toEqual('number')
     })
 
-    test('userEvidencesId should return []', () => {
-        expect(gameStatesObject.userEvidencesId).toEqual([])
+    
+    test('userEvidencesId should be a string[]', () => {
+        (testGameState.getUserEvidencesId).forEach(n =>(expect(typeof(n))).toEqual('string'))
     })
+
 })
