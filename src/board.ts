@@ -155,7 +155,7 @@ const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoin
     @param {state} - gameState object
     @actionObj - object which contains actionPoints
 */
-const getAreaContent = (boardField: BoardField | BoardFieldWithPoints | BoardFieldWithRiddle, state: GameState, actionObj: ActionPoints) : void=>{
+const getAreaContent = (boardField: BoardFieldWithRiddle, state: GameState, actionObj: ActionPoints) : void=>{
 
     switch(boardField.content){
 
