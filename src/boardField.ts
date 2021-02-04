@@ -1,8 +1,7 @@
-export enum TestEnum{
-    passed = 'PASSED',
-    failed = 'FAILED'
+export enum TestEnum {
+  passed = "PASSED",
+  failed = "FAILED",
 }
-
 
 /**
  * @Class - BoardField
@@ -10,28 +9,29 @@ export enum TestEnum{
  */
 
 export class BoardField {
-    constructor(
-        protected _status: TestEnum, 
-        readonly _fieldID: string, 
-        readonly _paragraphID: string){}
+  constructor(
+    protected _status: TestEnum,
+    readonly _fieldID: string,
+    readonly _paragraphID: string
+  ) {}
 
-    get status(){
-        return this._status;
-    }
+  get status() {
+    return this._status;
+  }
 
-    get fieldID(){
-        return this._fieldID;
-    }
+  get fieldID() {
+    return this._fieldID;
+  }
 
-    get paragraphID(){
-        return this._paragraphID;
-    }
+  get paragraphID() {
+    return this._paragraphID;
+  }
 
-    set status(status: TestEnum){
-        this._status=status;
-    }
+  set status(status: TestEnum) {
+    this._status = status;
+  }
 
-    readParagraph(){
-        // wywolanie funkcji z frontu do wczytania paragrafu
-    };
+  readParagraph() {
+    // wywolanie funkcji z frontu do wczytania paragrafu
+  }
 }
