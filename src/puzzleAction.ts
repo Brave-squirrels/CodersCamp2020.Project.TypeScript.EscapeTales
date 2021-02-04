@@ -1,4 +1,8 @@
-import {readParagraph} from './board';
+import PuzzleCard from './puzzleCard';
+import {Puzzle} from './puzzle';
+import {GameState} from './state';
+import {PuzzleReward} from './ENUM';
+import Paragraph from './paragraph';
 
 //Puzzle solved
 document.addEventListener('click', (e:any) : void=>{
@@ -8,7 +12,7 @@ document.addEventListener('click', (e:any) : void=>{
         const puzzleID: string = e.target.id;
 
         //Run validation puzzle function
-        solvePuzzle(puzzleID, state);
+        solvePuzzle(puzzleID, state, puzzleArray, puzzleCardArray, paragraphArray);
     }
 
 })
@@ -18,37 +22,44 @@ document.addEventListener('click', (e:any) : void=>{
     @param {puzzleDOM} - id of the current puzzle
     @param {state} - gameState object
 */
-const solvePuzzle = (puzzleDOM: string, state: State):void=>{
+const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>, paragraphs: Array<Paragraph>):void=>{
 
     //Getting value - password typed by the user
     const passwordValue = (<HTMLInputElement>document.querySelector(`#${puzzleDOM}input`)).value;
 
     const currentPuzzle : Puzzle = getPuzzle(puzzleDOM, puzzleArray);
 
-    if(passwordValue === currentPuzzle.password){
-        //Read/add paragraph to the state
+    if(passwordValue === currentPuzzle.solution){
         //Get reward
-        //Remove puzzle from state
+        rewardPuzzle(puzzleDOM, puzzleArray, puzzleCardArray, state);
+        //Find paragraph
+        const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===puzzleDOM);
+        //Read/add paragraph to the state //DOM function with paragraph text
     }else{
-        //Incorrect
+        //Run function that will tell that the password is incorrect
     }
 
 }
 
-//Remove puzzle
-const removePuzzle = (id: string, puzzleArray: Array<puzzleArray>, state: State):void =>{
-    const index = state.puzzle.indexOf(id);
-    state.puzzle.splice(index,1);
-    readParagraph(id, state);
-}
-
 //Get puzzle reward
-const rewardPuzzle = (id: string, puzzleArray: Array<puzzleArray>, state: State): void => {
-    
+const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>, state: GameState): void => {
     //Find the puzzle
+    const currentPuzzle: Puzzle = getPuzzle(id, puzzleArray);
     //Use switch to get other evidence or progress
-    //update state with number of evidences or progress
+    switch(currentPuzzle.reward){
+        case PuzzleReward.EVIDENCE:
+            //Add evidence to the state
+            state.addEvidencesId('Evidence');
+            break;
+        case PuzzleReward.PROGRESSPOINT:
+            //Add progressPoint to the state
+            state.addProgressPoint();
+            break;
+    }
+    //Read paragraph
 
+    //Remove puzzle from the state
+    state.removePuzzle(id);
 }
 
 //Get puzzle card and main puzzle object base on id
@@ -57,10 +68,10 @@ const rewardPuzzle = (id: string, puzzleArray: Array<puzzleArray>, state: State)
     @param {puzzleArray/puzzleCardArray} - array which stores all of the puzzles/puzzle cards
 */
 const getPuzzle = (ID: string, puzzleArray: Array<Puzzle>) : Puzzle=>{
-    return puzzleArray.find(c=>c===ID);
+    return puzzleArray.find((c : Puzzle)=>c.id===ID);
 }
-const getPuzzleCard = (ID: string, puzzleCardArray: Array<puzzleCard>) : puzzleCard => {
-    return puzzleCardArray.find(c=>c===ID);
+const getPuzzleCard = (ID: string, puzzleCardArray: Array<PuzzleCard>) : PuzzleCard => {
+    return puzzleCardArray.find((c:PuzzleCard)=>c.id===ID);
 }
 
 //Add puzzle to the state
@@ -68,29 +79,30 @@ const getPuzzleCard = (ID: string, puzzleCardArray: Array<puzzleCard>) : puzzleC
     @param {state} - gameState object
     @param {id} - id of the filed - same as puzzle id
 */
-const newPuzzle = (state: State, id: string): void =>{
+const newPuzzle = (state: GameState, id: string): void =>{
 
     //Check if we have active puzzle
-    if(state.puzzle.includes(id)){
+    if(state.userPuzzlesId.includes(id)){
         return;
     }
     //If not push to the state (whick means it's active)
-    state.puzzle.push(id);
-
+    state.addPuzzlesId(id);
 }
 
 //Add puzzle card to the puzzle object
 /*
     @param {id} - id of the filed - same as puzzleCard id
+    @param {puzzleCardArray} - array of all puzzle cards
+    @param {puzzleArray} - array of all Puzzle objects
 */
 const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>): void =>{
 
     //Find puzzle card in array with current ID
-    const puzzleCard = getPuzzleCard(id, puzzleCardArray);
-    const puzzleObj = getPuzzle(id, puzzleArray);
+    const puzzleCard : PuzzleCard = getPuzzleCard(id, puzzleCardArray);
+    const puzzleObj : Puzzle = getPuzzle(id, puzzleArray);
 
     //Push this ID to puzzle object (which means we got it)
-    puzzleObj.cards.push(puzzleCard.id);
+    puzzleObj.addVisitedCard(puzzleCard.id);
 
 }
 

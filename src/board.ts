@@ -1,16 +1,10 @@
 import {newPuzzle, newPuzzleCard} from './puzzleAction';
-import { BoardField,TestEnum } from './boardField';
+import { BoardField} from './boardField';
 import {GameState} from './state';
-import {BoardFieldWithPoints} from './boardFieldWithPoints';
 import {BoardFieldWithRiddle} from './boardFieldWithRiddle';
-
-//Enum for number of actions
-enum ActionPoints {
-    MOVE = -1,
-    RESET = 6,
-    STRESSCARD = 4,
-    CLUE = 2
-}
+import ActionPoints from './actionPoints';
+import Paragraph from './paragraph';
+import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 
 /*
     Paraghraph and area and DOM element, has the same ID
@@ -48,7 +42,7 @@ document.addEventListener('click',(e: any) : void=>{
 //BoardArea validation
 //Check the status of the current board
 const checkStatus = (currentField: BoardField): boolean =>{
-    return currentField.status === TestEnum.passed;
+    return currentField.status === BoardState.PENDING;
 }
 //Check the amount of action points in game state
 const checkActions = (state: GameState):boolean =>{
@@ -65,17 +59,14 @@ const checkActions = (state: GameState):boolean =>{
 */
 const mainAction = (areaID: string, boardAreas: Array<BoardField>, state: GameState, currentField: BoardField) : void=>{
 
-     //Mark the board, as explored
-     move(currentField, state);
-
-     //Remove 1 Action point
-     updateAction(ActionPoints.MOVE, state);
+     //Mark the board, as explored and remove 1 action point
+     move(currentField, state, actionObj);
 
      //Read paragraph and add to the state
-     readParagraph(areaID, state, currentField);
+     readParagraph(areaID, state, currentField, paragraphsArray);
 
      //Get content from the area
-     getAreaContent(currentField, state);
+     getAreaContent(currentField, state, actionObj);
 }
 
 
@@ -93,13 +84,19 @@ const getBoard = (id:string, boardAreas: Array<BoardField>) : BoardField =>{
   @param {IDofArea} - ID of area which we are exploring
   Mark area, as explored
 */
-const move = (currentBoard: BoardField, state: GameState) : void=>{
+const move = (currentBoard: BoardField, state: GameState, actionPoints: ActionPoints) : void=>{
 
     //Mark the board as explored
-    currentBoard.status = TestEnum.passed;
+    currentBoard.status = BoardState.EXPLORED;
     
     //Add paragraph ID to the state
     state.addParagraphsId(currentBoard._fieldID);
+
+    //Remove 1 action point
+    actionPoints.decrementPoints();
+
+    //Save current action points to the gameState
+    state.actionNumbers = actionPoints.currentPoints;
 
 }
 
@@ -107,15 +104,18 @@ const move = (currentBoard: BoardField, state: GameState) : void=>{
 /*
     @param {id} - id of the paragraph, which is the same as ID od DOM element nad board area ID
     @param {state} - state of the game object
+    @param {currentField} - current field object that we are moving on
+    @param {paragraphsArray} - array of all the paragraphs
 */
-const readParagraph = (id: string, state: GameState, currentField: BoardField): void=>{
+const readParagraph = (id: string, state: GameState, currentField: BoardField, paragraphsArray: Array<Paragraph>): void=>{
 
     //Find current paragraph
-    const currentParagraph = paragraphs.find((c)=>c.id === id);
+    const currentParagraph = paragraphsArray.find((c: Paragraph)=>c.id === id)!;
     //Push current paragraph to the state
     state.addParagraphsId(currentParagraph.id);
     //Run read paragraph method from boarArea object
     currentField.readParagraph();
+
 }
 
 
@@ -123,14 +123,15 @@ const readParagraph = (id: string, state: GameState, currentField: BoardField): 
 /*
     @param {state} - state object, which contains main game state data
 */
-const stressCardAction = (state: GameState) : void=>{
+const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     
     //Add action points
-    updateAction(ActionPoints.STRESSCARD, state);
+    updateAction(ActionPointsEnum.STRESSCARD, state, actionObj);
     //Remove evidence if player have any
     if(state.userEvidencesId.length !== 0){
         state.removeEvidence();
     }
+    //Read random paragraph
 
 }
 
@@ -138,33 +139,40 @@ const stressCardAction = (state: GameState) : void=>{
 /*
     @param {numOfActions} - number of action's which we wanna add/remove from state
     @param {state} - state object, which contains main game state data
+    @param {actionPoints} - action points object
 */
-const updateAction = (numOfActions: number, state: GameState): void=>{
+const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoints: ActionPoints): void=>{
 
-    state.actionNumbers = (numOfActions + state.actionNumbers);
+    actionPoints.addPoints(numOfPoints);
+
+    state.actionNumbers = actionPoints.currentPoints;
 
 }
 
 //Get content from current area
 /*
     @param {boardField} - object of current boardField
+    @param {state} - gameState object
+    @actionObj - object which contains actionPoints
 */
-const getAreaContent = (boardField: BoardField, state: GameState) : void=>{
+const getAreaContent = (boardField: BoardField | BoardFieldWithPoints | BoardFieldWithRiddle, state: GameState, actionObj: ActionPoints) : void=>{
 
     switch(boardField.content){
 
-        case enum.clue:
-            //Run function which tell's u that u have found a clue
-            updateAction(ActionPoints.CLUE, state);
+        case BoardContent.CLUE:
+            //Update points
+            updateAction(ActionPointsEnum.CLUE, state, actionObj);
+            //Run function which reads paragraph
             break;
-        case enum.puzzle:
+        case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
-            newPuzzle(state, boardField.id);
-            newPuzzleCard(boardField.id, puzzleCardArray, puzzleArray);
+            newPuzzle(state, boardField.fieldID);
+            newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
+            //Read puzzle
+            boardField.readRiddle();
             break;
         default:
             //Run function whick tell's that u found nothing
-            console.log('nothing');
 
     }
 
