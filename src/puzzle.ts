@@ -7,7 +7,8 @@ import {PuzzleReward} from './ENUM';
  *  puzzleCard (array of id),
  *  visitedCards (array of id),
  *  reward,
- *  solution
+ *  solution,
+ *  content
  */
 export class Puzzle {
   constructor(
@@ -17,6 +18,7 @@ export class Puzzle {
     private _visitedCards: string[],
     readonly reward: PuzzleReward,
     readonly solution: string,
+    readonly content: string
   ) {}
 
   get paragraph() {
