@@ -1,15 +1,12 @@
+//Import
 import {newPuzzle, newPuzzleCard} from './puzzleAction';
 import { BoardField} from './boardField';
 import {GameState} from './state';
-import {BoardFieldWithRiddle} from './boardFieldWithRiddle';
 import ActionPoints from './actionPoints';
 import Paragraph from './paragraph';
 import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
-
-/*
-    Paraghraph and area and DOM element, has the same ID
-    Paragraph has additional uniq ID
-*/
+import {Puzzle} from './puzzle';
+import PuzzleCard from './puzzleCard';
 
 //Board movement event
 document.addEventListener('click',(e: any) : void=>{
@@ -25,17 +22,19 @@ document.addEventListener('click',(e: any) : void=>{
         //Get the current board object
         if(!checkStatus(currentField)){
              //End if the area is explored
+             //Run DOM function with message that area is explored
              return;
         }
 
         //If we have proper amount of actionPoints
         if(!checkActions(state)){
             //End function cuz of lack of action points
+            //Run ROM function with message that we don't have enough actionPoints
             return;
         }
 
         //Function which run the movement and content events
-        mainAction(areaID, boardAreas, state, currentField);
+        mainAction(areaID, state, currentField, actionPoints, paragraphsArray, puzzleCardArray, puzzleArray);
     }
 
 })
@@ -49,27 +48,6 @@ const checkActions = (state: GameState):boolean =>{
     return state.actionNumbers > 0;
 }
 
-
-//Main action function
-/*
-    @param {areaID} - ID get from the DOM
-    @param {boardAreas} - array of all boardArea objects
-    @param {state} - game state object
-    @param {currentField} - object of field we are exploring
-*/
-const mainAction = (areaID: string, boardAreas: Array<BoardField>, state: GameState, currentField: BoardField) : void=>{
-
-     //Mark the board, as explored and remove 1 action point
-     move(currentField, state, actionObj);
-
-     //Read paragraph and add to the state
-     readParagraph(areaID, state, currentField, paragraphsArray);
-
-     //Get content from the area
-     getAreaContent(currentField, state, actionObj);
-}
-
-
 //Get the current board
 /*
     @param {id} - id of the boardArea object
@@ -79,18 +57,34 @@ const getBoard = (id:string, boardAreas: Array<BoardField>) : BoardField =>{
     return boardAreas.find((c : BoardField) =>c._fieldID===id)!;
 }
 
+//Update action points
+/*
+    @param {numOfActions} - number of action's which we wanna add/remove from state
+    @param {state} - state object, which contains main game state data
+    @param {actionPoints} - action points object
+*/
+const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoints: ActionPoints): void=>{
+
+    actionPoints.addPoints(numOfPoints);
+
+    state.actionNumbers = actionPoints.currentPoints;
+
+}
+
 //Board movement function
 /*
-  @param {IDofArea} - ID of area which we are exploring
+  @param {currentField} - current boardField object
+  @param {state} - GameState object
+  @param {actionPoints} - actionPoints Object
   Mark area, as explored
 */
-const move = (currentBoard: BoardField, state: GameState, actionPoints: ActionPoints) : void=>{
+const move = (currentField: BoardField, state: GameState, actionPoints: ActionPoints) : void=>{
 
     //Mark the board as explored
-    currentBoard.status = BoardState.EXPLORED;
+    currentField.status = BoardState.EXPLORED;
     
     //Add paragraph ID to the state
-    state.addParagraphsId(currentBoard._fieldID);
+    state.addParagraphsId(currentField._fieldID);
 
     //Remove 1 action point
     actionPoints.decrementPoints();
@@ -110,18 +104,72 @@ const move = (currentBoard: BoardField, state: GameState, actionPoints: ActionPo
 const readParagraph = (id: string, state: GameState, currentField: BoardField, paragraphsArray: Array<Paragraph>): void=>{
 
     //Find current paragraph
-    const currentParagraph = paragraphsArray.find((c: Paragraph)=>c.id === id)!;
+    const currentParagraph : Paragraph = paragraphsArray.find((c: Paragraph)=>c.id === id)!;
     //Push current paragraph to the state
-    state.addParagraphsId(currentParagraph.id);
+    if(currentParagraph){
+        state.addParagraphsId(currentParagraph.id);
+    }
     //Run read paragraph method from boarArea object
+    //Will be DOM function
     currentField.readParagraph();
 
 }
 
+//Get content from current area
+/*
+    @param {boardField} - object of current boardField
+    @param {state} - gameState object
+    @param {actionObj} - object which contains actionPoints
+    @param {puzzleCardArray} - array of puzzle cards
+    @param {puzzleArray} - array of all the puzzle objects
+*/
+const getAreaContent = (boardField: BoardField, state: GameState, actionObj: ActionPoints, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
+
+    switch(boardField.content){
+
+        case BoardContent.CLUE:
+            //Update points
+            updateAction(ActionPointsEnum.CLUE, state, actionObj);
+            //Run DOM function with message and random paragraph that we get points
+            break;
+        case BoardContent.PUZZLE:
+            //Run function which add puzzle if not exist and get the puzzle card
+            newPuzzle(state, boardField.fieldID);
+            newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
+            break;
+        default:
+            //Run DOM function with message that we didn't get any content
+
+    }
+
+}
+
+//Main action function
+/*
+    @param {areaID} - ID get from the DOM
+    @param {state} - game state object
+    @param {currentField} - object of field we are exploring
+    @param {actionObj} - actionPoints object
+    @param {paragraphsArray} - array of all paragraphs
+    @param {puzzleCardArray} - array of all puzzleCards
+    @param {puzzleArray} - array of all puzzle objects
+*/
+const mainAction = (areaID: string, state: GameState, currentField: BoardField, actionObj: ActionPoints,paragraphsArray: Array<Paragraph>, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle> ) : void=>{
+
+     //Mark the board, as explored and remove 1 action point
+     move(currentField, state, actionObj);
+
+     //Read paragraph and add to the state
+     readParagraph(areaID, state, currentField, paragraphsArray);
+
+     //Get content from the area
+     getAreaContent(currentField, state, actionObj, puzzleCardArray,puzzleArray);
+}
 
 //Update points and remove evidence if we have any
 /*
     @param {state} - state object, which contains main game state data
+    @param {actionObj} - actionPoints object
 */
 const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     
@@ -131,50 +179,7 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     if(state.userEvidencesId.length !== 0){
         state.removeEvidence();
     }
-    //Read random paragraph
-
-}
-
-//Update action points
-/*
-    @param {numOfActions} - number of action's which we wanna add/remove from state
-    @param {state} - state object, which contains main game state data
-    @param {actionPoints} - action points object
-*/
-const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoints: ActionPoints): void=>{
-
-    actionPoints.addPoints(numOfPoints);
-
-    state.actionNumbers = actionPoints.currentPoints;
-
-}
-
-//Get content from current area
-/*
-    @param {boardField} - object of current boardField
-    @param {state} - gameState object
-    @actionObj - object which contains actionPoints
-*/
-const getAreaContent = (boardField: BoardFieldWithRiddle, state: GameState, actionObj: ActionPoints) : void=>{
-
-    switch(boardField.content){
-
-        case BoardContent.CLUE:
-            //Update points
-            updateAction(ActionPointsEnum.CLUE, state, actionObj);
-            //Run function which reads paragraph
-            break;
-        case BoardContent.PUZZLE:
-            //Run function which add puzzle if not exist and get the puzzle card
-            newPuzzle(state, boardField.fieldID);
-            newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
-            //Read puzzle
-            boardField.readRiddle();
-            break;
-        default:
-            //Run function whick tell's that u found nothing
-
-    }
+    //Run DOM function reading random paragraph, tell the user that he lost evidence
 
 }
 
