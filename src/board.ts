@@ -8,37 +8,7 @@ import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 
-//Board movement event
-//Move later to index.ts
-document.addEventListener('click',(e: any) : void=>{
-    
-    if(e.target.className === 'boardArea'){
 
-        //Getting ID of DOM element to find boardArea object
-        const areaID: string = e.target.id;
-
-        //Getting current board object
-        const currentField = getBoard(areaID, boardAreas)
-
-        //Get the current board object
-        if(!checkStatus(currentField)){
-             //End if the area is explored
-             //Run DOM function with message that area is explored
-             return;
-        }
-
-        //If we have proper amount of actionPoints
-        if(!checkActions(state)){
-            //End function cuz of lack of action points
-            //Run DOM function with message that we don't have enough actionPoints
-            return;
-        }
-
-        //Function which run the movement and content events
-        mainAction(areaID, state, currentField, actionPoints, paragraphsArray, puzzleCardArray, puzzleArray);
-    }
-
-})
 //BoardArea validation
 //Check the status of the current board
 const checkStatus = (currentField: BoardField): boolean =>{
@@ -83,16 +53,12 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
-    
-    //Add paragraph ID to the state
-    state.addParagraphsId(currentField._fieldID);
 
     //Remove 1 action point
     actionPoints.decrementPoints();
 
     //Save current action points to the gameState
     state.actionNumbers = actionPoints.currentPoints;
-
 }
 
 //Read paragraph
@@ -165,7 +131,6 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
 
      //Get content from the area
      getAreaContent(currentField, state, actionObj, puzzleCardArray,puzzleArray);
-
 }
 
 //Update points and remove evidence if we have any
@@ -173,6 +138,8 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {state} - state object, which contains main game state data
     @param {actionObj} - actionPoints object
 */
+
+/*
 const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     
     //Add action points
@@ -184,6 +151,7 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     //Run DOM function reading random paragraph, tell the user that he lost evidence
 
 }
+*/
 
 //Export for testing
-export {getBoard, checkActions, checkStatus, readParagraph}
+export {getBoard, checkActions, checkStatus, mainAction}

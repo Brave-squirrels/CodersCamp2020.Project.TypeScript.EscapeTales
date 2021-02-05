@@ -1,4 +1,5 @@
-import {GameState, ENDING, LOCATION} from '../src/state'
+import {GameState} from '../src/state'
+import {ENDING, LOCATION} from '../src/ENUM';
 describe('Object gameState:', () => {
     const testGameState = new GameState (3, ['A1p'], ['A1z'], LOCATION.SECOND, ['A2', 'A3'], ENDING.SADENDING, ['A1d'])
 
