@@ -1,3 +1,4 @@
+import {PuzzleReward} from './ENUM';
 /**
  * @Class - Puzzle
  *  class with common properites such as
@@ -5,17 +6,17 @@
  *  paragraph,
  *  puzzleCard (array of id),
  *  visitedCards (array of id),
- *  price,
- *  solution
+ *  reward,
+ *  solution,
  *  content
  */
-export default class Puzzle {
+export class Puzzle {
   constructor(
     readonly id: string,
     private _paragraph: string,
     private _puzzleCards: string[],
     private _visitedCards: string[],
-    readonly price: string,
+    readonly reward: PuzzleReward,
     readonly solution: string,
     readonly content: string
   ) {}
