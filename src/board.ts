@@ -53,16 +53,12 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
-    
-    //Add paragraph ID to the state
-    state.addParagraphsId(currentField._fieldID);
 
     //Remove 1 action point
     actionPoints.decrementPoints();
 
     //Save current action points to the gameState
     state.actionNumbers = actionPoints.currentPoints;
-
 }
 
 //Read paragraph
