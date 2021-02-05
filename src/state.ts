@@ -1,13 +1,4 @@
-export enum ENDING{
-    HAPPYENDING,
-    SADENDING
-    }
-
-export enum LOCATION{
-    FIRST,
-    SECOND,
-    THIRD
-}
+import {ENDING, LOCATION} from './ENUM';
 
 /*
 @Class GameState:
@@ -34,7 +25,8 @@ export class GameState {
                 protected _userLocationId : LOCATION = LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
                 protected _storyline : ENDING = ENDING.HAPPYENDING, 
-                protected _userEvidencesId : string[] = []
+                protected _userEvidencesId : string[] = [],
+                protected _progressPoints: number = 0
                 ) {  }
 
 
@@ -66,6 +58,22 @@ export class GameState {
             this._userEvidencesId.push(newEvidencesId);
         }
 
+        removeEvidence(){
+            this._userEvidencesId.pop();
+        }
+
+        resetProgressPoints(){
+            this._progressPoints = 0;
+        }
+
+        addProgressPoint(){
+            ++this._progressPoints;
+        }
+
+        removePuzzle(ID: string){
+            const index = this._userPuzzlesId.indexOf(ID);
+            this._userPuzzlesId.splice(index,1);
+        }
 
         get actionNumbers(){
             return this._actionNumbers;

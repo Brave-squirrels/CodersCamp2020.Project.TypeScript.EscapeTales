@@ -1,8 +1,4 @@
-export enum TestEnum{
-    passed = 'PASSED',
-    failed = 'FAILED'
-}
-
+import {BoardContent, BoardState} from './ENUM';
 
 /**
  * @Class - BoardField
@@ -11,9 +7,12 @@ export enum TestEnum{
 
 export class BoardField {
     constructor(
-        protected _status: TestEnum, 
+        protected _status: BoardState, 
         readonly _fieldID: string, 
-        readonly _paragraphID: string){}
+        readonly _paragraphID: string,
+        readonly _content: BoardContent
+    ){}
+        
 
     get status(){
         return this._status;
@@ -27,7 +26,11 @@ export class BoardField {
         return this._paragraphID;
     }
 
-    set status(status: TestEnum){
+    get content(){
+        return this._content;
+    }
+
+    set status(status: BoardState){
         this._status=status;
     }
 
