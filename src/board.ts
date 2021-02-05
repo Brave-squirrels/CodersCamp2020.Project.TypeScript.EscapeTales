@@ -138,6 +138,8 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {state} - state object, which contains main game state data
     @param {actionObj} - actionPoints object
 */
+
+/*
 const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     
     //Add action points
@@ -149,6 +151,7 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     //Run DOM function reading random paragraph, tell the user that he lost evidence
 
 }
+*/
 
 //Export for testing
 export {getBoard, checkActions, checkStatus, mainAction}

@@ -1,7 +1,16 @@
-import {getBoard, AreaState} from '../src/board';
+import {getBoard} from '../src/board';
+import {BoardState, BoardContent} from '../src/ENUM';
+import {BoardField} from '../src/boardField';
 
-describe('Find current board',()=>{
-    it('Return board object with this ID', ()=>{
-        expect(getBoard('1',[{id: '1', status: AreaState.PENDING}, {id: '2', status: AreaState.EXPLORED}])).toEqual({id: '1', status: AreaState.PENDING});
+describe('Find board in array test', ()=>{
+    const boardSample = new BoardField(BoardState.PENDING, 'board1','board1',BoardContent.CLUE)
+    const arrayOfBoards = [boardSample]
+    it('Return board for board1 id', ()=>{
+        expect(getBoard('board1', arrayOfBoards)).toEqual(boardSample);
     })
+
+    it('Return undefined for invalid id', ()=>{
+        expect(getBoard('asd', arrayOfBoards)).toEqual(undefined);
+    })
+
 })

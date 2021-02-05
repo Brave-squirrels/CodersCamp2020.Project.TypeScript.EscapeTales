@@ -4,20 +4,6 @@ import {GameState} from './state';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 
-//Puzzle solved
-//Move later to index.ts
-document.addEventListener('click', (e:any) : void=>{
-
-    if(e.target.className === 'solvePuzzle'){
-
-        const puzzleID: string = e.target.id;
-
-        //Run validation puzzle function
-        solvePuzzle(puzzleID, state, puzzleArray, puzzleCardArray, paragraphArray);
-    }
-
-})
-
 //Get puzzle card and main puzzle object base on id
 /*
     @param {ID} - id of the puzzle - same as field
@@ -38,7 +24,7 @@ const getPuzzleCard = (ID: string, puzzleCardArray: Array<PuzzleCard>) : PuzzleC
     @param {puzzleCardArray} - array of all puzzle cards
     @param {paragraphs} - array of all paragraphs
 */
-const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>, paragraphs: Array<Paragraph>):void=>{
+const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
 
     //Getting value - password typed by the user
     const passwordValue = (<HTMLInputElement>document.querySelector(`#${puzzleDOM}input`)).value;
@@ -124,4 +110,4 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
 
 }
 
-export {newPuzzle, newPuzzleCard};
+export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

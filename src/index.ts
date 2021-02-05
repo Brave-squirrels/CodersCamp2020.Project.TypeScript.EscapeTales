@@ -7,6 +7,7 @@ import{BoardState, BoardContent, LOCATION, ENDING, PuzzleReward} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {getBoard, checkActions, checkStatus, mainAction} from './board';
+import {solvePuzzle} from './puzzleAction';
 //Testing
 const state = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0);
 const boardField = new BoardField(BoardState.PENDING, 'board1','board1',BoardContent.CLUE)
@@ -20,7 +21,6 @@ const puzzleCardArray = [puzzlecardone];
 const puzzleArray = [puzzleone];
 
 //Board movement event
-//Move later to index.ts
 document.addEventListener('click',(e: any) : void=>{
     
     if(e.target.className === 'boardArea'){
@@ -47,6 +47,27 @@ document.addEventListener('click',(e: any) : void=>{
 
         //Function which run the movement and content events
         mainAction(areaID, state, currentField, actionPoints, paragraphsArray, puzzleCardArray, puzzleArray);
+    }
+
+})
+
+//Puzzle solved event
+document.addEventListener('click', (e:any) : void=>{
+
+    if(e.target.className === 'solvePuzzle'){
+
+        //Display puzzle input solve modal
+        const puzzleID: string = e.target.id;
+
+        document.addEventListener('click', (evnt:any) : void =>{
+
+            if(evnt.target.className === `Confirm${puzzleID}`){
+                //Run validation puzzle function
+                solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
+            }
+
+        })
+
     }
 
 })
