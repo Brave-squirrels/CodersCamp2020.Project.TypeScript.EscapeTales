@@ -9,6 +9,7 @@ import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 
 //Board movement event
+//Move later to index.ts
 document.addEventListener('click',(e: any) : void=>{
     
     if(e.target.className === 'boardArea'){
@@ -29,7 +30,7 @@ document.addEventListener('click',(e: any) : void=>{
         //If we have proper amount of actionPoints
         if(!checkActions(state)){
             //End function cuz of lack of action points
-            //Run ROM function with message that we don't have enough actionPoints
+            //Run DOM function with message that we don't have enough actionPoints
             return;
         }
 
@@ -164,6 +165,7 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
 
      //Get content from the area
      getAreaContent(currentField, state, actionObj, puzzleCardArray,puzzleArray);
+
 }
 
 //Update points and remove evidence if we have any

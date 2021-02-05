@@ -5,6 +5,7 @@ import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 
 //Puzzle solved
+//Move later to index.ts
 document.addEventListener('click', (e:any) : void=>{
 
     if(e.target.className === 'solvePuzzle'){
