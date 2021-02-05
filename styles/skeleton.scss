@@ -1,2 +1,42 @@
 @import "colors";
 @import "fonts";
+@import "paddings";
+
+*{
+    box-sizing: border-box; 
+    padding: 0;
+    margin: 0;
+}
+
+html,body{
+    height: 100%;
+}
+
+.container{
+    box-sizing: border-box;
+    height: calc(100% - 3em);
+    min-height: $minMainHeight;
+    min-width: $minMainWidth;
+    grid-gap: $blockGap;
+    display: grid;
+    grid-template-rows: 95% 5%;
+
+    main{
+        padding: $containerPadding;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 80% 20%;
+        grid-gap: $blockGap;
+        .storyBook{
+        }
+        .board{
+        }
+        .interface{
+            grid-column: span 2;
+        }
+    }
+    
+    footer{
+        
+    }
+}
