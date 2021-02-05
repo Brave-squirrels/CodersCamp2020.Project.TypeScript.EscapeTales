@@ -9,19 +9,20 @@
     border: 2px solid blue;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
+    align-content: center;
+    flex-direction: column;
 
 
 .game-board {
     padding-top: 0.8rem;
     display: flex;
-    
+   
     /* justify-content: center; */
     height: 74vh;
     width: 72vw;
-    // border: 2px black solid;
+    border: 2px black solid;
     justify-content: space-between;
+    max-width: 1200px;
 }
 
 .storybook {
@@ -80,9 +81,10 @@
     background-color: gray;
     justify-content: space-between;
     /* border: 1px blue solid; */
-    width:72vw;
+    // width:72vw;
     height: 20vh;
     padding: 0.3rem;
+    max-width: 1200px;
 
 
 .first-column {
