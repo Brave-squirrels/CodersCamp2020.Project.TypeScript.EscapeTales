@@ -14,41 +14,42 @@
 
 
 .game-board {
-    padding: 2vh;
+    padding-top: 1rem;
     display: flex;
     
     /* justify-content: center; */
-    height: 80vh;
-    /* width: 100vw; */
-    border: 2px black solid;
-    justify-content: center;
+    height: 72vh;
+    width: 72vw;
+    // border: 2px black solid;
+    justify-content: space-between;
 }
 
 .storybook {
-
-    /* margin-left: 10vw; */
-    margin-right: 8vw;
-    width: 20vw;
-    height: 40vw;
+    border-radius: 0.5rem;
+    margin-right: 2vw;
+    width: 18vw;
+    height: 35vw;
     border: 1px red solid;
     background-color: rgb(231, 231, 172);
-    max-height: 75vh;
+    max-height: 72vh;
+    // min-height: 70vh;
 }
 
 
 .map {
+    border-radius: 0.5rem;
     display:flex;
     flex-wrap: wrap;
-    width: 50vw;
-    height: 40vw;
-    /* min-height: 76vh; */
-    max-height: 75vh;
+    width: 52vw;
+    height: 35vw;
+    // min-height: 70vh;
+    max-height: 70vh;
     max-width: 100vh;
     /* border: 1px green solid; */
     
 }
 
-.square {   
+.square {  
     border: 1px orange solid;
     background-color: red;
     width: 20%;
@@ -56,66 +57,104 @@
     
 }
 
+.a1 {
+    border-radius: 0.5rem 0 0 0; 
+}
+
+.a5 {
+    border-radius: 0  0.5rem 0 0; 
+}
+
+.d1 {
+    border-radius: 0 0 0 0.5rem; 
+}
+
+.d5 {
+    border-radius: 0 0 0.5rem 0; 
+}
+
 
 .interface {
+    border-radius: 0.5rem;
     display: flex;
-    background-color: rgb(151, 63, 12);
-    /* grid-area: interface; */
+    background-color: gray;
+    justify-content: space-between;
     /* border: 1px blue solid; */
-    /* width: 100vw; */
-    height: 16vh;
+    width:72vw;
+    height: 20vh;
+    padding: 0.3rem;
+}
+
+.first-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .actions-number {
-    height: 50%;
-    width: 14vw;
+    border-radius: 0.5rem;
+    height: 48%;
+    width: 9.8vw;
     border: 1px white solid;
-    /* background-color: white; */
+    background-color: red;
 }
 
 .stress-card {
-    height:50%;
-    width: 14vw;
+    border-radius: 0.5rem;
+    height:48%;
+    width: 9.8vw;
     border: 1px white solid;
-    /* background-color: green; */
+    background-color: green;
 }
 
 .evidence {
-    width: 14vw;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 
 .puzzle-cards {
-    width:14vw ;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 .puzzle {
-    width: 14vw;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 .coins {
-    width: 14vw;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 .next-lvl {
-    width: 14.8vw;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 
 .storyline {
-    width: 15vw;
+    border-radius: 0.5rem;
+    width: 9.8vw;
     border: 1px white solid;
+    background-color: green;
 }
 
 
 .footer {
     height: 4vh;
-    background-color:green;
+    background-color:greenyellow;
     /* border: 1px red solid; */
 }
 
