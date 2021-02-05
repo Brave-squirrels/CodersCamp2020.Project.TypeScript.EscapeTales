@@ -10,7 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+
 
 
 .game-board {
@@ -47,32 +47,32 @@
     max-width: 100vh;
     /* border: 1px green solid; */
     
-}
 
-.square {  
-    border: 1px orange solid;
-    background-color: red;
-    width: 20%;
-    height: 25%;
-    
-}
 
-.a1 {
-    border-radius: 0.5rem 0 0 0; 
-}
+    .square {  
+        border: 1px orange solid;
+        background-color: red;
+        width: 20%;
+        height: 25%;
+        
+    }
 
-.a5 {
-    border-radius: 0  0.5rem 0 0; 
-}
+    .a1 {
+        border-radius: 0.5rem 0 0 0; 
+    }
 
-.d1 {
-    border-radius: 0 0 0 0.5rem; 
-}
+    .a5 {
+        border-radius: 0  0.5rem 0 0; 
+    }
 
-.d5 {
-    border-radius: 0 0 0.5rem 0; 
-}
+    .d1 {
+        border-radius: 0 0 0 0.5rem; 
+    }
 
+    .d5 {
+        border-radius: 0 0 0.5rem 0; 
+    }
+}
 
 .interface {
     border-radius: 0.5rem;
@@ -83,7 +83,7 @@
     width:72vw;
     height: 20vh;
     padding: 0.3rem;
-}
+
 
 .first-column {
     display: flex;
@@ -150,8 +150,8 @@
     border: 1px white solid;
     background-color: green;
 }
-
-
+}
+}
 .footer {
     height: 4vh;
     background-color:greenyellow;
