@@ -14,7 +14,8 @@ html,body{
 
 .container{
     box-sizing: border-box;
-    height: calc(100% - 3em);
+    height: 95%;
+    width: 95%;
     min-height: $minMainHeight;
     min-width: $minMainWidth;
     grid-gap: $blockGap;
@@ -35,8 +36,8 @@ html,body{
             grid-column: span 2;
         }
     }
-    
-    footer{
-        
-    }
+}
+footer{
+    height: 5%;
+    width: 100%;
 }
