@@ -19,29 +19,27 @@ html {
     flex-wrap: wrap;
     align-content: center;
     flex-direction: column;
-    min-height: 500px;
+    min-height: $mainMinH;
     
-
-
     .board {
         padding: $boardPD;
         display: flex;
         width: 72vw;
         justify-content: space-between;
-        max-width: 150vh;
-        min-width: 775px;
+        max-width: $boardMaxW;
+        min-width: $boardMinW;
         
 
         .board__storybook {
-            border-radius: 0.5rem;
+            border-radius: $borderRadius;
             margin-right: 2vw;
             width: 18vw;
             height: 35vw;
             background-image: $storyBookBG;
             background-size: cover;
-            max-height: 69vh;
-            min-height: 350px;
-            min-width: 200px;
+            max-height: $boardBookMaxH;
+            min-height: $boardBookMinH;
+            min-width: $boardBookMinW;
         }
 
         .board__map {
@@ -54,18 +52,8 @@ html {
             background-size: cover;
             justify-content:space-between;
             align-content: space-between;
-            min-height: 350px;
-            min-width: 540px;
-            
-    
-            .map__square {  
-                border: $boardFieldBorder;
-                background-color: $boardFieldBG;
-                box-sizing: border-box;
-                padding: 5px;
-                width: 19.6%;
-                height: 24.4%;
-            }
+            min-height: $boardMapMinH;
+            min-width: $boardMapMinW;
         }
     }
 
@@ -75,9 +63,9 @@ html {
         background-size: cover;
         justify-content: space-between;
         height: 18vh;
-        max-width: 150vh;
-        min-width: 775px;
-        min-height: 115px;
+        max-width: $interfaceMaxW;
+        min-width: $interfaceMinW;
+        min-height: $interfaceMinH;
     }
 }
 
