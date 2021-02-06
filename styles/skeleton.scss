@@ -2,42 +2,76 @@
 @import "fonts";
 @import "paddings";
 
-*{
-    box-sizing: border-box; 
-    padding: 0;
+* {
     margin: 0;
-}
-
-html,body{
-    height: 100%;
-}
-
-.container{
+    padding: 0;
     box-sizing: border-box;
-    height: 95%;
-    width: 95%;
-    min-height: $minMainHeight;
-    min-width: $minMainWidth;
-    grid-gap: $blockGap;
-    display: grid;
-    grid-template-rows: 95% 5%;
+}
 
-    main{
-        padding: $containerPadding;
-        display: grid;
-        grid-template-columns: 30% 70%;
-        grid-template-rows: 80% 20%;
-        grid-gap: $blockGap;
-        .storyBook{
+html {
+    background-image: $mainBG;
+    background-size: cover;
+}
+
+.main {
+    height: 96vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+
+
+    .board {
+        padding: $boardPD;
+        display: flex;
+        width: 72vw;
+        justify-content: space-between;
+        max-width: 150vh;
+
+        .board__storybook {
+            border-radius: 0.5rem;
+            margin-right: 2vw;
+            width: 18vw;
+            height: 35vw;
+            background-image: $storyBookBG;
+            background-size: cover;
+            max-height: 69vh;
         }
-        .board{
-        }
-        .interface{
-            grid-column: span 2;
+
+        .board__map {
+            display:flex;
+            flex-wrap: wrap;
+            width: 52vw;
+            height: 35vw;
+            max-height: 69vh;
+            background-image: $boardMapBG;
+            background-size: cover;
+            justify-content:space-between;
+            align-content: space-between;
+            
+    
+            .map__square {  
+                border: $boardFieldBorder;
+                background-color: $boardFieldBG;
+                box-sizing: border-box;
+                padding: 5px;
+                width: 19.6%;
+                height: 24.4%;
+            }
         }
     }
+
+    .board__interface {
+        display: flex;
+        background-image: $interfaceBG;
+        background-size: cover;
+        justify-content: space-between;
+        height: 18vh;
+        max-width: 150vh;
+    }
 }
-footer{
-    height: 5%;
-    width: 100%;
+
+.footer {
+    height: 4vh;
+    background: $footerBG;
 }

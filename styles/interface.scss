@@ -1,3 +1,30 @@
 @import "colors";
 @import "fonts";
 @import "paddings";
+
+.board__interface{
+    border-radius: $borderRadius;
+    padding: $interfacePD;
+    .interface__column {
+        width: 13.7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .interface__column--btn {
+            border-radius: $borderRadius;
+            height: 48%;
+            background-image: $interfaceElBG;
+            background-size: cover;
+        }
+        
+    }
+
+    .interface__element {
+        border-radius: $borderRadius;
+        width: 13.7%;
+        background-image: $interfaceElBG;
+        background-size: cover;
+    }
+}
+

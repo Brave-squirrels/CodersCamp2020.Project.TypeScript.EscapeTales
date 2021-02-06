@@ -54,6 +54,15 @@ Staramy się tworzyć małe PR. W opisie PR powinno być dokładnie opisane
 co on zmienia. Każdy PR musi być zaakceptowany przez przynajmniej jedną
 inną osobę.
 
+### Zasady BEM:
+
+* korzystamy z założenia (na ile jest to możliwe) **.block__element--modifier**
+* **.block** nazwa danego bloku
+* **__element** dodajemy dla elemtnu w bloku (nie mnożymy elementów - czyli nie robimy  **.block__element1__element2**, co do tego znalazłem różne informacje, ale podstawa to logicznie to rozwiązać. Tak, żeby każdy wiedział o co chodzi np. **.block__element2**)
+* **--modifier** dodajemy jak chcemy w jakiś specyficzny sposób zmodyfikować element
+* nie powinno się dziedziczyć w cssie blokami i elementami (nie robi się _.block1 .block2 {}_)
+* modyfikator może dziedziczyć po bloku i elemencie
+* link do dokumentacji, bo sam nie wiem czy to wszystko dobrze załapałem: http://getbem.com/naming/
 
 ## Bundler:
 

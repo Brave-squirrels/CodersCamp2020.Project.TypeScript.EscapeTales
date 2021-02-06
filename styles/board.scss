@@ -1,3 +1,17 @@
 @import "colors";
 @import "fonts";
 @import "paddings";
+
+.board__map {
+    padding: $boardMapPD;
+    border-radius: 0.5rem;
+    .map__square {  
+        border: $boardFieldBorder;
+        background-color: $boardFieldBG;
+        box-sizing: border-box;
+        padding: $boardFieldPD;
+        width: 19.6%;
+        height: 24.4%;
+    }
+}
+
