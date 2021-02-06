@@ -53,12 +53,16 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
+    //Mark as visited in DOM - change class to add style's and remove eventListener
+    (document.querySelector(`#${currentField._fieldID}`) as HTMLElement).className += ' map__squareVisited';
 
     //Remove 1 action point
     actionPoints.decrementPoints();
 
     //Save current action points to the gameState
     state.actionNumbers = actionPoints.currentPoints;
+
+    //Update actionPoints in interface
 }
 
 //Read paragraph
@@ -68,7 +72,7 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
     @param {currentField} - current field object that we are moving on
     @param {paragraphsArray} - array of all the paragraphs
 */
-const readParagraph = (id: string, state: GameState, currentField: BoardField, paragraphsArray: Array<Paragraph>): void=>{
+const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Paragraph>): void=>{
 
     //Find current paragraph
     const currentParagraph : Paragraph = paragraphsArray.find((c: Paragraph)=>c.id === id)!;
@@ -76,9 +80,9 @@ const readParagraph = (id: string, state: GameState, currentField: BoardField, p
     if(currentParagraph){
         state.addParagraphsId(currentParagraph.id);
     }
-    //Run read paragraph method from boarArea object
-    //Will be DOM function
-    currentField.readParagraph();
+    //Run DOM paragraphRead function
+    read(currentParagraph);
+    //Update story book
 }
 
 //Get content from current area
@@ -96,7 +100,7 @@ const getAreaContent = (boardField: BoardField, state: GameState, actionObj: Act
         case BoardContent.CLUE:
             //Update points
             updateAction(ActionPointsEnum.CLUE, state, actionObj);
-            //Run DOM function with message and random paragraph that we get points
+            //Update actionPoints in interface
             break;
         case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
@@ -104,8 +108,6 @@ const getAreaContent = (boardField: BoardField, state: GameState, actionObj: Act
             newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
             break;
         default:
-            //Run DOM function with message that we didn't get any content
-
     }
 
 }
@@ -126,7 +128,7 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
      move(currentField, state, actionObj);
 
      //Read paragraph and add to the state
-     readParagraph(areaID, state, currentField, paragraphsArray);
+     readParagraph(areaID, state, paragraphsArray);
 
      //Get content from the area
      getAreaContent(currentField, state, actionObj, puzzleCardArray,puzzleArray);
@@ -137,7 +139,6 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {state} - state object, which contains main game state data
     @param {actionObj} - actionPoints object
 */
-
 /*
 const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     
@@ -147,8 +148,11 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
     if(state.userEvidencesId.length !== 0){
         state.removeEvidence();
     }
+    //Update evidences in interface
+    
     //Run DOM function reading random paragraph, tell the user that he lost evidence
-
+    read(randomParagraphFromStressArray);
+    //Update actionPoints in interface
 }
 */
 

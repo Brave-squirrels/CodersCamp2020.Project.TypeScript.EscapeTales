@@ -13,5 +13,13 @@
         width: 19.6%;
         height: 24.4%;
     }
+    .map__squareVisited {  
+        border: $boardFieldBorder;
+        background-color: $boardFieldVisited;
+        box-sizing: border-box;
+        padding: $boardFieldPD;
+        width: 19.6%;
+        height: 24.4%;
+    }
 }
 

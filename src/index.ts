@@ -8,6 +8,7 @@ import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {getBoard, checkActions, checkStatus, mainAction} from './board';
 import {solvePuzzle} from './puzzleAction';
+import {notEnoughPoints, areaExplored} from './readContent';
 //Testing
 const state = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0);
 const boardField = new BoardField(BoardState.PENDING, 'board1','board1',BoardContent.CLUE)
@@ -23,7 +24,7 @@ const puzzleArray = [puzzleone];
 //Board movement event
 document.addEventListener('click',(e: any) : void=>{
     
-    if(e.target.className === 'map__square'){
+    if(e.target.classList.contains('map__square')){
 
         //Getting ID of DOM element to find boardArea object
         const areaID: string = e.target.id;
@@ -35,6 +36,7 @@ document.addEventListener('click',(e: any) : void=>{
         if(!checkStatus(currentField)){
              //End if the area is explored
              //Run DOM function with message that area is explored
+             areaExplored();
              return;
         }
 
@@ -42,6 +44,7 @@ document.addEventListener('click',(e: any) : void=>{
         if(!checkActions(state)){
             //End function cuz of lack of action points
             //Run DOM function with message that we don't have enough actionPoints
+            notEnoughPoints();
             return;
         }
 
@@ -70,4 +73,11 @@ document.addEventListener('click', (e:any) : void=>{
 
     }
 
+})
+
+//Close paragraph modal
+document.addEventListener('click', (e:any) : void => {
+    if(e.target.id === 'paragraph__close'){
+        (document.querySelector('.paragraph') as HTMLElement).style.display='none';
+    }
 })

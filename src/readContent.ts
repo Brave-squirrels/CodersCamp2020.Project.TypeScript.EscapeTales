@@ -1,25 +1,34 @@
-//Normal paragraph, puzzle solved
-export const readParagraph = (paragraph : any) : void =>{
-    console.log(paragraph.text);
+import Paragraph from "./paragraph";
+
+/*
+    Function which open modals and read paragraph in cases such as:
+    -Move on board and get content (puzzle/card/clue/nothing)
+    -Solve puzzle
+    @param {paragraph} - paragraph object
+*/
+export const read = (paragraph : Paragraph) : void =>{
+    (document.querySelector('.paragraph') as HTMLElement).style.display = 'block'; ;
+    (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = paragraph.text;
 }
 
-export const readClue = (clueTextArr: any) : void =>{
-    console.log(clueTextArr);
-}
-
-export const readNothing = (): void =>{
-    console.log('U found nothing lol');
-}
-
-export const newPuzzleMessage = () : void => {
-    console.log('U found a new puzzle');
-}
-
-export const newPuzzleCardMessage = () : void => {
-    console.log('U found a new puzzleCard');
-}
-
+/*
+    Function with notification that the solution of a puzzle is incorrect
+*/
 export const incorrectPuzzle = () : void => {
     console.log('Password is incorrect');
+}
+
+/*
+    Notification that the player has not enough points
+*/
+export const notEnoughPoints = () : void => {
+    console.log('Not enough points');
+}
+
+/*
+    Notification that area is already explored
+*/
+export const areaExplored = (): void =>{
+    console.log('area is already explored');
 }
 
