@@ -7,8 +7,7 @@
     "dev": "parcel index.html",
     "build": "parcel build dist",
     "test": "jest",
-    "testAll": "jest --watchAll",
-    "format": "prettier --write ."
+    "testAll": "jest --watchAll"
   },
   "repository": {
     "type": "git",
