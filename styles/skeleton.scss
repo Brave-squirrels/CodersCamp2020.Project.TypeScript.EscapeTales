@@ -19,6 +19,8 @@ html {
     flex-wrap: wrap;
     align-content: center;
     flex-direction: column;
+    min-height: 500px;
+    
 
 
     .board {
@@ -27,6 +29,7 @@ html {
         width: 72vw;
         justify-content: space-between;
         max-width: 150vh;
+        
 
         .board__storybook {
             border-radius: 0.5rem;
@@ -36,6 +39,8 @@ html {
             background-image: $storyBookBG;
             background-size: cover;
             max-height: 69vh;
+            min-height: 350px;
+            min-width: 200px;
         }
 
         .board__map {
@@ -48,6 +53,8 @@ html {
             background-size: cover;
             justify-content:space-between;
             align-content: space-between;
+            min-height: 350px;
+            min-width: 520px;
             
     
             .map__square {  
@@ -68,6 +75,8 @@ html {
         justify-content: space-between;
         height: 18vh;
         max-width: 150vh;
+        min-width: 746px;
+        min-height: 120px;
     }
 }
 
