@@ -23,7 +23,7 @@ const puzzleArray = [puzzleone];
 //Board movement event
 document.addEventListener('click',(e: any) : void=>{
     
-    if(e.target.className === 'boardArea'){
+    if(e.target.className === 'map__square'){
 
         //Getting ID of DOM element to find boardArea object
         const areaID: string = e.target.id;

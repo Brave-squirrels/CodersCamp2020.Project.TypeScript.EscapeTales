@@ -40,7 +40,7 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
         const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===puzzleDOM)!;
         //Add paragraph to the state
         state.addParagraphsId(puzzleParagraph.id);
-        //Run DOM function that reads paragraph
+        //DOM function with paragraph and solve content
     }else{
         //Run DOM function that will tell that the password is incorrect
     }
@@ -61,12 +61,10 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
         case PuzzleReward.EVIDENCE:
             //Add evidence to the state
             state.addEvidencesId('Evidence');
-            //Run DOM function with message that user get evidence
             break;
         case PuzzleReward.PROGRESSPOINT:
             //Add progressPoint to the state
             state.addProgressPoint();
-            //Run DOM function with message that user get progressPoint
             break;
     }
     //Remove puzzle from the state

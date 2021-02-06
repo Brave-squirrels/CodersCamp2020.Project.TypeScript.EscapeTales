@@ -7,7 +7,7 @@ import Paragraph from './paragraph';
 import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
-
+import {read} from './readContent';
 
 //BoardArea validation
 //Check the status of the current board
@@ -79,7 +79,6 @@ const readParagraph = (id: string, state: GameState, currentField: BoardField, p
     //Run read paragraph method from boarArea object
     //Will be DOM function
     currentField.readParagraph();
-
 }
 
 //Get content from current area
