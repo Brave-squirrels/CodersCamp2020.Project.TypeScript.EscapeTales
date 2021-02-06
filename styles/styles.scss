@@ -3,160 +3,99 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-.game {
+html {
+    background-image: url('../assets/dark.jpg');
+    background-size: cover;
+}
+.main {
+        
     height: 96vh;
-    border: 2px solid blue;
+    // border: 2px solid blue;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     flex-direction: column;
 
 
-.game-board {
-    padding: 0.8rem;
-    display: flex;
-   
-    /* justify-content: center; */
-    // height: 74vh;
-    width: 72vw;
-    border: 2px black solid;
-    justify-content: space-between;
-    max-width: 150vh;
-}
+    .board {
+        padding: 2vh 0;
+        display: flex;
+        width: 72vw;
+        justify-content: space-between;
+        max-width: 150vh;
+    }
 
-.storybook {
-    border-radius: 0.5rem;
-    margin-right: 2vw;
-    width: 18vw;
-    height: 35vw;
-    border: 1px red solid;
-    background-color: rgb(231, 231, 172);
-    max-height: 69vh;
-    // min-height: 70vh;
-}
+    .board__storybook {
+        border-radius: 0.5rem;
+        margin-right: 2vw;
+        width: 18vw;
+        height: 35vw;
+        background-image: url('../assets/note.jpg');
+        background-size: cover;
+        max-height: 69vh;
+    }
 
 
-.map {
-    border-radius: 0.5rem;
-    display:flex;
-    flex-wrap: wrap;
-    width: 52vw;
-    height: 35vw;
-    // min-height: 70vh;
-    max-height: 69vh;
-    max-width: 100vh;
-    /* border: 1px green solid; */
-    
-
-
-    .square {  
-        border: 1px orange solid;
-        background-color: red;
-        width: 20%;
-        height: 25%;
+    .board__map {
+        padding:4px;
+        border-radius: 0.5rem;
+        display:flex;
+        flex-wrap: wrap;
+        width: 52vw;
+        height: 35vw;
+        max-height: 69vh;
+        background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/room.jpg');
+        background-size: cover;
+        justify-content:space-between;
+        align-content: space-between;
         
+
+        .map__square {  
+            border: 3px #261C00 solid;
+            background-color: rgba(122, 99, 54, 0.34);
+            box-sizing: border-box;
+            padding: 5px;
+            width: 19.6%;
+            height: 24.4%;
+        }
     }
 
-    .a1 {
-        border-radius: 0.5rem 0 0 0; 
+    .board__interface {
+        border-radius: 0.5rem;
+        display: flex;
+        background-image: url('../assets/wood.png');
+        background-size: cover;
+        justify-content: space-between;
+        height: 18vh;
+        padding: 0.7rem;
+        max-width: 150vh;
+    
+        .interface__column {
+            width: 13.7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            .interface__column--btn {
+                border-radius: 0.5rem;
+                height: 48%;
+                background-image: url('../assets/card.jpg');
+                background-size: cover;
+            }
+            
+        }
+
+
+        .interface__element {
+            border-radius: 0.5rem;
+            width: 13.7%;
+            background-image: url('../assets/card.jpg');
+            background-size: cover;
+        }
     }
-
-    .a5 {
-        border-radius: 0  0.5rem 0 0; 
-    }
-
-    .d1 {
-        border-radius: 0 0 0 0.5rem; 
-    }
-
-    .d5 {
-        border-radius: 0 0 0.5rem 0; 
-    }
-}
-
-.interface {
-    border-radius: 0.5rem;
-    display: flex;
-    background-color: gray;
-    justify-content: space-between;
-    /* border: 1px blue solid; */
-    // width:72vw;
-    height: 20vh;
-    padding: 0.3rem;
-    max-width: 150vh;
-
-
-.first-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.actions-number {
-    border-radius: 0.5rem;
-    height: 48%;
-    width: 9.8vw;
-    border: 1px white solid;
-    background-color: red;
-}
-
-.stress-card {
-    border-radius: 0.5rem;
-    height:48%;
-    width: 9.8vw;
-    border: 1px white solid;
-    background-color: green;
-}
-
-.evidence {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-
-
-.puzzle-cards {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-
-.puzzle {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-
-.coins {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-
-.next-lvl {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-
-
-.storyline {
-    border-radius: 0.5rem;
-    width: 14%;
-    border: 1px white solid;
-    background-color: green;
-}
-}
 }
 .footer {
     height: 4vh;
-    background-color:greenyellow;
-    /* border: 1px red solid; */
+    background: linear-gradient(180deg, rgba(51, 39, 27, 0.75) 0%, rgba(233, 133, 38, 0) 100%, rgba(255, 125, 1, 0) 100%);
 }
 
