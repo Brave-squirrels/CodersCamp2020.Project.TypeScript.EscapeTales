@@ -29,6 +29,7 @@ html {
         width: 72vw;
         justify-content: space-between;
         max-width: 150vh;
+        min-width: 775px;
         
 
         .board__storybook {
@@ -46,7 +47,7 @@ html {
         .board__map {
             display:flex;
             flex-wrap: wrap;
-            width: 52vw;
+            width: 51vw;
             height: 35vw;
             max-height: 69vh;
             background-image: $boardMapBG;
@@ -54,7 +55,7 @@ html {
             justify-content:space-between;
             align-content: space-between;
             min-height: 350px;
-            min-width: 520px;
+            min-width: 540px;
             
     
             .map__square {  
@@ -75,8 +76,8 @@ html {
         justify-content: space-between;
         height: 18vh;
         max-width: 150vh;
-        min-width: 746px;
-        min-height: 120px;
+        min-width: 775px;
+        min-height: 115px;
     }
 }
 
