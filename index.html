@@ -1,67 +1,90 @@
 <!DOCTYPE html>
 
- 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/main.scss" />
+    <script
+      src="https://kit.fontawesome.com/bbf3eee0ec.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Her</title>
-</head>
+  </head>
 
-<body>
-    <main class="main">
-        <div class="board">
+  <body>
+    <template id="home-page">
+      <div class="home">
+        <div class="home__container">
+          <div class="home__container--title">
+            can you <br />
+            escape?
+          </div>
+          <div id="startBtn" class="home__container--button">start game</div>
+        </div>
+      </div>
+    </template>
+
+    <template id="game-board">
+      <div class="container">
+        <main class="main">
+          <div class="board">
             <div class="board__storybook">storybook</div>
             <div class="board__map">
-                <!-- Add IDs for each element of map -->
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
+              <!-- Add IDs for each element of map -->
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
 
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
 
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
 
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                <div class="map__square"></div>
-                
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
+              <div class="map__square"></div>
             </div>
-        </div>
-        <div class="board__interface">
+          </div>
+          <div class="board__interface">
             <div class="interface__column">
-                <div class="interface__column--btn">1a</div>
-                <div class="interface__column--btn">1b</div>
+              <div class="interface__column--btn">Action Points</div>
+              <div class="interface__column--btn">Stress Card</div>
             </div>
-            <div class="interface__element">2</div>
-            <div class="interface__element">3</div>
-            <div class="interface__element">4</div>
-            <div class="interface__element">5</div>
-            <div class="interface__element">6</div>
-            <div class="interface__element">7</div>
+            <div class="interface__element">Evidence</div>
+            <div class="interface__element">Puzzle Card</div>
+            <div class="interface__element">Solve</div>
+            <div class="interface__element">Progress token</div>
+            <div class="interface__element">Go Next</div>
+            <div class="interface__element">Story Line Progress</div>
+          </div>
+        </main>
 
-        </div>
+        <footer class="footer">
+          <div class="footer__nav">
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-redo"></i>
+            <i class="fas fa-save"></i>
+            <i id="homeBack" class="fas fa-home"></i>
+          </div>
+        </footer>
+      </div>
+    </template>
 
-    </main>
+    <div id="app"></div>
 
-    <footer class="footer">
-        footer
-    </footer>
-
-    <script src='src/index.ts'></script>
-
-</body>
+    <script src="src/index.ts"></script>
+  </body>
 </html>

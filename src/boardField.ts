@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-export enum TestEnum {
-  passed = "PASSED",
-  failed = "FAILED",
-}
-=======
-import {BoardContent, BoardState} from './ENUM';
->>>>>>> frontend
+import { BoardContent, BoardState } from "./ENUM";
 
 /**
  * @Class - BoardField
@@ -13,11 +6,11 @@ import {BoardContent, BoardState} from './ENUM';
  */
 
 export class BoardField {
-<<<<<<< HEAD
   constructor(
-    protected _status: TestEnum,
+    protected _status: BoardState,
     readonly _fieldID: string,
-    readonly _paragraphID: string
+    readonly _paragraphID: string,
+    readonly _content: BoardContent
   ) {}
 
   get status() {
@@ -32,44 +25,15 @@ export class BoardField {
     return this._paragraphID;
   }
 
-  set status(status: TestEnum) {
+  get content() {
+    return this._content;
+  }
+
+  set status(status: BoardState) {
     this._status = status;
   }
 
   readParagraph() {
     // wywolanie funkcji z frontu do wczytania paragrafu
   }
-=======
-    constructor(
-        protected _status: BoardState, 
-        readonly _fieldID: string, 
-        readonly _paragraphID: string,
-        readonly _content: BoardContent
-    ){}
-        
-
-    get status(){
-        return this._status;
-    }
-
-    get fieldID(){
-        return this._fieldID;
-    }
-
-    get paragraphID(){
-        return this._paragraphID;
-    }
-
-    get content(){
-        return this._content;
-    }
-
-    set status(status: BoardState){
-        this._status=status;
-    }
-
-    readParagraph(){
-        // wywolanie funkcji z frontu do wczytania paragrafu
-    };
->>>>>>> frontend
 }

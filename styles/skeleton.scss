@@ -3,75 +3,78 @@
 @import "paddings";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    background-image: $mainBG;
-    background-size: cover;
+  background-image: $mainBG;
+  background-size: cover;
+  font-family: "Lora", serif;
+  transition: all 2s ease-out;
+}
+
+.container {
+  display: none;
+  opacity: 0;
+  transition: all 1s ease-out;
 }
 
 .main {
-    height: 96vh;
+  height: 96vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+
+  .board {
+    padding: $boardPD;
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    flex-direction: column;
+    width: 72vw;
+    justify-content: space-between;
+    max-width: 150vh;
 
-
-    .board {
-        padding: $boardPD;
-        display: flex;
-        width: 72vw;
-        justify-content: space-between;
-        max-width: 150vh;
-
-        .board__storybook {
-            border-radius: 0.5rem;
-            margin-right: 2vw;
-            width: 18vw;
-            height: 35vw;
-            background-image: $storyBookBG;
-            background-size: cover;
-            max-height: 69vh;
-        }
-
-        .board__map {
-            display:flex;
-            flex-wrap: wrap;
-            width: 52vw;
-            height: 35vw;
-            max-height: 69vh;
-            background-image: $boardMapBG;
-            background-size: cover;
-            justify-content:space-between;
-            align-content: space-between;
-            
-    
-            .map__square {  
-                border: $boardFieldBorder;
-                background-color: $boardFieldBG;
-                box-sizing: border-box;
-                padding: 5px;
-                width: 19.6%;
-                height: 24.4%;
-            }
-        }
+    .board__storybook {
+      border-radius: 0.5rem;
+      margin-right: 2vw;
+      width: 18vw;
+      height: 35vw;
+      background-image: $storyBookBG;
+      background-size: cover;
+      max-height: 69vh;
+      box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .board__interface {
-        display: flex;
-        background-image: $interfaceBG;
-        background-size: cover;
-        justify-content: space-between;
-        height: 18vh;
-        max-width: 150vh;
-    }
-}
+    .board__map {
+      display: flex;
+      flex-wrap: wrap;
+      width: 52vw;
+      height: 35vw;
+      max-height: 69vh;
+      background-image: $boardMapBG;
+      background-size: cover;
+      justify-content: space-between;
+      align-content: space-between;
 
-.footer {
-    height: 4vh;
-    background: $footerBG;
+      .map__square {
+        border: $boardFieldBorder;
+        background-color: $boardFieldBG;
+        box-sizing: border-box;
+        padding: 5px;
+        width: 19.6%;
+        height: 24.4%;
+      }
+    }
+  }
+
+  .board__interface {
+    display: flex;
+    background-image: $interfaceBG;
+    background-size: cover;
+    justify-content: space-between;
+    height: 18vh;
+    max-width: 150vh;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+  }
 }

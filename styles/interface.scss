@@ -2,29 +2,36 @@
 @import "fonts";
 @import "paddings";
 
-.board__interface{
+.board__interface {
+  border-radius: $borderRadius;
+  padding: $interfacePD;
+  .interface__column {
+    width: 13.7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .interface__column--btn {
+      border-radius: $borderRadius;
+      height: 48%;
+      background-image: $interfaceElBG;
+      background-size: cover;
+      font-weight: bold;
+      padding: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+      font-size: 1rem;
+      filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  .interface__element {
     border-radius: $borderRadius;
-    padding: $interfacePD;
-    .interface__column {
-        width: 13.7%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        
-        .interface__column--btn {
-            border-radius: $borderRadius;
-            height: 48%;
-            background-image: $interfaceElBG;
-            background-size: cover;
-        }
-        
-    }
-
-    .interface__element {
-        border-radius: $borderRadius;
-        width: 13.7%;
-        background-image: $interfaceElBG;
-        background-size: cover;
-    }
+    width: 13.7%;
+    background-image: $interfaceElBG;
+    background-size: cover;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.5));
+  }
 }
-

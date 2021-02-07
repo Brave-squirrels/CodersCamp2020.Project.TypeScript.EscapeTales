@@ -1,8 +1,15 @@
-$boardMapBG: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/room.jpg');
-$storyBookBG: url('../assets/note.jpg');
-$interfaceBG: url('../assets/wood.png');
-$footerBG: linear-gradient(180deg, rgba(51, 39, 27, 0.75) 0%, rgba(233, 133, 38, 0) 100%, rgba(255, 125, 1, 0) 100%);
-$mainBG: url('../assets/dark.jpg');
+$boardMapBG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../assets/room.jpg");
+$storyBookBG: url("../assets/note.jpg");
+$interfaceBG: url("../assets/wood.png");
+$footerBG: linear-gradient(
+  180deg,
+  rgba(51, 39, 27, 0.75) 0%,
+  rgba(255, 125, 1, 0.1) 100%
+);
+$mainBG: url("../assets/dark.jpg");
 $boardFieldBG: rgba(122, 99, 54, 0.34);
-$boardFieldBorder: 3px #261C00 solid;
-$interfaceElBG: url('../assets/card.jpg');
+$boardFieldBorder: 3px #261c00 solid;
+$interfaceElBG: url("../assets/card.jpg");
+$fontColorLight: #efefef;
+$hoverButtonColor: #ffbe75;
