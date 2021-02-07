@@ -77,7 +77,8 @@ document.addEventListener('click', (e:any) : void=>{
 
 //Close paragraph modal
 document.addEventListener('click', (e:any) : void => {
-    if(e.target.id === 'paragraph__close'){
-        (document.querySelector('.paragraph') as HTMLElement).style.display='none';
+    const paragraphCnt = document.querySelector('.paragraph') as HTMLElement;
+    if(e.target.id === 'paragraph__close' || paragraphCnt === e.target){
+        paragraphCnt.style.display='none';
     }
 })

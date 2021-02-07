@@ -1,4 +1,5 @@
 import Paragraph from "./paragraph";
+import TypeIt from 'typeit';
 
 /*
     Function which open modals and read paragraph in cases such as:
@@ -8,7 +9,14 @@ import Paragraph from "./paragraph";
 */
 export const read = (paragraph : Paragraph) : void =>{
     (document.querySelector('.paragraph') as HTMLElement).style.display = 'block'; ;
-    (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = paragraph.text;
+
+    //Slow type effect
+    new TypeIt('.paragraph__text', {
+        strings: `${paragraph.text}`,
+        speed: 80,
+        loop: false
+    }).go();
+
 }
 
 /*
