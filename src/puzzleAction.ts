@@ -3,6 +3,7 @@ import {Puzzle} from './puzzle';
 import {GameState} from './state';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
+import {read, incorrectPuzzle} from './readContent';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -37,12 +38,15 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
         //Get reward
         rewardPuzzle(puzzleDOM, puzzleArray, state);
         //Find paragraph
-        const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===puzzleDOM)!;
+        const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===`${puzzleDOM}solve`)!;
         //Add paragraph to the state
         state.addParagraphsId(puzzleParagraph.id);
-        //Run DOM function that reads paragraph
+        //DOM function with paragraph and solve content
+        read(puzzleParagraph);
+        //Update story book and puzzle interface
     }else{
         //Run DOM function that will tell that the password is incorrect
+        incorrectPuzzle();
     }
 
 }
@@ -61,16 +65,17 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
         case PuzzleReward.EVIDENCE:
             //Add evidence to the state
             state.addEvidencesId('Evidence');
-            //Run DOM function with message that user get evidence
+            //Update evidences in interface
             break;
         case PuzzleReward.PROGRESSPOINT:
             //Add progressPoint to the state
             state.addProgressPoint();
-            //Run DOM function with message that user get progressPoint
+            //Update progressPoints in interface
             break;
     }
     //Remove puzzle from the state
     state.removePuzzle(id);
+    //Update puzzleCards and puzzle's in interface
 }
 
 //Add puzzle to the state
@@ -86,9 +91,6 @@ const newPuzzle = (state: GameState, id: string): void =>{
     }
     //If not push to the state (whick means it's active)
     state.addPuzzlesId(id);
-
-    //Run DOM function with message that we get new Puzzle to solve
-
 }
 
 //Add puzzle card to the puzzle object
@@ -105,9 +107,6 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
 
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
-
-    //Run DOM function with message that we get new Puzzle card which will help with solving puzzle
-
 }
 
 export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

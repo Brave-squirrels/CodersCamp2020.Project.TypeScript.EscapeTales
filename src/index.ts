@@ -1,19 +1,14 @@
 //Import
-import { BoardField } from "./boardField";
-import { GameState } from "./state";
-import ActionPoints from "./actionPoints";
-import Paragraph from "./paragraph";
-import {
-  BoardState,
-  BoardContent,
-  LOCATION,
-  ENDING,
-  PuzzleReward,
-} from "./ENUM";
-import { Puzzle } from "./puzzle";
-import PuzzleCard from "./puzzleCard";
-import { getBoard, checkActions, checkStatus, mainAction } from "./board";
-import { solvePuzzle } from "./puzzleAction";
+import { BoardField} from './boardField';
+import {GameState} from './state';
+import ActionPoints from './actionPoints';
+import Paragraph from './paragraph';
+import{BoardState, BoardContent, LOCATION, ENDING, PuzzleReward} from './ENUM';
+import {Puzzle} from './puzzle';
+import PuzzleCard from './puzzleCard';
+import {getBoard, checkActions, checkStatus, mainAction} from './board';
+import {solvePuzzle} from './puzzleAction';
+import {notEnoughPoints, areaExplored} from './readContent';
 import navigation from "./navigation";
 //Testing
 const state = new GameState(
@@ -50,20 +45,31 @@ const puzzleCardArray = [puzzlecardone];
 const puzzleArray = [puzzleone];
 
 //Board movement event
-document.addEventListener("click", (e: any): void => {
-  if (e.target.className === "boardArea") {
-    //Getting ID of DOM element to find boardArea object
-    const areaID: string = e.target.id;
+document.addEventListener('click',(e: any) : void=>{
+    
+    if(e.target.classList.contains('map__square')){
 
     //Getting current board object
     const currentField = getBoard(areaID, boardAreas);
 
-    //Get the current board object
-    if (!checkStatus(currentField)) {
-      //End if the area is explored
-      //Run DOM function with message that area is explored
-      return;
-    }
+        //Getting current board object
+        const currentField = getBoard(areaID, boardAreas)
+
+        //Get the current board object
+        if(!checkStatus(currentField)){
+             //End if the area is explored
+             //Run DOM function with message that area is explored
+             areaExplored();
+             return;
+        }
+
+        //If we have proper amount of actionPoints
+        if(!checkActions(state)){
+            //End function cuz of lack of action points
+            //Run DOM function with message that we don't have enough actionPoints
+            notEnoughPoints();
+            return;
+        }
 
     //If we have proper amount of actionPoints
     if (!checkActions(state)) {
@@ -99,6 +105,16 @@ document.addEventListener("click", (e: any): void => {
     });
   }
 });
+
+})
+
+//Close paragraph modal
+document.addEventListener('click', (e:any) : void => {
+    const paragraphCnt = document.querySelector('.paragraph') as HTMLElement;
+    if(e.target.id === 'paragraph__close' || paragraphCnt === e.target){
+        paragraphCnt.style.display='none';
+    }
+})
 
 // Navigation
 navigation();

@@ -6,6 +6,22 @@
   padding: $boardMapPD;
   border-radius: 0.5rem;
   filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+  .map__square {
+    border: $boardFieldBorder;
+    background-color: $boardFieldBG;
+    box-sizing: border-box;
+    padding: $boardFieldPD;
+    width: 19.6%;
+    height: 24.4%;
+  }
+  .map__squareVisited {
+    border: $boardFieldBorder;
+    background-color: $boardFieldVisited;
+    box-sizing: border-box;
+    padding: $boardFieldPD;
+    width: 19.6%;
+    height: 24.4%;
+  }
 
   .map__square {
     border: $boardFieldBorder;
