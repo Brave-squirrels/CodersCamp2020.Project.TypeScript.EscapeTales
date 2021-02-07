@@ -32,7 +32,7 @@ const handleClick = (oldElem: HTMLElement, newElem: HTMLElement) => {
   oldElem.style.display = "none";
   oldElem.style.opacity = "0";
 
-  newElem.style.display = "block";
+  newElem.style.display = newElem === home ? "flex" : "block";
   setTimeout(() => {
     newElem.style.opacity = "1";
   }, 10);
