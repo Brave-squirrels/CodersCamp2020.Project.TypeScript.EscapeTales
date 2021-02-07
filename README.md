@@ -52,6 +52,16 @@ Staramy się tworzyć małe PR. W opisie PR powinno być dokładnie opisane
 co on zmienia. Każdy PR musi być zaakceptowany przez przynajmniej jedną
 inną osobę.
 
+### Zasady BEM:
+
+- korzystamy z założenia (na ile jest to możliwe) **.block\_\_element--modifier**
+- **.block** nazwa danego bloku
+- **\_\_element** dodajemy dla elemtnu w bloku (nie mnożymy elementów - czyli nie robimy **.block**element1**element2**, co do tego znalazłem różne informacje, ale podstawa to logicznie to rozwiązać. Tak, żeby każdy wiedział o co chodzi np. **.block\_\_element2**)
+- **--modifier** dodajemy jak chcemy w jakiś specyficzny sposób zmodyfikować element
+- nie powinno się dziedziczyć w cssie blokami i elementami (nie robi się _.block1 .block2 {}_)
+- modyfikator może dziedziczyć po bloku i elemencie
+- [link](http://getbem.com/naming/) do dokumentacji, bo sam nie wiem czy to wszystko dobrze załapałem:
+
 ## Bundler:
 
 - npm-install - indstalujemy wszystkie moduły
@@ -59,4 +69,3 @@ inną osobę.
 - npm run build - build projektu
 - npm run test - odpalanie testów
 - npm run testAll - odpalanie testów w trybie watch
-- npm run format - odpala narzędzie do formatowania składni

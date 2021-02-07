@@ -1,4 +1,5 @@
-import Puzzle from "../src/puzzle";
+import {Puzzle} from "../src/puzzle";
+import {PuzzleReward} from '../src/ENUM';
 
 describe("Paragraph test", () => {
   const puzzle = new Puzzle(
@@ -6,7 +7,7 @@ describe("Paragraph test", () => {
     "paragraph",
     ["p1, p2"],
     ["p3"],
-    "medal",
+    PuzzleReward.PROGRESSPOINT,
     "1234",
     "content text"
   );
