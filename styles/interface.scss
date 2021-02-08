@@ -12,19 +12,29 @@
         justify-content: space-between;
         
         .interface__column--btn {
+            padding: $interfaceElementPD;
             border-radius: $borderRadius;
             height: 48%;
             background-image: $interfaceElBG;
             background-size: cover;
         }
         
+        .interface__column--title{
+            font-size: $interfaceTitleFS;
+        }
     }
 
     .interface__element {
+        padding: $interfaceElementPD;
         border-radius: $borderRadius;
         width: 13.7%;
         background-image: $interfaceElBG;
         background-size: cover;
+
+
+        .interface__element--title{
+            font-size: $interfaceTitleFS;
+        }
     }
 }
 

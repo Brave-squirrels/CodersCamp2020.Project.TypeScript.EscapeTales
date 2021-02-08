@@ -11,6 +11,7 @@
 html {
     background-image: $mainBG;
     background-size: cover;
+    font-family: $lora;
 }
 
 .main {
@@ -33,6 +34,7 @@ html {
         .board__storybook {
             border-radius: $borderRadius;
             margin-right: 2vw;
+            padding: $storyBookPD;
             width: 18vw;
             height: 35vw;
             background-image: $storyBookBG;
