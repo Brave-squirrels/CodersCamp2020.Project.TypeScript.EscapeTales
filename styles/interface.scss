@@ -6,7 +6,7 @@
     border-radius: $borderRadius;
     padding: $interfacePD;
     .interface__column {
-        width: 13.7%;
+        width: 14.8%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -21,13 +21,14 @@
         
         .interface__column--title{
             font-size: $interfaceTitleFS;
+          
         }
     }
 
     .interface__element {
         padding: $interfaceElementPD;
         border-radius: $borderRadius;
-        width: 13.7%;
+        width: 22.8%;
         background-image: $interfaceElBG;
         background-size: cover;
 
