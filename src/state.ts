@@ -26,7 +26,8 @@ export class GameState {
                 protected _visitedAreasId : string[] = [],
                 protected _storyline : ENDING = ENDING.HAPPYENDING, 
                 protected _userEvidencesId : string[] = [],
-                protected _progressPoints: number = 0
+                protected _progressPoints: number = 0,
+                protected _visitedAreas: string[] = []
                 ) {  }
 
 
@@ -75,6 +76,10 @@ export class GameState {
             this._userPuzzlesId.splice(index,1);
         }
 
+        updateVisitedAreas(ID:string){
+            this._visitedAreas.push(ID);
+        }
+
         get actionNumbers(){
             return this._actionNumbers;
         }
@@ -96,5 +101,7 @@ export class GameState {
         get userEvidencesId(){
             return this._userEvidencesId;
         }
-
+        get visitedAreas(){
+            return this._visitedAreas;
+        }
 }

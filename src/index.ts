@@ -10,7 +10,7 @@ import {getBoard, checkActions, checkStatus, mainAction} from './board';
 import {solvePuzzle} from './puzzleAction';
 import {notEnoughPoints, areaExplored} from './readContent';
 //Testing
-const state = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0);
+const state = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0, []);
 const boardField = new BoardField(BoardState.PENDING, 'board1','board1',BoardContent.CLUE)
 const boardAreas = [boardField];
 const actionPoints = new ActionPoints(6,2);

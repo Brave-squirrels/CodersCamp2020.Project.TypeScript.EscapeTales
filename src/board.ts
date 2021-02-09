@@ -53,9 +53,13 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
+    //Push id of area to the state
+    state.updateVisitedAreas(currentField._fieldID);
     //Mark as visited in DOM - change class to add style's and remove eventListener
-    (document.querySelector(`#${currentField._fieldID}`) as HTMLElement).className += ' map__squareVisited';
-
+    state.visitedAreas.forEach((n: string)=>{
+        (document.querySelector(`#${n}`) as HTMLElement).className += ' map__squareVisited';
+    })
+    
     //Remove 1 action point
     actionPoints.decrementPoints();
 
