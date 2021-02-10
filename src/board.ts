@@ -7,8 +7,9 @@ import Paragraph from './paragraph';
 import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
-import {read} from './readContent';
+import {read, readStressParagraph} from './readContent';
 import {updateAreaDOM} from './updateDOM';
+import {stressParagraphs} from './data';
 
 //BoardArea validation
 //Check the status of the current board
@@ -139,9 +140,8 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {state} - state object, which contains main game state data
     @param {actionObj} - actionPoints object
 */
-/*
+
 const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
-    
     //Add action points
     updateAction(ActionPointsEnum.STRESSCARD, state, actionObj);
     //Remove evidence if player have any
@@ -149,12 +149,11 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
         state.removeEvidence();
     }
     //Update evidences in interface
-    
     //Run DOM function reading random paragraph, tell the user that he lost evidence
-    read(randomParagraphFromStressArray);
+    readStressParagraph(stressParagraphs);
     //Update actionPoints in interface
 }
-*/
+
 
 //Export for testing
-export {getBoard, checkActions, checkStatus, mainAction}
+export {getBoard, checkActions, checkStatus, mainAction, stressCardAction}

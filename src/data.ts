@@ -85,7 +85,7 @@ export const boardAreas : Array<BoardField> = [
 export const paragraphsArray : Array<Paragraph> = [
     //First location
     new Paragraph('l1b11', LOCATION.FIRST, 1, 'Test paragraph'),
-    new Paragraph('l1b12', LOCATION.FIRST, 1, ''),
+    new Paragraph('l1b12', LOCATION.FIRST, 1, 'U found a clue!'),
     new Paragraph('l1b13', LOCATION.FIRST, 1, ''),
     new Paragraph('l1b14', LOCATION.FIRST, 1, ''),
     new Paragraph('l1b15', LOCATION.FIRST, 1, ''),
@@ -160,4 +160,10 @@ export const puzzleCardArray : Array<PuzzleCard> = [
 //Puzzles objects array
 export const puzzleArray : Array<Puzzle> = [
     new Puzzle('l1b11','l1b11solve', ['l1b11','b1b12'], [], PuzzleReward.PROGRESSPOINT, 'Solution', 'Content')
+]
+
+//Stress card paragraphs
+export const stressParagraphs = [
+    'StressCard1',
+    'StressCard2'
 ]

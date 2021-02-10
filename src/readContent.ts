@@ -19,6 +19,26 @@ export const read = (paragraph: Paragraph): void => {
 };
 
 /*
+    Read stressCard
+    @param {stressParagraphs} - array of stress paragraphs
+*/
+
+export const readStressParagraph = (stressParagraphs: string[]) : void =>{
+
+  const index = Math.floor(Math.random() * (stressParagraphs.length - 1));
+
+  (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
+
+  //Slow type effect
+  new TypeIt(".paragraph__text", {
+    strings: `${stressParagraphs[index]}`,
+    speed: 80,
+    loop: false,
+  }).go();
+
+}
+
+/*
     Function with notification that the solution of a puzzle is incorrect
 */
 export const incorrectPuzzle = (): void => {
