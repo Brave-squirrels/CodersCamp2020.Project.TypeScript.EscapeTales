@@ -3,6 +3,7 @@ import {state, actionPoints, boardAreas, paragraphsArray, puzzleCardArray, puzzl
 import {getBoard, checkActions, checkStatus, mainAction} from './board';
 import {solvePuzzle} from './puzzleAction';
 import {notEnoughPoints, areaExplored} from './readContent';
+import navigation from './navigation';
 
 
 //Board movement event
