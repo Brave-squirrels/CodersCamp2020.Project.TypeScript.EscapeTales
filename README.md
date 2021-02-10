@@ -15,6 +15,8 @@ typy generyczne
 testy jednostkowe i TDD
 ```
 
+Szablon projektu na [Figmie](https://www.figma.com/file/rgcmVIjGFrVnsJw0RGkoFn/Projekt-TS?node-id=0%3A1)
+
 ## Tablica z zadaniami
 
 Wszystkie taski dotyczące projektu można znaleźć na tablicy [Trello](https://trello.com/b/HzFTZcYy/project-3-typescript-her).
