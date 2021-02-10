@@ -87,7 +87,7 @@ export const paragraphsArray : Array<Paragraph> = [
     //First location
     new Paragraph('l1b11', LOCATION.FIRST, 1, 'Test paragraph'),
     new Paragraph('l1b12', LOCATION.FIRST, 1, 'U found a clue!'),
-    new Paragraph('l1b13', LOCATION.FIRST, 1, ''),
+    new Paragraph('l1b13', LOCATION.FIRST, 1, 'Smthing'),
     new Paragraph('l1b14', LOCATION.FIRST, 1, ''),
     new Paragraph('l1b15', LOCATION.FIRST, 1, ''),
     new Paragraph('l1b21', LOCATION.FIRST, 1, ''),

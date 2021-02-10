@@ -9,7 +9,7 @@ import TypeIt from "typeit";
 */
 export const read = (paragraph: Paragraph): void => {
   (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
-
+  (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = '';
   //Slow type effect
   new TypeIt(".paragraph__text", {
     strings: `${paragraph.text}`,
