@@ -9,7 +9,6 @@ import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {read, readStressParagraph} from './readContent';
 import {updateAreaDOM} from './updateDOM';
-import {stressParagraphs} from './data';
 
 //BoardArea validation
 //Check the status of the current board
@@ -141,7 +140,7 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {actionObj} - actionPoints object
 */
 
-const stressCardAction = (state: GameState, actionObj: ActionPoints) : void=>{
+const stressCardAction = (state: GameState, actionObj: ActionPoints, stressParagraphs : string[]) : void=>{
     //Add action points
     updateAction(ActionPointsEnum.STRESSCARD, state, actionObj);
     //Remove evidence if player have any
