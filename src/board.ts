@@ -57,13 +57,11 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
     //Push id of area to the state and mark area in DOM as explored
     state.updateVisitedAreas(currentField._fieldID);
     updateAreaDOM(state);
-    
     //Remove 1 action point
     actionPoints.decrementPoints();
 
     //Save current action points to the gameState
     state.actionNumbers = actionPoints.currentPoints;
-
     //Update actionPoints in interface
 }
 

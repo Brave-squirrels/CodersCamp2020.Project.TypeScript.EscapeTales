@@ -1,3 +1,4 @@
+import {LOCATION} from './ENUM';
 /**
  * @Class - Paragraph
  *  class with common properites such as
@@ -9,7 +10,7 @@
 export default class Paragraph {
   constructor(
     readonly id: string,
-    readonly location: number,
+    readonly location: LOCATION,
     readonly storyLine: number,
     private _text: string
   ) {}
