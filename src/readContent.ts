@@ -28,7 +28,7 @@ export const read = (paragraph: Paragraph): void => {
 
 export const readStressParagraph = (stressParagraphs: string[]) : void =>{
 
-  const index = Math.floor(Math.random() * (stressParagraphs.length - 1));
+  const index = Math.floor(Math.random() * (stressParagraphs.length));
 
   (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
 
