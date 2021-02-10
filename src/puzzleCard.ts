@@ -1,7 +1,7 @@
 export default class PuzzleCard {
-    constructor(
-      readonly id: string,
-      readonly puzzleId: string,
-      readonly content: string
-    ) {}
+  constructor(
+    readonly id: string,
+    readonly puzzleId: string,
+    readonly content: string
+  ) {}
 }

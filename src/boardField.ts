@@ -1,4 +1,4 @@
-import {BoardContent, BoardState} from './ENUM';
+import { BoardContent, BoardState } from "./ENUM";
 
 /**
  * @Class - BoardField
@@ -6,35 +6,34 @@ import {BoardContent, BoardState} from './ENUM';
  */
 
 export class BoardField {
-    constructor(
-        protected _status: BoardState, 
-        readonly _fieldID: string, 
-        readonly _paragraphID: string,
-        readonly _content: BoardContent
-    ){}
-        
+  constructor(
+    protected _status: BoardState,
+    readonly _fieldID: string,
+    readonly _paragraphID: string,
+    readonly _content: BoardContent
+  ) {}
 
-    get status(){
-        return this._status;
-    }
+  get status() {
+    return this._status;
+  }
 
-    get fieldID(){
-        return this._fieldID;
-    }
+  get fieldID() {
+    return this._fieldID;
+  }
 
-    get paragraphID(){
-        return this._paragraphID;
-    }
+  get paragraphID() {
+    return this._paragraphID;
+  }
 
-    get content(){
-        return this._content;
-    }
+  get content() {
+    return this._content;
+  }
 
-    set status(status: BoardState){
-        this._status=status;
-    }
+  set status(status: BoardState) {
+    this._status = status;
+  }
 
-    readParagraph(){
-        // wywolanie funkcji z frontu do wczytania paragrafu
-    };
+  readParagraph() {
+    // wywolanie funkcji z frontu do wczytania paragrafu
+  }
 }

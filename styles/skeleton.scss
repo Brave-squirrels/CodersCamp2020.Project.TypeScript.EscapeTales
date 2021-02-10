@@ -3,75 +3,87 @@
 @import "paddings";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    background-image: $mainBG;
-    background-size: cover;
-    font-family: $lora;
+  background-image: $mainBG;
+  background-size: cover;
+  font-family: "Lora", serif;
+  transition: all 2s ease-out;
+}
+
+.container {
+  display: none;
+  opacity: 0;
+  transition: all 1s ease-out;
 }
 
 .main {
-    height: 96vh;
+  height: 96vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+  min-height: $mainMinH;
+
+  .board {
+    padding: $boardPD;
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    flex-direction: column;
-    min-height: $mainMinH;
-    
-    .board {
-        padding: $boardPD;
-        display: flex;
-        width: 72vw;
-        justify-content: space-between;
-        max-width: $boardMaxW;
-        min-width: $boardMinW;
-        
+    width: 72vw;
+    justify-content: space-between;
+    max-width: $boardMaxW;
+    min-width: $boardMinW;
 
-        .board__storybook {
-            border-radius: $borderRadius;
-            margin-right: 2vw;
-            padding: $storyBookPD;
-            width: 18vw;
-            height: 35vw;
-            background-image: $storyBookBG;
-            background-size: cover;
-            max-height: $boardBookMaxH;
-            min-height: $boardBookMinH;
-            min-width: $boardBookMinW;
-        }
-
-        .board__map {
-            display:flex;
-            flex-wrap: wrap;
-            width: 51vw;
-            height: 35vw;
-            max-height: 69vh;
-            background-image: $boardMapBG;
-            background-size: cover;
-            justify-content:space-between;
-            align-content: space-between;
-            min-height: $boardMapMinH;
-            min-width: $boardMapMinW;
-        }
+    .board__storybook {
+      border-radius: $borderRadius;
+      margin-right: 2vw;
+      padding: $storyBookPD;
+      width: 18vw;
+      height: 35vw;
+      background-image: $storyBookBG;
+      background-size: cover;
+      max-height: $boardBookMaxH;
+      min-height: $boardBookMinH;
+      min-width: $boardBookMinW;
+      box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .board__interface {
-        display: flex;
-        background-image: $interfaceBG;
-        background-size: cover;
-        justify-content: space-between;
-        height: 18vh;
-        max-width: $interfaceMaxW;
-        min-width: $interfaceMinW;
-        min-height: $interfaceMinH;
-    }
-}
+    .board__map {
+      display: flex;
+      flex-wrap: wrap;
+      width: 51vw;
+      height: 35vw;
+      max-height: 69vh;
+      background-image: $boardMapBG;
+      background-size: cover;
+      justify-content: space-between;
+      align-content: space-between;
+      min-height: $boardMapMinH;
+      min-width: $boardMapMinW;
 
-.footer {
-    height: 4vh;
-    background: $footerBG;
+      .map__square {
+        border: $boardFieldBorder;
+        background-color: $boardFieldBG;
+        box-sizing: border-box;
+        padding: 5px;
+        width: 19.6%;
+        height: 24.4%;
+      }
+    }
+  }
+
+  .board__interface {
+    display: flex;
+    background-image: $interfaceBG;
+    background-size: cover;
+    justify-content: space-between;
+    height: 18vh;
+    max-width: $interfaceMaxW;
+    min-width: $interfaceMinW;
+    min-height: $interfaceMinH;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+  }
 }
