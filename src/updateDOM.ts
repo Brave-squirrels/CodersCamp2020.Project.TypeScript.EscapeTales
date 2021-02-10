@@ -1,5 +1,6 @@
 import {GameState} from './state';
-import {getDate} from './date';
+import {state} from './data';
+import {pageTemplate} from './storyBookPage';
 
 //Update actionPoints interface
 const updateActionDOM = () : void =>{
@@ -7,10 +8,18 @@ const updateActionDOM = () : void =>{
 }
 
 //Update storyBook DOM
-export const updateStoryBook = (text: string) : void =>{
-    const date = getDate();
+export const updateStoryBook = () : void =>{
     const storyBook = document.querySelector(".board__storybook") as HTMLElement;
-    storyBook.innerText += `\n${date}\n${text}`; 
+    const text = state.storyBook[state.storyBook.length-1];
+    const content = pageTemplate(text);
+    storyBook.innerHTML = content;
+}
+
+export const changePageStoryBook = (index: number) => {
+    const storyBook = document.querySelector(".board__storybook") as HTMLElement;
+    const previousText = state.storyBook[index];
+    const previousContent = pageTemplate(previousText);
+    storyBook.innerHTML = previousContent;
 }
 
 //Update evidences DOM

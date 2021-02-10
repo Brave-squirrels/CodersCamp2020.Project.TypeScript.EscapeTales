@@ -5,7 +5,6 @@ import {solvePuzzle} from './puzzleAction';
 import {notEnoughPoints, areaExplored} from './readContent';
 import navigation from './navigation';
 
-
 //Board movement event
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("map__square")) {
@@ -64,6 +63,14 @@ document.addEventListener("click", (e: any): void => {
   const paragraphCnt = document.querySelector(".paragraph") as HTMLElement;
   if (e.target.id === "paragraph__close" || paragraphCnt === e.target) {
     paragraphCnt.style.display = "none";
+  }
+});
+
+document.addEventListener('click', (e: any): void => {
+  if(e.target.className === "board__storybook__arrowLeft"){
+    state.previousStoryBookPage();
+  }else if(e.target.className === "board__storybook__arrowRight"){
+    state.nextStoryBookPage();
   }
 });
 

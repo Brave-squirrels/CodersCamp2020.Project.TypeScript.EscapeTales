@@ -1,3 +1,21 @@
 @import "colors";
 @import "fonts";
 @import "paddings";
+
+.board__storybook{
+    position: relative;
+    .board__storybook__arrows{
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        bottom: 3rem;
+        width: 90%;
+    }
+    .board__storybook__arrowLeft{
+        text-align: left;
+    }
+    .board__storybook__arrowRight{
+        text-align: right;
+    }
+}
