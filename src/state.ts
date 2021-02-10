@@ -46,10 +46,6 @@ export class GameState {
             this._storyline = newStoryline;
         }
 
-        set currentPage(index: number){
-            this._currentPage = index;
-        }
-
         addParagraphsId(newParagraphsId:string){
             this._userParagraphsId.push(newParagraphsId);
         }
@@ -129,5 +125,8 @@ export class GameState {
         }
         get storyBook(){
             return this._storyBook;
+        }
+        get currentPage(){
+            return this._currentPage;
         }
 }

@@ -10,7 +10,7 @@ export const pageTemplate = (text: string) => {
             >
         </div>
         ` ;
-    }else if(state.currentPage === state.storyBook.length-2){
+    }else if(state.currentPage === state.storyBook.length-1){
         return`
         <h2>${text}</h2>
         <div class="board__storybook__arrows">
