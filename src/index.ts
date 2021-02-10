@@ -25,7 +25,8 @@ const state = new GameState(
   [],
   ENDING.HAPPYENDING,
   [],
-  0
+  0,
+  []
 );
 const boardField = new BoardField(
   BoardState.PENDING,

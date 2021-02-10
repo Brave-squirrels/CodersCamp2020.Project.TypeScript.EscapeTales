@@ -8,6 +8,7 @@ import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {read} from './readContent';
+import {updateAreaDOM} from './updateDOM';
 
 //BoardArea validation
 //Check the status of the current board
@@ -53,9 +54,10 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
-    //Mark as visited in DOM - change class to add style's and remove eventListener
-    (document.querySelector(`#${currentField._fieldID}`) as HTMLElement).className += ' map__squareVisited';
-
+    //Push id of area to the state and mark area in DOM as explored
+    state.updateVisitedAreas(currentField._fieldID);
+    updateAreaDOM(state);
+    
     //Remove 1 action point
     actionPoints.decrementPoints();
 
