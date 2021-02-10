@@ -6,6 +6,7 @@ import Paragraph from './paragraph';
 import{BoardState, BoardContent, LOCATION, PuzzleReward} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
+import {Evidence} from './evidence';
 
 //Default state object
 export const state = new GameState();
@@ -163,7 +164,12 @@ export const puzzleArray : Array<Puzzle> = [
 ]
 
 //Stress card paragraphs
-export const stressParagraphs = [
+export const stressParagraphs : string[] = [
     'StressCard1',
     'StressCard2'
+]
+
+//Evidence objects array (to update DOM)
+export const evidencesArray : Array<Evidence> = [
+    new Evidence('l1b11', 'U found hammer or smth')
 ]

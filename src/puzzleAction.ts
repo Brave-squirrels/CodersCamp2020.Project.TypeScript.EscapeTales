@@ -64,7 +64,7 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
     switch(currentPuzzle.reward){
         case PuzzleReward.EVIDENCE:
             //Add evidence to the state
-            state.addEvidencesId('Evidence');
+            state.addEvidencesId(id);
             //Update evidences in interface
             break;
         case PuzzleReward.PROGRESSPOINT:
