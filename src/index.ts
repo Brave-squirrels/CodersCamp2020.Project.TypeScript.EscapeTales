@@ -51,10 +51,9 @@ document.addEventListener("click", (e: any): void => {
       puzzleCardArray,
       puzzleArray
     );
-
-    // update action points
-    updateActionDOM(actionPoints.currentPoints);
   }
+  // update action points
+  updateActionDOM(actionPoints.currentPoints);
 });
 
 //Puzzle solved event
