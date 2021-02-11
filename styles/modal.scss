@@ -22,8 +22,79 @@
     width: 60%;
     margin: 2em auto;
     letter-spacing: 0.15em;
+    background-image: $interfaceElBG;
+    background-size: cover;
+    color: #000;
+    font-weight: bold;
   }
   .paragraph__close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.instructionModal {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  background: $modalBG;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: $modalColor;
+  font-family: $lora;
+  font-size: 1.3em;
+  .instruction__text {
+    padding: 1em 2em;
+    background: $paragraphBG;
+    width: 60%;
+    margin: 2em auto;
+    letter-spacing: 0.15em;
+    background-image: $interfaceElBG;
+    background-size: cover;
+    color: #000;
+    font-weight: bold;
+  }
+  .instruction__close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.puzzle {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  background: $modalBG;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: $modalColor;
+  font-family: $lora;
+  font-size: 1.3em;
+  .puzzle__text{
+    padding: 1em 2em;
+    background: $paragraphBG;
+    width: 60%;
+    margin: 2em auto;
+    letter-spacing: 0.15em;
+    background-image: $interfaceElBG;
+    background-size: cover;
+    color: #000;
+    font-weight: bold;
+  }
+  .puzzle__close {
+    color: white;
     position: absolute;
     right: 1em;
     top: 1em;

@@ -4,6 +4,7 @@ import {getBoard, checkActions, checkStatus, mainAction} from './board';
 import {solvePuzzle} from './puzzleAction';
 import {notEnoughPoints, areaExplored} from './readContent';
 import navigation from './navigation';
+import {solvePuzzleModal} from './updateDOM';
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -45,9 +46,13 @@ document.addEventListener("click", (e: any): void => {
 
 //Puzzle solved event
 document.addEventListener("click", (e: any): void => {
-  if (e.target.className === "solvePuzzle") {
+  if (e.target.className === "interface__puzzle__container") {
     //Display puzzle input solve modal
     const puzzleID: string = e.target.id;
+    (document.querySelector('.puzzle') as HTMLElement).style.display = 'block';
+    
+    //Add data to the modal
+    solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
 
     document.addEventListener("click", (evnt: any): void => {
       if (evnt.target.className === `Confirm${puzzleID}`) {
@@ -55,6 +60,14 @@ document.addEventListener("click", (e: any): void => {
         solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
       }
     });
+  }
+});
+
+//Close puzzle modal
+document.addEventListener("click", (e: any): void => {
+  const puzzleCnt = document.querySelector(".puzzle") as HTMLElement;
+  if (e.target.id === "puzzle__close" || puzzleCnt === e.target) {
+      puzzleCnt.style.display = "none";
   }
 });
 
@@ -66,6 +79,7 @@ document.addEventListener("click", (e: any): void => {
   }
 });
 
+
 document.addEventListener('click', (e: any): void => {
   if(e.target.className === "board__storybook__arrowLeft" || e.target.className === "fas fa-reply"){
     state.previousStoryBookPage();
@@ -73,6 +87,17 @@ document.addEventListener('click', (e: any): void => {
     state.nextStoryBookPage();
   }
 });
+
+//Display instruction
+document.addEventListener('click', (e:any)=>{
+  if(e.target.id==='displayInstruction'){
+    (document.querySelector('.instructionModal') as HTMLElement).style.display = 'block';
+  }
+  if(e.target.id==='instruction__close' || (document.querySelector('.instructionModal') as HTMLElement)===e.target){
+    (document.querySelector('.instructionModal') as HTMLElement).style.display = 'none';
+  }
+})
+
 
 // Navigation
 navigation();
