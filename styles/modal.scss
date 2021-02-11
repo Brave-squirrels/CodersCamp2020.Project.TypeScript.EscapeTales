@@ -50,6 +50,8 @@
   font-family: $lora;
   font-size: 1.3em;
   .instruction__text {
+    min-height: 700px;
+    min-width: 700px;
     max-height: 70%;
     overflow-y: auto;
     padding: $instructionPD;
