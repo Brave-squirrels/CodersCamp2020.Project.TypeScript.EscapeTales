@@ -8,7 +8,7 @@ import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {read, readStressParagraph} from './readContent';
-import {updateAreaDOM, updateActionDOM} from './updateDOM';
+import {updateAreaDOM, updateActionDOM, updateEvidencesDOM} from './updateDOM';
 
 //BoardArea validation
 //Check the status of the current board
@@ -150,6 +150,7 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints, stressParag
         state.removeEvidence();
     }
     //Update evidences in interface
+    updateEvidencesDOM();
     //Run DOM function reading random paragraph, tell the user that he lost evidence
     readStressParagraph(stressParagraphs);
     //Update actionPoints in interface

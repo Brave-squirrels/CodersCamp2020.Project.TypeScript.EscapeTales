@@ -1,9 +1,10 @@
 import { GameState } from "./state";
-import { state } from "./data";
+import { state, evidencesArray } from "./data";
 import { pageTemplate } from "./HTMLtemplate";
-import { puzzleTemplate, puzzleSolveTemplate } from "./HTMLtemplate";
+import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate } from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
+import {Evidence} from './evidence';
 
 //Update actionPoints interface
 const updateActionDOM = (number: number): void => {
@@ -23,7 +24,7 @@ const updateStoryBook = (): void => {
   storyBook.innerHTML = content;
 };
 
-export const changePageStoryBook = (index: number) => {
+const changePageStoryBook = (index: number) => {
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
   const previousContent = pageTemplate(
@@ -35,7 +36,26 @@ export const changePageStoryBook = (index: number) => {
 };
 
 //Update evidences DOM
-const updateEvidencesDOM = (): void => {};
+const updateEvidencesDOM = (): void => {
+  //Get the HTML container
+  const cnt = document.querySelector("#interface__evidences") as HTMLElement;
+
+  cnt.innerHTML = `<h2 class="interface__element--title">Evidence</h2>`;
+
+  //Get evidences from the state
+  const DOMEvidences : Array<Evidence> = [];
+  state.userEvidencesId.forEach((IdUser : string)=>{
+    evidencesArray.forEach((evidence : Evidence)=>{
+      if(IdUser === evidence.evidenceID){
+        DOMEvidences.push(evidence);
+        cnt.innerHTML += evidenceTemplate(evidence);
+      }
+    })
+  })
+
+  console.log(DOMEvidences);
+
+};
 
 //Update puzzleInterface DOM
 /*
@@ -116,4 +136,5 @@ export {
   updateEvidencesDOM,
   updateStoryBook,
   solvePuzzleModal,
+  changePageStoryBook
 };

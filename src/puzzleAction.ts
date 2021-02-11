@@ -4,7 +4,7 @@ import {GameState} from './state';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
-import {updatePuzzleDOM} from './updateDOM';
+import {updatePuzzleDOM, updateEvidencesDOM} from './updateDOM';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -66,6 +66,7 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
             //Add evidence to the state
             state.addEvidencesId(id);
             //Update evidences in interface
+            updateEvidencesDOM();
             break;
         case PuzzleReward.PROGRESSPOINT:
             //Add progressPoint to the state

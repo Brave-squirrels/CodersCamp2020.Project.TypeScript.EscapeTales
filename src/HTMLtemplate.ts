@@ -1,5 +1,6 @@
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
+import {Evidence} from './evidence';
 
 
 export const pageTemplate = (text: string, currentPage: number, storyBookLength: number) => {
@@ -43,6 +44,14 @@ export const puzzleTemplate = (puzzle : Puzzle) : string => {
     return `
         <div class='interface__puzzle__container' id=${puzzle.id}>
             ${puzzle.content}
+        </div>
+    `;
+}
+
+export const evidenceTemplate = (evidence : Evidence) : string => {
+    return `
+        <div class='interface__evidence__container'>
+            ${evidence.content}
         </div>
     `;
 }
