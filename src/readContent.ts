@@ -15,7 +15,7 @@ export const read = (paragraph: Paragraph): void => {
   (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = '';
   //Slow type effect
   new TypeIt(".paragraph__text", {
-    strings: `${paragraph.text}`,
+    strings: `${paragraph.text} <br> You gain: <br>  ${paragraph.content}`,
     speed: 80,
     loop: false,
   }).go();
