@@ -6,7 +6,6 @@ import {notEnoughPoints, areaExplored} from './readContent';
 import navigation from './navigation';
 import {solvePuzzleModal} from './updateDOM';
 
-
 //Board movement event
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("map__square")) {
@@ -80,6 +79,15 @@ document.addEventListener("click", (e: any): void => {
   }
 });
 
+
+document.addEventListener('click', (e: any): void => {
+  if(e.target.className === "board__storybook__arrowLeft" || e.target.className === "fas fa-reply"){
+    state.previousStoryBookPage();
+  }else if(e.target.className === "board__storybook__arrowRight" || e.target.className === "fas fa-share"){
+    state.nextStoryBookPage();
+  }
+});
+
 //Display instruction
 document.addEventListener('click', (e:any)=>{
   if(e.target.id==='displayInstruction'){
@@ -89,6 +97,7 @@ document.addEventListener('click', (e:any)=>{
     (document.querySelector('.instructionModal') as HTMLElement).style.display = 'none';
   }
 })
+
 
 // Navigation
 navigation();

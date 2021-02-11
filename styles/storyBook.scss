@@ -1,3 +1,36 @@
 @import "colors";
 @import "fonts";
+
 @import "paddings";
+
+.board__storybook{
+    position: relative;
+    .board__storybook__arrows{
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        bottom: 3rem;
+        width: 90%;
+    }
+    i{
+        transition: 0.2s;
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+            text-shadow: 3px 3px 4px #272727;
+        }
+    }
+}
+
+@media (min-width: 1200px){
+    .board__storybook{
+        font-size: 1.25rem;
+        .board__storybook__arrows{
+            font-size: 1.8rem;
+        }
+    }
+}
+
+@import "paddings";
+

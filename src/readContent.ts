@@ -1,5 +1,8 @@
 import Paragraph from "./paragraph";
 import TypeIt from "typeit";
+import {state} from './data';
+import {updateStoryBook} from "./updateDOM";
+import {getDate} from './date'
 
 /*
     Function which open modals and read paragraph in cases such as:
@@ -16,6 +19,10 @@ export const read = (paragraph: Paragraph): void => {
     speed: 80,
     loop: false,
   }).go();
+
+  const date: string = getDate().toString();
+  state.addPage(date,paragraph.text);
+  updateStoryBook();
 };
 
 /*
@@ -35,7 +42,6 @@ export const readStressParagraph = (stressParagraphs: string[]) : void =>{
     speed: 80,
     loop: false,
   }).go();
-
 }
 
 /*

@@ -1,4 +1,5 @@
 import {ENDING, LOCATION} from './ENUM';
+import { changePageStoryBook } from './updateDOM';
 
 /*
 @Class GameState:
@@ -27,7 +28,9 @@ export class GameState {
                 protected _storyline : ENDING = ENDING.HAPPYENDING, 
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
-                protected _visitedAreas: string[] = []
+                protected _visitedAreas: string[] = [],
+                protected _storyBook: string[] = ["Story Book"],
+                protected _currentPage: number = 0
                 ) {  }
 
 
@@ -80,6 +83,22 @@ export class GameState {
             this._visitedAreas.push(ID);
         }
 
+        addPage(date: string, text: string){
+            const complete: string = date+"<br>"+text;
+            this._storyBook.push(complete);
+            this._currentPage = this._storyBook.length-1;
+        }
+
+        nextStoryBookPage(){
+            this._currentPage++;
+            changePageStoryBook(this._currentPage);
+        }
+
+        previousStoryBookPage(){
+            this._currentPage--;
+            changePageStoryBook(this._currentPage);
+        }
+
         get actionNumbers(){
             return this._actionNumbers;
         }
@@ -103,5 +122,11 @@ export class GameState {
         }
         get visitedAreas(){
             return this._visitedAreas;
+        }
+        get storyBook(){
+            return this._storyBook;
+        }
+        get currentPage(){
+            return this._currentPage;
         }
 }

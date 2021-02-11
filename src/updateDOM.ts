@@ -1,7 +1,12 @@
 import {GameState} from './state';
+
+import {state} from './data';
+import {pageTemplate} from './storyBookPage';
+
 import {puzzleTemplate, puzzleSolveTemplate} from './HTMLtemplate';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
+
 
 //Update actionPoints interface
 const updateActionDOM = () : void =>{
@@ -10,7 +15,17 @@ const updateActionDOM = () : void =>{
 
 //Update storyBook DOM
 const updateStoryBook = () : void =>{
+    const storyBook = document.querySelector(".board__storybook") as HTMLElement;
+    const text = state.storyBook[state.storyBook.length-1];
+    const content = pageTemplate(text);
+    storyBook.innerHTML = content;
+}
 
+export const changePageStoryBook = (index: number) => {
+    const storyBook = document.querySelector(".board__storybook") as HTMLElement;
+    const previousText = state.storyBook[index];
+    const previousContent = pageTemplate(previousText);
+    storyBook.innerHTML = previousContent;
 }
 
 //Update evidences DOM
@@ -84,4 +99,6 @@ const updateAreaDOM = (state: GameState) : void => {
     })
 }
 
+
 export {updateActionDOM, updateProgressDOM, updatePuzzleDOM, updateAreaDOM, updateEvidencesDOM, updateStoryBook, solvePuzzleModal};
+
