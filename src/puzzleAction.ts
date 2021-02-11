@@ -107,7 +107,6 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
     //Find puzzle card in array with current ID
     const puzzleCard : PuzzleCard = getPuzzleCard(id, puzzleCardArray);
     const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
-    console.log(puzzleCard);
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
 }

@@ -112,11 +112,16 @@
     }
   }
   .puzzle__solve__submit{
+    background: transparent;
+    border: 1px solid $modalBG;
     margin-top: 1em;
     padding: $solvePuzzlePD;
+    width: 6rem;
+    height: 1.7rem;
     font-weight: bold;
     &:hover{
       cursor: pointer;
+      background: rgba(0,0,0,0.2);
     }
   }
 }

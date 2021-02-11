@@ -54,7 +54,7 @@ document.addEventListener("click", (e: any): void => {
 
 //Puzzle solved event
 document.addEventListener("click", (e: any): void => {
-  if (e.target.className === "interface__puzzle__container") {
+  if (e.target.classList.contains("interface__puzzle__container")) {
     //Display puzzle input solve modal
     const puzzleID: string = e.target.id;
     (document.querySelector(".puzzle") as HTMLElement).style.display = "block";
@@ -63,7 +63,7 @@ document.addEventListener("click", (e: any): void => {
     solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
 
     document.addEventListener("click", (evnt: any): void => {
-      if (evnt.target.className === `Confirm${puzzleID}`) {
+      if (evnt.target.classList.contains(`Confirm${puzzleID}`)) {
         //Run validation puzzle function
         solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
       }
