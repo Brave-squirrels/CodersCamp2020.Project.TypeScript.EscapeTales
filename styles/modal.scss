@@ -50,7 +50,7 @@
   font-family: $lora;
   font-size: 1.3em;
   .instruction__text {
-    padding: 1em 2em;
+    padding: $instructionPD;
     background: $paragraphBG;
     width: 60%;
     margin: 2em auto;
@@ -106,9 +106,10 @@
     background: transparent;
     padding: $solvePuzzlePD;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $solveButtonBorder;
     &:focus{
       outline: none;
+      border-bottom: 1px solid $solveButtonBorderFocus;
     }
   }
   .puzzle__solve__submit{
@@ -122,6 +123,9 @@
     &:hover{
       cursor: pointer;
       background: rgba(0,0,0,0.2);
+    }
+    &:focus{
+      outline: none;
     }
   }
 }
