@@ -84,7 +84,7 @@ export class GameState {
         }
 
         addPage(date: string, text: string){
-            const complete: string = date+"\n"+text;
+            const complete: string = date+"<br>"+text;
             this._storyBook.push(complete);
             this._currentPage = this._storyBook.length-1;
         }

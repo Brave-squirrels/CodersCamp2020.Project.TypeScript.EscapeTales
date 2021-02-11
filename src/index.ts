@@ -67,9 +67,9 @@ document.addEventListener("click", (e: any): void => {
 });
 
 document.addEventListener('click', (e: any): void => {
-  if(e.target.className === "board__storybook__arrowLeft"){
+  if(e.target.className === "board__storybook__arrowLeft" || e.target.className === "fas fa-reply"){
     state.previousStoryBookPage();
-  }else if(e.target.className === "board__storybook__arrowRight"){
+  }else if(e.target.className === "board__storybook__arrowRight" || e.target.className === "fas fa-share"){
     state.nextStoryBookPage();
   }
 });

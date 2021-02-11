@@ -12,10 +12,21 @@
         bottom: 3rem;
         width: 90%;
     }
-    .board__storybook__arrowLeft{
-        text-align: left;
+    i{
+        transition: 0.2s;
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+            text-shadow: 3px 3px 4px #272727;
+        }
     }
-    .board__storybook__arrowRight{
-        text-align: right;
+}
+
+@media (min-width: 1200px){
+    .board__storybook{
+        font-size: 1.25rem;
+        .board__storybook__arrows{
+            font-size: 1.8rem;
+        }
     }
 }
