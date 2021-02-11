@@ -64,7 +64,7 @@
   }
   .instruction__text {
     min-height: 700px;
-    min-width: 1150px;
+    min-width: 700px;
     max-height: 70%;
     overflow-y: auto;
     padding: $instructionPD;
@@ -78,16 +78,15 @@
     font-weight: bold;
 
     &::-webkit-scrollbar {
-      width: 4px;
+      width: 8px;
     }
     
     &::-webkit-scrollbar-track {
-      background: #ddd;
+      background: rgba(255, 255, 255, 0);
     }
     
     &::-webkit-scrollbar-thumb {
-      background: #444;
-      border-radius: 4px;
+      background: rgb(68, 46, 19);
     }
   }
   .instruction__close {
