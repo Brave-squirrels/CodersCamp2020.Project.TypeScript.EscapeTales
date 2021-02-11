@@ -177,5 +177,6 @@ export const stressParagraphs : string[] = [
 
 //Evidence objects array (to update DOM)
 export const evidencesArray : Array<Evidence> = [
-    new Evidence('l1b11', 'U found hammer or smth')
+    new Evidence('l1b11', 'U found hammer or smth'),
+    new Evidence('l1b12', 'U found evidence'),
 ]

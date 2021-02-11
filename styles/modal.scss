@@ -51,16 +51,15 @@
   font-family: $lora;
   font-size: 1.3em;
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
   }
   
   &::-webkit-scrollbar-track {
-    background: #ddd;
+    background: rgba(255, 255, 255, 0);
   }
   
   &::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
+    background: rgb(68, 46, 19);
   }
   .instruction__text {
     min-height: 700px;
