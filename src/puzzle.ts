@@ -36,8 +36,4 @@ export class Puzzle {
   addVisitedCard(elem: string) {
     this._visitedCards.push(elem);
   }
-
-  addPuzzleCard(elem: string) {
-    this._puzzleCards.push(elem);
-  }
 }

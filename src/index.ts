@@ -119,7 +119,7 @@ document.addEventListener("click", (e: any) => {
 
 //Take stress card
 document.addEventListener("click", (e:any)=>{
-  if(e.target.id === 'interface__stressCard'){
+  if(e.target.id === 'interface__stressCard' || e.target.id ==='interface__stressCard__title'){
     stressCardAction(state, actionPoints,stressParagraphs);
   }
 })

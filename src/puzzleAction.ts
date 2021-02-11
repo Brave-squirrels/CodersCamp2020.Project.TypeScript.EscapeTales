@@ -44,7 +44,6 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
         state.addParagraphsId(puzzleParagraph.id);
         //DOM function with paragraph and solve content
         read(puzzleParagraph);
-        //Update story book and puzzle interface
     }else{
         //Run DOM function that will tell that the password is incorrect
         incorrectPuzzle();
@@ -107,8 +106,8 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
 
     //Find puzzle card in array with current ID
     const puzzleCard : PuzzleCard = getPuzzleCard(id, puzzleCardArray);
-    const puzzleObj : Puzzle = getPuzzle(id, puzzleArray);
-
+    const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
+    console.log(puzzleCard);
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
 }
