@@ -164,8 +164,8 @@ export const puzzleCardArray : Array<PuzzleCard> = [
 
 //Puzzles objects array
 export const puzzleArray : Array<Puzzle> = [
-    new Puzzle('l1b11','l1b11solve', ['l1b15','l1b11'], [], PuzzleReward.PROGRESSPOINT, 'Solution', 'MainPuzzle1'),
-    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b13'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2'),
+    new Puzzle('l1b11','l1b11solve', ['l1b15','l1b11'], [], PuzzleReward.EVIDENCE, 'Solution', 'MainPuzzle1'),
+    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b13'], [], PuzzleReward.EVIDENCE, 'Solution2', 'MainPuzzle2'),
     new Puzzle('l1b25','l1b25solve', ['l1b31','l1b32'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2')
 ]
 
