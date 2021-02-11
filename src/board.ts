@@ -8,7 +8,7 @@ import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {read, readStressParagraph} from './readContent';
-import {updateAreaDOM} from './updateDOM';
+import {updateAreaDOM, updateActionDOM} from './updateDOM';
 
 //BoardArea validation
 //Check the status of the current board
@@ -63,6 +63,7 @@ const move = (currentField: BoardField, state: GameState, actionPoints: ActionPo
     //Save current action points to the gameState
     state.actionNumbers = actionPoints.currentPoints;
     //Update actionPoints in interface
+    updateActionDOM(actionPoints.currentPoints)
 }
 
 //Read paragraph
@@ -101,6 +102,7 @@ const getAreaContent = (boardField: BoardField, state: GameState, actionObj: Act
             //Update points
             updateAction(ActionPointsEnum.CLUE, state, actionObj);
             //Update actionPoints in interface
+            updateActionDOM(actionObj.currentPoints)
             break;
         case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
@@ -151,6 +153,7 @@ const stressCardAction = (state: GameState, actionObj: ActionPoints, stressParag
     //Run DOM function reading random paragraph, tell the user that he lost evidence
     readStressParagraph(stressParagraphs);
     //Update actionPoints in interface
+    updateActionDOM(actionObj.currentPoints);
 }
 
 

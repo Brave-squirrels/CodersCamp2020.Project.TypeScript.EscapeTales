@@ -6,15 +6,13 @@ import {
   paragraphsArray,
   puzzleCardArray,
   puzzleArray,
+  stressParagraphs
 } from "./data";
-import { getBoard, checkActions, checkStatus, mainAction } from "./board";
+import { getBoard, checkActions, checkStatus, mainAction, stressCardAction } from "./board";
 import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
-import { solvePuzzleModal, updateActionDOM } from "./updateDOM";
-
-// Interface
-updateActionDOM(actionPoints.currentPoints);
+import { solvePuzzleModal } from "./updateDOM";
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -52,8 +50,6 @@ document.addEventListener("click", (e: any): void => {
       puzzleArray
     );
   }
-  // update action points
-  updateActionDOM(actionPoints.currentPoints);
 });
 
 //Puzzle solved event
@@ -91,6 +87,7 @@ document.addEventListener("click", (e: any): void => {
   }
 });
 
+//Change story book page
 document.addEventListener("click", (e: any): void => {
   if (
     e.target.className === "board__storybook__arrowLeft" ||
@@ -119,6 +116,13 @@ document.addEventListener("click", (e: any) => {
       "none";
   }
 });
+
+//Take stress card
+document.addEventListener("click", (e:any)=>{
+  if(e.target.id === 'interface__stressCard'){
+    stressCardAction(state, actionPoints,stressParagraphs);
+  }
+})
 
 // Navigation
 navigation();
