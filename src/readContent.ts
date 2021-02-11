@@ -35,6 +35,7 @@ export const readStressParagraph = (stressParagraphs: string[]) : void =>{
   const index = Math.floor(Math.random() * (stressParagraphs.length));
 
   (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
+  (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = '';
 
   //Slow type effect
   new TypeIt(".paragraph__text", {

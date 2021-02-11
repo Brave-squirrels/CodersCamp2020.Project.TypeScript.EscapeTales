@@ -25,7 +25,7 @@ export class GameState {
                 protected _userPuzzlesId : string[] = [], 
                 protected _userLocationId : LOCATION = LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
-                protected _storyline : ENDING = ENDING.HAPPYENDING, 
+                protected _storyline : ENDING = ENDING.BESTENDING, 
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],

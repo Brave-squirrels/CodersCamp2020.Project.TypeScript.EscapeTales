@@ -85,9 +85,9 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
     @param {state} - gameState object
     @param {id} - id of the filed - same as puzzle id
 */
-const newPuzzle = (state: GameState, id: string, puzzleArray): void =>{
+const newPuzzle = (state: GameState, id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
     //Check if we have active puzzle
-    if(state.userPuzzlesId.includes(id)){
+    if(state.userPuzzlesId.includes(getPuzzleCard(id, puzzleCardArray).puzzleId)){
         return;
     }
     //If not push to the state (whick means it's active)

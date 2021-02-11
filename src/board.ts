@@ -106,7 +106,7 @@ const getAreaContent = (boardField: BoardField, state: GameState, actionObj: Act
             break;
         case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
-            newPuzzle(state, boardField.fieldID, puzzleArray);
+            newPuzzle(state, boardField.fieldID, puzzleArray, puzzleCardArray);
             newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
             break;
         default:

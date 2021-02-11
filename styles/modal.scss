@@ -102,4 +102,21 @@
       cursor: pointer;
     }
   }
+  .puzzle__solve__input{
+    background: transparent;
+    padding: $solvePuzzlePD;
+    border: none;
+    border-bottom: 1px solid black;
+    &:focus{
+      outline: none;
+    }
+  }
+  .puzzle__solve__submit{
+    margin-top: 1em;
+    padding: $solvePuzzlePD;
+    font-weight: bold;
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }

@@ -51,19 +51,19 @@ export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<Puzzle
     let str = `
     <span class="puzzle__close" id="puzzle__close">&#10006;</span>
     <div class='puzzle__text'>
-        <div>Title: ${puzzle.content}</div>
-        <div>Hints:`;
+        <div>${puzzle.content}</div>
+        <div>Hints(${visitedCards.length}/2): <br>`;
     
     visitedCards.forEach(el=>{
-        str+=el.content
+        str+=`${el.content} <br>`
     })
     
     str+= `
         </div>
         <div>
-            <input type='text' id='${puzzle.id}input'>
+            <input type='text' id='${puzzle.id}input' class='puzzle__solve__input'>
         </div>
-        <button class='Confirm${puzzle.id}'>Confirm</button>
+        <button class='Confirm${puzzle.id} puzzle__solve__submit'>Confirm</button>
         </div>
         `;
     return str;

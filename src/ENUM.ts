@@ -23,9 +23,11 @@ export enum BoardState{
 }
 
 export enum ENDING{
-    HAPPYENDING,
-    SADENDING
-    }
+    BESTENDING,
+    WORSTENDING,
+    MEDIUMENDING1,
+    MEDIUMENDING2
+}
 
 export enum LOCATION{
     FIRST,
