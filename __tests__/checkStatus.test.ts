@@ -17,8 +17,8 @@ describe("Check if field is already explored", ()=>{
 })
 
 describe("Check if there is enough amount of points",()=>{
-    const state1 = new GameState(0, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0);
-    const state2 = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.HAPPYENDING, [], 0);
+    const state1 = new GameState(0, [],[],LOCATION.FIRST,[],ENDING.BESTENDING, [], 0);
+    const state2 = new GameState(3, [],[],LOCATION.FIRST,[],ENDING.BESTENDING, [], 0);
     it('Retun true if we have >0 amount of actionPoints', ()=>{
         expect(checkActions(state2)).toBe(true);
     })
