@@ -45,12 +45,19 @@
 }
 
 //Puzzle interface element
-.interface__puzzle__container{
+.interface__puzzle__container {
   font-weight: bold;
   padding: 2px;
   width: 100%;
   border: 2px solid black;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
+}
+
+#actionPoints {
+  font-weight: bold;
+  font-size: $interfaceElemFS;
+  text-align: center;
+  padding: 0.1rem;
 }

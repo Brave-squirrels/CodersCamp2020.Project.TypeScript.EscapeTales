@@ -40,6 +40,8 @@ const handleClick = (oldElem: HTMLElement, newElem: HTMLElement) => {
 
 // Navigate between panels
 export default function navigation() {
+  // temporary - display game panel
+  handleClick(home, board);
   // go to board panel
   startBtn.addEventListener("click", () => {
     handleClick(home, board);

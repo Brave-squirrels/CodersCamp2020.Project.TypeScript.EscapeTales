@@ -20,12 +20,23 @@
     </div>
     <div class="instructionModal">
       <div class="instruction__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare, libero tempus porta iaculis, lectus nulla tincidunt purus, vitae varius felis elit nec metus. Cras justo tortor, ultricies at fringilla a, rutrum id nulla. Pellentesque interdum mi et purus blandit, eu vulputate dolor sagittis. Proin nec suscipit diam, posuere commodo purus. Morbi aliquam risus porttitor massa commodo, ac molestie lacus mattis. Sed gravida enim quis ex sodales consequat. Donec nec mi et libero bibendum pharetra. Duis quis sem ac est facilisis hendrerit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc a laoreet felis. Etiam molestie cursus mollis. Mauris non diam in leo auctor interdum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce maximus lectus non est fringilla, quis laoreet massa dapibus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare,
+        libero tempus porta iaculis, lectus nulla tincidunt purus, vitae varius
+        felis elit nec metus. Cras justo tortor, ultricies at fringilla a,
+        rutrum id nulla. Pellentesque interdum mi et purus blandit, eu vulputate
+        dolor sagittis. Proin nec suscipit diam, posuere commodo purus. Morbi
+        aliquam risus porttitor massa commodo, ac molestie lacus mattis. Sed
+        gravida enim quis ex sodales consequat. Donec nec mi et libero bibendum
+        pharetra. Duis quis sem ac est facilisis hendrerit. Interdum et
+        malesuada fames ac ante ipsum primis in faucibus. Nunc a laoreet felis.
+        Etiam molestie cursus mollis. Mauris non diam in leo auctor interdum.
+        Pellentesque habitant morbi tristique senectus et netus et malesuada
+        fames ac turpis egestas. Fusce maximus lectus non est fringilla, quis
+        laoreet massa dapibus.
       </div>
       <span class="instruction__close" id="instruction__close">&#10006;</span>
     </div>
-    <div class="puzzle">
-    </div>
+    <div class="puzzle"></div>
 
     <template id="home-page">
       <div class="home">
@@ -44,7 +55,7 @@
         <main class="main">
           <div class="board">
             <div class="board__storybook">
-              <h1 style="text-align: center;">Story Book</h1>
+              <h1 style="text-align: center">Story Book</h1>
             </div>
             <div class="board__map">
               <!-- Add IDs for each element of map -->
@@ -75,13 +86,18 @@
           </div>
           <div class="board__interface">
             <div class="interface__column">
-              <div class="interface__column--btn"><h2 class="interface__column--title">Action Points</h2></div>
-              <div class="interface__column--btn"><h2 class="interface__column--title">Stress Card</h2></div>
+              <div class="interface__column--btn">
+                <h2 class="interface__column--title">Action Points</h2>
+                <div id="actionPoints"></div>
+              </div>
+              <div class="interface__column--btn">
+                <h2 class="interface__column--title">Stress Card</h2>
+              </div>
             </div>
             <div class="interface__element">
               <h2 class="interface__element--title">Evidence</h2>
             </div>
-            <div class="interface__element" id='interface__puzzle'>
+            <div class="interface__element" id="interface__puzzle">
               <h2 class="interface__element--title">Puzzles</h2>
             </div>
             <div class="interface__element">
@@ -101,7 +117,7 @@
         <footer class="footer">
           <div class="footer__nav">
             <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-info-circle" id='displayInstruction'></i>
+            <i class="fas fa-info-circle" id="displayInstruction"></i>
             <i class="fas fa-redo"></i>
             <i class="fas fa-save"></i>
             <i id="homeBack" class="fas fa-home"></i>
