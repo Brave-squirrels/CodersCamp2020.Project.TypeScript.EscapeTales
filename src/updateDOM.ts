@@ -1,8 +1,6 @@
 import { GameState } from "./state";
-
 import { state } from "./data";
-import { pageTemplate } from "./storyBookPage";
-
+import { pageTemplate } from "./HTMLtemplate";
 import { puzzleTemplate, puzzleSolveTemplate } from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
@@ -17,14 +15,22 @@ const updateActionDOM = (number: number): void => {
 const updateStoryBook = (): void => {
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const text = state.storyBook[state.storyBook.length - 1];
-  const content = pageTemplate(text);
+  const content = pageTemplate(
+    text,
+    state.currentPage,
+    state.storyBook.length - 1
+  );
   storyBook.innerHTML = content;
 };
 
 export const changePageStoryBook = (index: number) => {
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
-  const previousContent = pageTemplate(previousText);
+  const previousContent = pageTemplate(
+    previousText,
+    state.currentPage,
+    state.storyBook.length - 1
+  );
   storyBook.innerHTML = previousContent;
 };
 
