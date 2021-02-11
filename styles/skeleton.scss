@@ -9,10 +9,24 @@
   font-family: $lora;
 }
 
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
 html {
   background-image: $mainBG;
   background-size: cover;
   transition: all 2s ease-out;
+  scroll-behavior: smooth;
 }
 
 .container {
