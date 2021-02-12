@@ -150,6 +150,7 @@ export const paragraphsArray : Array<Paragraph> = [
     //Puzzle solve paragraphs
     new Paragraph('l1b11solve', LOCATION.FIRST, 1, '','Nothing'),
     new Paragraph('l1b12solve', LOCATION.FIRST, 1, '','Nothing'),
+    new Paragraph('l1b25solve', LOCATION.FIRST, 1, '','Nothing'),
 ]
 
 //Puzzles Card array

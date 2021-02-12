@@ -1,6 +1,5 @@
 //Import
 import {
-  state,
   actionPoints,
   boardAreas,
   paragraphsArray,
@@ -19,10 +18,29 @@ import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
 import { solvePuzzleModal } from "./updateDOM";
+import {initNewGame} from './newGame';
+import { GameState } from "./state";
+import { onLoadUpdate } from './continue';
+
+window.onload = onLoadUpdate;
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("map__square")) {
+    const stateData = JSON.parse(localStorage.getItem('state')!);
+    const state = new GameState(
+      stateData._actionNumbers,
+      stateData._userParagraphsId,
+      stateData._userPuzzlesId,
+      stateData._userLocationId,
+      stateData._visitedAreasId,
+      stateData._storyLine,
+      stateData._userEvidencesId,
+      stateData._progressPoints,
+      stateData._visitedAreas,
+      stateData._storyBook,
+      stateData._currentPage
+    )
     //Getting ID of DOM element to find boardArea object
     const areaID: string = e.target.id;
 
@@ -55,14 +73,30 @@ document.addEventListener("click", (e: any): void => {
       puzzleCardArray,
       puzzleArray
     );
+    localStorage.setItem('state', JSON.stringify(state));
   }
 });
 
 //Puzzle solved event
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("interface__puzzle__container")) {
+    const stateData = JSON.parse(localStorage.getItem('state')!);
+    const state = new GameState(
+      stateData._actionNumbers,
+      stateData._userParagraphsId,
+      stateData._userPuzzlesId,
+      stateData._userLocationId,
+      stateData._visitedAreasId,
+      stateData._storyLine,
+      stateData._userEvidencesId,
+      stateData._progressPoints,
+      stateData._visitedAreas,
+      stateData._storyBook,
+      stateData._currentPage
+    )
     //Display puzzle input solve modal
     const puzzleID: string = e.target.id;
+    console.log(puzzleID);
     (document.querySelector(".puzzle") as HTMLElement).style.display = "block";
 
     //Add data to the modal
@@ -95,6 +129,20 @@ document.addEventListener("click", (e: any): void => {
 
 //Change story book page
 document.addEventListener("click", (e: any): void => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+    const state = new GameState(
+      stateData._actionNumbers,
+      stateData._userParagraphsId,
+      stateData._userPuzzlesId,
+      stateData._userLocationId,
+      stateData._visitedAreasId,
+      stateData._storyLine,
+      stateData._userEvidencesId,
+      stateData._progressPoints,
+      stateData._visitedAreas,
+      stateData._storyBook,
+      stateData._currentPage
+    )
   if (
     e.target.className === "board__storybook__arrowLeft" ||
     e.target.className === "fas fa-reply"
@@ -106,6 +154,7 @@ document.addEventListener("click", (e: any): void => {
   ) {
     state.nextStoryBookPage();
   }
+  localStorage.setItem('state', JSON.stringify(state));
 });
 
 //Display instruction
@@ -125,12 +174,27 @@ document.addEventListener("click", (e: any) => {
 
 //Take stress card
 document.addEventListener("click", (e: any) => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+    const state = new GameState(
+      stateData._actionNumbers,
+      stateData._userParagraphsId,
+      stateData._userPuzzlesId,
+      stateData._userLocationId,
+      stateData._visitedAreasId,
+      stateData._storyLine,
+      stateData._userEvidencesId,
+      stateData._progressPoints,
+      stateData._visitedAreas,
+      stateData._storyBook,
+      stateData._currentPage
+    )
   if (
     e.target.id === "interface__stressCard" ||
     e.target.id === "interface__stressCard__title"
   ) {
     stressCardAction(state, actionPoints, stressParagraphs);
   }
+  localStorage.setItem('state', JSON.stringify(state));
 });
 
 //Close not enough points
@@ -155,6 +219,13 @@ document.addEventListener("click", (e: any) => {
     ) as HTMLElement).style.display = "none";
   }
 });
+
+//Start new game
+document.addEventListener('click', (e : any) => {
+  if(e.target === (document.querySelector('#newGameBtn') as HTMLElement)){
+    initNewGame();
+  }
+})
 
 // Navigation
 navigation();

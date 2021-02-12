@@ -1,5 +1,5 @@
 import { GameState } from "./state";
-import { state, evidencesArray } from "./data";
+import { evidencesArray } from "./data";
 import { pageTemplate } from "./HTMLtemplate";
 import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate } from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
@@ -14,6 +14,20 @@ const updateActionDOM = (number: number): void => {
 
 //Update storyBook DOM
 const updateStoryBook = (): void => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+        const state = new GameState(
+        stateData._actionNumbers,
+        stateData._userParagraphsId,
+        stateData._userPuzzlesId,
+        stateData._userLocationId,
+        stateData._visitedAreasId,
+        stateData._storyLine,
+        stateData._userEvidencesId,
+        stateData._progressPoints,
+        stateData._visitedAreas,
+        stateData._storyBook,
+        stateData._currentPage
+        )
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const text = state.storyBook[state.storyBook.length - 1];
   const content = pageTemplate(
@@ -25,6 +39,20 @@ const updateStoryBook = (): void => {
 };
 
 const changePageStoryBook = (index: number) => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+        const state = new GameState(
+        stateData._actionNumbers,
+        stateData._userParagraphsId,
+        stateData._userPuzzlesId,
+        stateData._userLocationId,
+        stateData._visitedAreasId,
+        stateData._storyLine,
+        stateData._userEvidencesId,
+        stateData._progressPoints,
+        stateData._visitedAreas,
+        stateData._storyBook,
+        stateData._currentPage
+        )
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
   const previousContent = pageTemplate(
@@ -37,6 +65,20 @@ const changePageStoryBook = (index: number) => {
 
 //Update evidences DOM
 const updateEvidencesDOM = (): void => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+        const state = new GameState(
+        stateData._actionNumbers,
+        stateData._userParagraphsId,
+        stateData._userPuzzlesId,
+        stateData._userLocationId,
+        stateData._visitedAreasId,
+        stateData._storyLine,
+        stateData._userEvidencesId,
+        stateData._progressPoints,
+        stateData._visitedAreas,
+        stateData._storyBook,
+        stateData._currentPage
+        )
   //Get the HTML container
   const cnt = document.querySelector("#interface__evidences") as HTMLElement;
 
@@ -113,12 +155,27 @@ const solvePuzzleModal = (
 
 //Update progressPoints DOM
 const updateProgressDOM = (): void => {
+  const stateData = JSON.parse(localStorage.getItem('state')!);
+        const state = new GameState(
+        stateData._actionNumbers,
+        stateData._userParagraphsId,
+        stateData._userPuzzlesId,
+        stateData._userLocationId,
+        stateData._visitedAreasId,
+        stateData._storyLine,
+        stateData._userEvidencesId,
+        stateData._progressPoints,
+        stateData._visitedAreas,
+        stateData._storyBook,
+        stateData._currentPage
+        )
   switch(state.progressPoints){
     case 1:
       (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
       break;
     case 2:
       (document.querySelector('#token2') as HTMLElement).style.opacity = '1';
+      (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
       break;
   }
 };

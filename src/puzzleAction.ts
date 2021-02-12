@@ -39,11 +39,17 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
         //Get reward
         rewardPuzzle(puzzleDOM, puzzleArray, state);
         //Find paragraph
-        const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===`${puzzleDOM}solve`)!;
+        let puzzleParagraph;
+         paragraphs.forEach((c : Paragraph) => {
+            if(c.id===`${puzzleDOM}solve`){
+                puzzleParagraph = c;
+            }
+        })!;
         //Add paragraph to the state
         state.addParagraphsId(puzzleParagraph.id);
         //DOM function with paragraph and solve content
         read(puzzleParagraph);
+        localStorage.setItem('state', JSON.stringify(state));
     }else{
         //Run DOM function that will tell that the password is incorrect
         incorrectPuzzle();
@@ -65,6 +71,7 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
         case PuzzleReward.EVIDENCE:
             //Add evidence to the state
             state.addEvidencesId(id);
+            localStorage.setItem('state', JSON.stringify(state));
             //Update evidences in interface
             updateEvidencesDOM();
             break;
@@ -72,6 +79,7 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
             //Add progressPoint to the state
             state.addProgressPoint();
             //Update progressPoints in interface
+            localStorage.setItem('state', JSON.stringify(state));
             updateProgressDOM();
             break;
     }
