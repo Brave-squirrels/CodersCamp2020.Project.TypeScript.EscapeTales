@@ -19,6 +19,7 @@ import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
 import { solvePuzzleModal } from "./updateDOM";
+import { LOCATION } from "./ENUM";
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -57,6 +58,7 @@ document.addEventListener("click", (e: any): void => {
     );
   }
 });
+import { format } from "prettier";
 
 //Puzzle solved event
 document.addEventListener("click", (e: any): void => {
@@ -153,6 +155,24 @@ document.addEventListener("click", (e: any) => {
     (document.querySelector(
       ".areaExplored__modal"
     ) as HTMLElement).style.display = "none";
+  }
+});
+
+// Go next
+document.addEventListener("click", (e: any) => {
+  if (/goNext/.test(e.target.className)) {
+    const currentBoard = document.querySelector(".activeBoard")!;
+    const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
+
+    if (currentId !== 1) {
+      const nextBoard = document.querySelector(`#board${currentId - 1}`)!;
+      currentBoard.classList.toggle("activeBoard");
+      nextBoard.classList.toggle("activeBoard");
+    } else {
+      const nextBoard = document.querySelector(`#board${3}`)!;
+      currentBoard.classList.toggle("activeBoard");
+      nextBoard.classList.toggle("activeBoard");
+    }
   }
 });
 
