@@ -36,7 +36,7 @@ export const boardAreas : Array<BoardField> = [
     new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b43', 'l1b43', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b44', 'l1b44', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.PUZZLE),
     //Second location
     new BoardField(BoardState.PENDING, 'l2b11', 'l2b11', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l2b12', 'l2b12', BoardContent.PUZZLE),
@@ -165,7 +165,7 @@ export const puzzleCardArray : Array<PuzzleCard> = [
 //Puzzles objects array
 export const puzzleArray : Array<Puzzle> = [
     new Puzzle('l1b11','l1b11solve', ['l1b15','l1b11'], [], PuzzleReward.EVIDENCE, 'Solution', 'MainPuzzle1'),
-    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b13'], [], PuzzleReward.EVIDENCE, 'Solution2', 'MainPuzzle2'),
+    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b13'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2'),
     new Puzzle('l1b25','l1b25solve', ['l1b31','l1b32'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2')
 ]
 

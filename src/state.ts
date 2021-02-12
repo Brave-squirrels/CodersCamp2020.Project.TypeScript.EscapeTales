@@ -129,4 +129,7 @@ export class GameState {
         get currentPage(){
             return this._currentPage;
         }
+        get progressPoints(){
+            return this._progressPoints;
+        }
 }

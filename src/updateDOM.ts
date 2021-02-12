@@ -112,7 +112,16 @@ const solvePuzzleModal = (
 };
 
 //Update progressPoints DOM
-const updateProgressDOM = (): void => {};
+const updateProgressDOM = (): void => {
+  switch(state.progressPoints){
+    case 1:
+      (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
+      break;
+    case 2:
+      (document.querySelector('#token2') as HTMLElement).style.opacity = '1';
+      break;
+  }
+};
 
 //Update area state
 /*
