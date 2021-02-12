@@ -66,8 +66,8 @@ export class GameState {
             this._userEvidencesId.pop();
         }
 
-        addProgressPoint(){
-            ++this._progressPoints;
+        addProgressPoint(num){
+            this._progressPoints = num;
         }
 
         removePuzzle(ID: string){
@@ -85,6 +85,10 @@ export class GameState {
             this._currentPage = this._storyBook.length-1;
         }
 
+        addStoryBook(story){
+            this._storyBook = story;
+        }
+
         nextStoryBookPage(){
             this._currentPage++;
             changePageStoryBook(this._currentPage);
@@ -93,6 +97,10 @@ export class GameState {
         previousStoryBookPage(){
             this._currentPage--;
             changePageStoryBook(this._currentPage);
+        }
+
+        currentPageChange(num){
+            this._currentPage = num;
         }
 
         get actionNumbers(){

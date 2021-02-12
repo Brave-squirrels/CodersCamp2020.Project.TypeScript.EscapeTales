@@ -15,9 +15,9 @@ export const boardAreas : Array<BoardField> = [
     //First location
     new BoardField(BoardState.PENDING, 'l1b11', 'l1b11', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b12', 'l1b12', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b13', 'l1b13', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b14', 'l1b14', BoardContent.CLUE),
-    new BoardField(BoardState.PENDING, 'l1b15', 'l1b15', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b13', 'l1b13', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b14', 'l1b14', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b15', 'l1b15', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b21', 'l1b21', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b22', 'l1b22', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b23', 'l1b23', BoardContent.PUZZLE),
@@ -28,8 +28,8 @@ export const boardAreas : Array<BoardField> = [
     new BoardField(BoardState.PENDING, 'l1b33', 'l1b33', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b34', 'l1b34', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b35', 'l1b35', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b43', 'l1b43', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b44', 'l1b44', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.PUZZLE),
@@ -85,7 +85,7 @@ export const paragraphsArray : Array<Paragraph> = [
     new Paragraph('l1b12', LOCATION.FIRST, 1, 'U found a clue!', 'Clue'),
     new Paragraph('l1b13', LOCATION.FIRST, 1, 'Smthing','Nothing'),
     new Paragraph('l1b14', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b15', LOCATION.FIRST, 1, '','Nothing'),
+    new Paragraph('l1b15', LOCATION.FIRST, 1, 'lmao','Nothing'),
     new Paragraph('l1b21', LOCATION.FIRST, 1, 'asd','Nothing'),
     new Paragraph('l1b22', LOCATION.FIRST, 1, '','Nothing'),
     new Paragraph('l1b23', LOCATION.FIRST, 1, '','Nothing'),
@@ -145,25 +145,30 @@ export const paragraphsArray : Array<Paragraph> = [
     new Paragraph('l3b45', LOCATION.THIRD, 1, '','Nothing'),
     //Puzzle solve paragraphs
     new Paragraph('l1b11solve', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b12solve', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b25solve', LOCATION.FIRST, 1, '','Nothing'),
+    new Paragraph('l1b12solve', LOCATION.FIRST, 1, '','l2'),
+    new Paragraph('l1b13solve', LOCATION.FIRST, 1, '','l3'),
+    new Paragraph('l1b41solve', LOCATION.FIRST, 1, '','l3')
+
 ]
 
 //Puzzles Card array
 export const puzzleCardArray : Array<PuzzleCard> = [
     new PuzzleCard('l1b11', 'l1b11', 'Hint1'),
     new PuzzleCard('l1b12', 'l1b12', 'Hint2'),
-    new PuzzleCard('l1b13', 'l1b12', 'Hint2'),
-    new PuzzleCard('l1b21', 'l1b11', 'Hint3'),
-    new PuzzleCard('l1b25', 'l1b25', 'Hint3'),
-    new PuzzleCard('l1b32', 'l1b25', 'Hint32')
+    new PuzzleCard('l1b13', 'l1b13', 'Hint8'),
+    new PuzzleCard('l1b14', 'l1b13', 'Hint3'),
+    new PuzzleCard('l1b15', 'l1b12', 'Hint3'),
+    new PuzzleCard('l1b32', 'l1b11', 'Hint32'),
+    new PuzzleCard('l1b41', 'l1b41', 'Hint3'),
+    new PuzzleCard('l1b42', 'l1b41', 'Hint32')
 ]
 
 //Puzzles objects array
 export const puzzleArrayMain : Array<Puzzle> = [
-    new Puzzle('l1b11','l1b11solve', ['l1b15','l1b11'], [], PuzzleReward.EVIDENCE, 'Solution', 'MainPuzzle1'),
-    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b13'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2'),
-    new Puzzle('l1b25','l1b25solve', ['l1b31','l1b32'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2')
+    new Puzzle('l1b11','l1b11solve', ['l1b21','l1b11'], [], PuzzleReward.EVIDENCE, 'Solution', 'MainPuzzle1'),
+    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b15'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2'),
+    new Puzzle('l1b13','l1b13solve', ['l1b13','l1b14'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle3'),
+    new Puzzle('l1b41','l1b41solve', ['l1b41','l1b42'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle4')
 ]
 
 //Stress card paragraphs

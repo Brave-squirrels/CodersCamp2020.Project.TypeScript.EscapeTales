@@ -17,7 +17,7 @@ const updateStoryBook = (): void => {
   //Get state from localStorage
   const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
-  const text = state.storyBook[state.storyBook.length - 1];
+  const text = state.storyBook[state.currentPage];
   const content = pageTemplate(
     text,
     state.currentPage,
@@ -39,15 +39,9 @@ const changePageStoryBook = (index: number) => {
   storyBook.innerHTML = previousContent;
 };
 
-export function initStoryBook(state){
+export function initStoryBook(){
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
-  const text = state.storyBook[state.storyBook.length - 1];
-  const content = pageTemplate(
-    text,
-    state.currentPage,
-    state.storyBook.length - 1
-  );
-  storyBook.innerHTML = content;
+  storyBook.innerHTML = '<h1 style="text-align: center;">Story Book</h1>';
 }
 
 //Update evidences DOM
@@ -128,8 +122,8 @@ const solvePuzzleModal = (
 
 //Update progressPoints DOM
 const updateProgressDOM = (): void => {
-  //Get state from localStorage
   const state = getStateLS();
+  //Get state from localStorage
   switch(state.progressPoints){
     case 1:
       (document.querySelector('#token1') as HTMLElement).style.opacity = '1';

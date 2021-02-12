@@ -5,6 +5,7 @@ import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
 import {updatePuzzleDOM, updateEvidencesDOM, updateProgressDOM} from './updateDOM';
+import {getStateLS} from './getLS';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -26,7 +27,7 @@ const getPuzzleCard = (ID: string, puzzleCardArray: Array<PuzzleCard>) : PuzzleC
     @param {puzzleCardArray} - array of all puzzle cards
     @param {paragraphs} - array of all paragraphs
 */
-const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
+const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
 
     //Getting value - password typed by the user
     const passwordValue = (<HTMLInputElement>document.querySelector(`#${puzzleDOM}input`)).value;
@@ -37,7 +38,7 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
     //Check if solution is correct
     if(passwordValue === currentPuzzle.solution){
         //Get reward
-        rewardPuzzle(puzzleDOM, puzzleArray, state);
+        rewardPuzzle(puzzleDOM, puzzleArray);
         //Find paragraph
         let puzzleParagraph;
          paragraphs.forEach((c : Paragraph) => {
@@ -46,10 +47,11 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
             }
         })!;
         //Add paragraph to the state
-        state.addParagraphsId(puzzleParagraph.id);
+        const state2 = getStateLS();
+        state2.addParagraphsId(puzzleParagraph.id);
         //DOM function with paragraph and solve content
+        localStorage.setItem('state', JSON.stringify(state2));
         read(puzzleParagraph);
-        localStorage.setItem('state', JSON.stringify(state));
     }else{
         //Run DOM function that will tell that the password is incorrect
         incorrectPuzzle();
@@ -63,30 +65,35 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
     @param {puzzleArray} - array of all puzzle objects
     @param {state} - GameState object
 */
-const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState): void => {
+const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
     //Find the puzzle
     const currentPuzzle: Puzzle = getPuzzle(id, puzzleArray);
     //Use switch to get other evidence or progress
-    switch(currentPuzzle.reward){
-        case PuzzleReward.EVIDENCE:
-            //Add evidence to the state
-            state.addEvidencesId(id);
-            localStorage.setItem('state', JSON.stringify(state));
-            //Update evidences in interface
-            updateEvidencesDOM();
-            break;
-        case PuzzleReward.PROGRESSPOINT:
-            //Add progressPoint to the state
-            state.addProgressPoint();
+    if(currentPuzzle.reward===PuzzleReward.EVIDENCE){
+         //Add evidence to the state
+         const state3 = getStateLS();
+         state3.addEvidencesId(id);
+         //Update evidences in interface
+         localStorage.setItem('state', JSON.stringify(state3));
+         updateEvidencesDOM();
+    }else if (currentPuzzle.reward===PuzzleReward.PROGRESSPOINT){
+        const state4 = getStateLS();
+        console.log(state4);
+            if(state4.progressPoints===0){
+                state4.addProgressPoint(1);
+            }else{
+                state4.addProgressPoint(2);
+            }
             //Update progressPoints in interface
-            localStorage.setItem('state', JSON.stringify(state));
+            localStorage.setItem('state', JSON.stringify(state4));
             updateProgressDOM();
-            break;
     }
+    const state2 = getStateLS();
     //Remove puzzle from the state
-    state.removePuzzle(id);
+    state2.removePuzzle(id);
+    localStorage.setItem('state', JSON.stringify(state2));
     //Update puzzleCards and puzzle's in interface
-    updatePuzzleDOM(state, puzzleArray);
+    updatePuzzleDOM(state2, puzzleArray);
     (document.querySelector(".puzzle") as HTMLElement).style.display = 'none';
 }
 
@@ -95,15 +102,25 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState):
     @param {state} - gameState object
     @param {id} - id of the filed - same as puzzle id
 */
-const newPuzzle = (state: GameState, id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
+const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
+    const state = getStateLS();
     //Check if we have active puzzle
     if(state.userPuzzlesId.includes(getPuzzleCard(id, puzzleCardArray).puzzleId)){
         return;
     }
-    //If not push to the state (whick means it's active)
-    state.addPuzzlesId(id);
+    //If not push to the state (which means it's active)
+    let puz = '';
+    puzzleArray.forEach(e=>{
+        e.puzzleCards.forEach(n=>{
+            if(n===id){
+                puz = e.id;
+            }
+        })
+    })
+    state.addPuzzlesId(puz);
     //Update puzzle interface
     updatePuzzleDOM(state, puzzleArray);
+    localStorage.setItem("state", JSON.stringify(state));
 }
 
 //Add puzzle card to the puzzle object
@@ -119,6 +136,8 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
     const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
+    const puzzleArrayMain = puzzleArray;
+    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
 }
 
 export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

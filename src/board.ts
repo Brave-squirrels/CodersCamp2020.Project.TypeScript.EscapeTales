@@ -8,11 +8,11 @@ import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {read, readStressParagraph} from './readContent';
 import {updateAreaDOM, updateActionDOM, updateEvidencesDOM} from './updateDOM';
+import {getStateLS} from './getLS';
 
 //BoardArea validation
 //Check the status of the current board
 const checkStatus = (currentField: BoardField, state: GameState): boolean =>{
-    //return currentField.status === BoardState.PENDING;
     return state.visitedAreas.includes(currentField._fieldID);
 }
 //Check the amount of action points in game state
@@ -48,8 +48,8 @@ const updateAction = (numOfPoints: ActionPointsEnum,state: GameState): void=>{
   @param {actionPoints} - actionPoints Object
   Mark area, as explored
 */
-const move = (currentField: BoardField, state: GameState) : void=>{
-
+const move = (currentField: BoardField) : void=>{
+    const state = getStateLS();
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
     //Push id of area to the state and mark area in DOM as explored
@@ -57,6 +57,7 @@ const move = (currentField: BoardField, state: GameState) : void=>{
     updateAreaDOM(state);
     //Remove 1 action point;
     state.actionNumbers -= 1;
+    localStorage.setItem("state", JSON.stringify(state));
     //Update actionPoints in interface
     updateActionDOM(state.actionNumbers)
 }
@@ -68,14 +69,15 @@ const move = (currentField: BoardField, state: GameState) : void=>{
     @param {currentField} - current field object that we are moving on
     @param {paragraphsArray} - array of all the paragraphs
 */
-const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Paragraph>): void=>{
-
+const readParagraph = (id: string, paragraphsArray: Array<Paragraph>): void=>{
+    const state = getStateLS();
     //Find current paragraph
     const currentParagraph : Paragraph = paragraphsArray.find((c: Paragraph)=>c.id === id)!;
     //Push current paragraph to the state
     if(currentParagraph){
         state.addParagraphsId(currentParagraph.id);
     }
+    localStorage.setItem("state", JSON.stringify(state));
     //Run DOM paragraphRead function
     read(currentParagraph);
 }
@@ -88,7 +90,8 @@ const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Para
     @param {puzzleCardArray} - array of puzzle cards
     @param {puzzleArray} - array of all the puzzle objects
 */
-const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
+const getAreaContent = (boardField: BoardField, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
+    const state = getStateLS();
     switch(boardField.content){
         case BoardContent.CLUE:
             //Update points
@@ -98,7 +101,7 @@ const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArra
             break;
         case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
-            newPuzzle(state, boardField.fieldID, puzzleArray, puzzleCardArray);
+            newPuzzle(boardField.fieldID, puzzleArray, puzzleCardArray);
             newPuzzleCard(boardField.fieldID, puzzleCardArray, puzzleArray);
             break;
         default:
@@ -115,16 +118,16 @@ const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArra
     @param {puzzleCardArray} - array of all puzzleCards
     @param {puzzleArray} - array of all puzzle objects
 */
-const mainAction = (areaID: string, state: GameState, currentField: BoardField,paragraphsArray: Array<Paragraph>, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle> ) : void=>{
+const mainAction = (areaID: string, currentField: BoardField,paragraphsArray: Array<Paragraph>, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle> ) : void=>{
 
      //Mark the board, as explored and remove 1 action point
-     move(currentField, state);
+     move(currentField);
 
      //Read paragraph and add to the state
-     readParagraph(areaID, state, paragraphsArray);
-
+     readParagraph(areaID, paragraphsArray);
+    
      //Get content from the area
-     getAreaContent(currentField, state, puzzleCardArray,puzzleArray);
+     getAreaContent(currentField, puzzleCardArray,puzzleArray);
 }
 
 //Update points and remove evidence if we have any

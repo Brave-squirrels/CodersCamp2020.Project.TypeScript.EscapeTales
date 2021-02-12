@@ -20,6 +20,7 @@ import {initNewGame} from './newGame';
 import { onLoadUpdate } from './continue';
 import {getStateLS, getPuzzleLS} from './getLS';
 import {nextLocation} from './goNext';
+import {updateStoryBook} from './updateDOM';
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -51,16 +52,11 @@ document.addEventListener("click", (e: any): void => {
     //Function which run the movement and content events
     mainAction(
       areaID,
-      state,
       currentField,
       paragraphsArray,
       puzzleCardArray,
       puzzleArrayMain
     );
-    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
-    localStorage.setItem("state", JSON.stringify(state));
-    puzzleArrayMain = getPuzzleLS();
-    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
   }
 });
 
@@ -68,21 +64,20 @@ document.addEventListener("click", (e: any): void => {
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("interface__puzzle__container")) {
     //Get state from localStorage
-    const state = getStateLS();
+    const puzzleArray = getPuzzleLS();
     //Display puzzle input solve modal
     const puzzleID: string = e.target.id;
     (document.querySelector(".puzzle") as HTMLElement).style.display = "block";
 
     //Add data to the modal
-    solvePuzzleModal(puzzleID, getPuzzleLS(), puzzleCardArray);
+    solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
 
     document.addEventListener("click", (evnt: any): void => {
       if (evnt.target.classList.contains(`Confirm${puzzleID}`)) {
         //Run validation puzzle function
-        solvePuzzle(puzzleID, state, getPuzzleLS(), paragraphsArray);
+        solvePuzzle(puzzleID, puzzleArray, paragraphsArray);
       }
     });
-    localStorage.setItem('state', JSON.stringify(state));
   }
 });
 
@@ -111,11 +106,15 @@ document.addEventListener("click", (e: any): void => {
     e.target.className === "fas fa-reply"
   ) {
     state.previousStoryBookPage();
+    localStorage.setItem('state', JSON.stringify(state));
+    updateStoryBook();
   } else if (
     e.target.className === "board__storybook__arrowRight" ||
     e.target.className === "fas fa-share"
   ) {
     state.nextStoryBookPage();
+    localStorage.setItem('state', JSON.stringify(state));
+    updateStoryBook();
   }
 });
 

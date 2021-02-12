@@ -1,5 +1,5 @@
 import {GameState} from './state';
-import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook} 
+import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook, initStoryBook} 
 from './updateDOM';
 import {boardAreas, puzzleArrayMain} from './data';
 import {getStateLS, getPuzzleLS} from './getLS';
@@ -27,12 +27,12 @@ export const initNewGame = () : void =>{
     const nextBoard = document.querySelector(`#board${1}`)!;
     currentBoard.classList.toggle("activeBoard");
     nextBoard.classList.toggle("activeBoard");
-
     //Reset interface
-    updateStoryBook();
+    initStoryBook();
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();
     updatePuzzleDOM(state,puzzleArray);
     updateProgressDOM();
-    localStorage.setItem('state', JSON.stringify(state));
+    const state2 = getStateLS();
+    localStorage.setItem('state', JSON.stringify(state2));
 }
