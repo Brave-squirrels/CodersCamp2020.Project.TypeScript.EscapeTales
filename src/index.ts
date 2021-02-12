@@ -6,9 +6,15 @@ import {
   paragraphsArray,
   puzzleCardArray,
   puzzleArray,
-  stressParagraphs
+  stressParagraphs,
 } from "./data";
-import { getBoard, checkActions, checkStatus, mainAction, stressCardAction } from "./board";
+import {
+  getBoard,
+  checkActions,
+  checkStatus,
+  mainAction,
+  stressCardAction,
+} from "./board";
 import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
@@ -118,25 +124,37 @@ document.addEventListener("click", (e: any) => {
 });
 
 //Take stress card
-document.addEventListener("click", (e:any)=>{
-  if(e.target.id === 'interface__stressCard' || e.target.id ==='interface__stressCard__title'){
-    stressCardAction(state, actionPoints,stressParagraphs);
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target.id === "interface__stressCard" ||
+    e.target.id === "interface__stressCard__title"
+  ) {
+    stressCardAction(state, actionPoints, stressParagraphs);
   }
-})
+});
 
 //Close not enough points
-document.addEventListener('click', (e : any)=>{
-  if(e.target.id === 'noPoints__close' || e.target === (document.querySelector('.noPoints__modal') as HTMLElement)){
-    (document.querySelector('.noPoints__modal') as HTMLElement).style.display = 'none';
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target.id === "noPoints__close" ||
+    e.target === (document.querySelector(".noPoints__modal") as HTMLElement)
+  ) {
+    (document.querySelector(".noPoints__modal") as HTMLElement).style.display =
+      "none";
   }
-})
+});
 
 //Close areaExplored
-document.addEventListener('click', (e : any)=>{
-  if(e.target.id === 'areaExplored__close' || e.target === (document.querySelector('.areaExplored__modal') as HTMLElement)){
-    (document.querySelector('.areaExplored__modal') as HTMLElement).style.display = 'none';
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target.id === "areaExplored__close" ||
+    e.target === (document.querySelector(".areaExplored__modal") as HTMLElement)
+  ) {
+    (document.querySelector(
+      ".areaExplored__modal"
+    ) as HTMLElement).style.display = "none";
   }
-})
+});
 
 // Navigation
 navigation();

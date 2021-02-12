@@ -1,8 +1,10 @@
-.home-container {
+.menu-container {
+  display: none;
+  opacity: 0;
   transition: all 0.5s ease-out;
 }
 
-.home {
+.menu {
   background: url("../assets/house.jpeg") no-repeat fixed center;
   background-size: cover;
   width: 100vw;
@@ -10,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 1s ease-out;
 
   &__content {
     display: flex;
@@ -18,25 +21,24 @@
     max-width: 80vw;
     max-height: 90vh;
     justify-content: space-between;
+  }
 
-    &--title {
-      text-transform: uppercase;
-      font-family: Lora;
-      font-weight: bold;
-      font-size: 80px;
-      font-size: $navigationButtons;
-      text-align: center;
-      color: #999999;
-      align-self: flex-start;
-    }
+  &__info {
+    font-size: clamp(16px, 1.5vw, 4vh);
+    color: $fontColorLight;
+    max-width: 40%;
+    text-align: justify;
+  }
+
+  &__button {
+    align-self: center;
+    text-align: right;
 
     &--button {
       text-transform: uppercase;
       font-family: Lora;
       font-weight: bold;
-      font-size: 86px;
       font-size: $navigationButtons;
-      line-height: 110px;
       color: #c28f56;
       text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
       align-self: flex-end;
@@ -46,6 +48,10 @@
       &:hover {
         color: $hoverButtonColor;
       }
+    }
+    &--ng {
+      margin-top: 1rem;
+      font-size: clamp(30px, 3.2vw, 10vh);
     }
   }
 }
