@@ -38,14 +38,26 @@
       }
     }
 
+    .interface__column--title {
+      font-size: $interfaceTitleFS;
+    }
+
     .interface__stressCard{
+      background-image: $stressCardBG;
+      background-size: cover;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      font-size: 40px;
       &:hover{
         cursor: pointer;
       }
     }
 
-    .interface__column--title {
-      font-size: $interfaceTitleFS;
+    .interface__column--stressCard {
+      font-size: clamp(15px, 2.2vw, 2.2vh);;
+      font-weight: 500;
+      color: rgb(255, 255, 255);
     }
 
   }
@@ -92,5 +104,12 @@
     text-align: center;
     padding: 0.1rem;
   }
+
+  .interface__goNext{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
 }
 
