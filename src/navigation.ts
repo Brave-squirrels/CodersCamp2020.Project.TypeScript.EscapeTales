@@ -42,6 +42,8 @@ function boardFromTemplate(num: number) {
     const board = document.querySelector(".board__map")!;
     board.id = `board${i}`;
 
+    board.innerHTML = board.innerHTML.replace(/\{\{locationId\}\}/g, `${i}`);
+
     // first board is visible as default
     i === num && board.classList.toggle("activeBoard");
   }
