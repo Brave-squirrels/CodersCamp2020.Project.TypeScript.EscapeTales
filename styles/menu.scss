@@ -24,7 +24,7 @@
   }
 
   &__info {
-    font-size: clamp(16px, 1.5vw, 4vh);
+    font-size: clamp(16px, 1.5vw, 3vh);
     color: $fontColorLight;
     max-width: 40%;
     text-align: justify;
@@ -51,7 +51,7 @@
     }
     &--ng {
       margin-top: 1rem;
-      font-size: clamp(30px, 3.2vw, 10vh);
+      font-size: clamp(30px, 3.2vw, 7vh);
     }
   }
 }
