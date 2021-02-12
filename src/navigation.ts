@@ -37,15 +37,14 @@ function handleClick(oldElem: HTMLElement, newElem: HTMLElement) {
     @param {num} - number of boards to render
 */
 function boardFromTemplate(num: number) {
-  for (let i = 1; i <= num; i++) {
+  for (let i = num; i > 0; i--) {
     createFormTemplate("board-map", "board-container");
     const board = document.querySelector(".board__map")!;
     board.id = `board${i}`;
-
     board.innerHTML = board.innerHTML.replace(/\{\{locationId\}\}/g, `${i}`);
 
     // first board is visible as default
-    i === num && board.classList.toggle("activeBoard");
+    i === 1 && board.classList.toggle("activeBoard");
   }
 }
 

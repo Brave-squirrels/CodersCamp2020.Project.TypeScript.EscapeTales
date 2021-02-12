@@ -226,12 +226,12 @@ document.addEventListener("click", (e: any) => {
     const currentBoard = document.querySelector(".activeBoard")!;
     const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
 
-    if (currentId !== 1) {
-      const nextBoard = document.querySelector(`#board${currentId - 1}`)!;
+    if (currentId !== 3) {
+      const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
       currentBoard.classList.toggle("activeBoard");
       nextBoard.classList.toggle("activeBoard");
     } else {
-      const nextBoard = document.querySelector(`#board${3}`)!;
+      const nextBoard = document.querySelector(`#board${1}`)!;
       currentBoard.classList.toggle("activeBoard");
       nextBoard.classList.toggle("activeBoard");
     }
