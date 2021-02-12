@@ -29,7 +29,6 @@ export const read = (paragraph: Paragraph): void => {
     Read stressCard
     @param {stressParagraphs} - array of stress paragraphs
 */
-
 export const readStressParagraph = (stressParagraphs: string[]) : void =>{
 
   const index = Math.floor(Math.random() * (stressParagraphs.length));
@@ -49,19 +48,39 @@ export const readStressParagraph = (stressParagraphs: string[]) : void =>{
     Function with notification that the solution of a puzzle is incorrect
 */
 export const incorrectPuzzle = (): void => {
-  console.log("Password is incorrect");
+
+  const validInput = document.querySelector('.puzzle__solve__input') as HTMLElement;
+  validInput.classList.add('incorrect__solution');
+
+  setTimeout(function(){
+      validInput.classList.remove('incorrect__solution');
+  }, 500);
+  
 };
 
 /*
     Notification that the player has not enough points
 */
 export const notEnoughPoints = (): void => {
-  console.log("Not enough points");
+  (document.querySelector('.noPoints__modal') as HTMLElement).style.display = 'block';
+  (document.querySelector('.noPoints__text') as HTMLElement).innerHTML = '';
+  new TypeIt(".noPoints__text", {
+    strings: `You have not enough action points`,
+    speed: 80,
+    loop: false,
+  }).go();
 };
+
 
 /*
     Notification that area is already explored
 */
 export const areaExplored = (): void => {
-  console.log("area is already explored");
+  (document.querySelector('.areaExplored__modal') as HTMLElement).style.display = 'block';
+  (document.querySelector('.areaExplored__text') as HTMLElement).innerHTML = '';
+  new TypeIt(".areaExplored__text", {
+    strings: `Area has been already explored`,
+    speed: 80,
+    loop: false,
+  }).go();
 };

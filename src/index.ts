@@ -124,5 +124,19 @@ document.addEventListener("click", (e:any)=>{
   }
 })
 
+//Close not enough points
+document.addEventListener('click', (e : any)=>{
+  if(e.target.id === 'noPoints__close' || e.target === (document.querySelector('.noPoints__modal') as HTMLElement)){
+    (document.querySelector('.noPoints__modal') as HTMLElement).style.display = 'none';
+  }
+})
+
+//Close areaExplored
+document.addEventListener('click', (e : any)=>{
+  if(e.target.id === 'areaExplored__close' || e.target === (document.querySelector('.areaExplored__modal') as HTMLElement)){
+    (document.querySelector('.areaExplored__modal') as HTMLElement).style.display = 'none';
+  }
+})
+
 // Navigation
 navigation();
