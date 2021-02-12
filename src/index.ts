@@ -13,14 +13,14 @@ import {
   stressCardAction,
 } from "./board";
 import { solvePuzzle } from "./puzzleAction";
-import { notEnoughPoints, areaExplored } from "./readContent";
+import { notEnoughPoints, areaExplored, readNotEnughPR } from "./readContent";
 import navigation from "./navigation";
-import { solvePuzzleModal } from "./updateDOM";
+import { solvePuzzleModal, updateStoryBook } from "./updateDOM";
 import {initNewGame} from './newGame';
 import { onLoadUpdate } from './continue';
 import {getStateLS, getPuzzleLS} from './getLS';
 import {nextLocation} from './goNext';
-import {updateStoryBook} from './updateDOM';
+import {updateStateLS} from './updateLS';
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -105,14 +105,14 @@ document.addEventListener("click", (e: any): void => {
     e.target.className === "fas fa-reply"
   ) {
     state.previousStoryBookPage();
-    localStorage.setItem('state', JSON.stringify(state));
+    updateStateLS(state);
     updateStoryBook();
   } else if (
     e.target.className === "board__storybook__arrowRight" ||
     e.target.className === "fas fa-share"
   ) {
     state.nextStoryBookPage();
-    localStorage.setItem('state', JSON.stringify(state));
+    updateStateLS(state);
     updateStoryBook();
   }
 });
@@ -181,6 +181,8 @@ document.addEventListener("click", (e: any) => {
         state.userLocationId += 1;
         nextLocation(currentId);
       }
+    }else{
+      readNotEnughPR();
     }
   }
 });

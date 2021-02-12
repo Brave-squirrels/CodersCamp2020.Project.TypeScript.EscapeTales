@@ -3,6 +3,7 @@ import TypeIt from "typeit";
 import {updateStoryBook} from "./updateDOM";
 import {getDate} from './date'
 import {getStateLS} from './getLS';
+import { updateStateLS } from "./updateLS";
 
 /*
     Function which open modals and read paragraph in cases such as:
@@ -22,7 +23,7 @@ export const read = (paragraph: Paragraph): void => {
   }).go();
   const date: string = getDate().toString();
   state.addPage(date,paragraph.text);
-  localStorage.setItem("state", JSON.stringify(state));
+  updateStateLS(state);
   updateStoryBook();
 };
 
@@ -40,6 +41,16 @@ export const readStressParagraph = (stressParagraphs: string[]) : void =>{
   //Slow type effect
   new TypeIt(".paragraph__text", {
     strings: `${stressParagraphs[index]}`,
+    speed: 80,
+    loop: false,
+  }).go();
+}
+
+export const readNotEnughPR = () : void => {
+  (document.querySelector('.noPoints__modal') as HTMLElement).style.display = 'block';
+  (document.querySelector('.noPoints__text') as HTMLElement).innerHTML = '';
+  new TypeIt(".noPoints__text", {
+    strings: `You have not enough progress points`,
     speed: 80,
     loop: false,
   }).go();

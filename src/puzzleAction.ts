@@ -5,6 +5,7 @@ import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
 import {updatePuzzleDOM, updateEvidencesDOM, updateProgressDOM} from './updateDOM';
 import {getStateLS} from './getLS';
+import { updatePuzzleLS, updateStateLS } from './updateLS';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -46,10 +47,10 @@ const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: 
             }
         })!;
         //Add paragraph to the state
-        const state2 = getStateLS();
-        state2.addParagraphsId(puzzleParagraph.id);
+        const state = getStateLS();
+        state.addParagraphsId(puzzleParagraph.id);
         //DOM function with paragraph and solve content
-        localStorage.setItem('state', JSON.stringify(state2));
+        updateStateLS(state);
         read(puzzleParagraph);
     }else{
         //Run DOM function that will tell that the password is incorrect
@@ -70,28 +71,28 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
     //Use switch to get other evidence or progress
     if(currentPuzzle.reward===PuzzleReward.EVIDENCE){
          //Add evidence to the state
-         const state3 = getStateLS();
-         state3.addEvidencesId(id);
+         const stateEv = getStateLS();
+         stateEv.addEvidencesId(id);
          //Update evidences in interface
-         localStorage.setItem('state', JSON.stringify(state3));
+         updateStateLS(stateEv);
          updateEvidencesDOM();
     }else if (currentPuzzle.reward===PuzzleReward.PROGRESSPOINT){
-        const state4 = getStateLS();
-            if(state4.progressPoints===0){
-                state4.addProgressPoint(1);
+        const statePR = getStateLS();
+            if(statePR.progressPoints===0){
+                statePR.addProgressPoint(1);
             }else{
-                state4.addProgressPoint(2);
+                statePR.addProgressPoint(2);
             }
             //Update progressPoints in interface
-            localStorage.setItem('state', JSON.stringify(state4));
+            updateStateLS(statePR);
             updateProgressDOM();
     }
-    const state2 = getStateLS();
+    const stateRm = getStateLS();
     //Remove puzzle from the state
-    state2.removePuzzle(id);
-    localStorage.setItem('state', JSON.stringify(state2));
+    stateRm.removePuzzle(id);
+    updateStateLS(stateRm);
     //Update puzzleCards and puzzle's in interface
-    updatePuzzleDOM(state2, puzzleArray);
+    updatePuzzleDOM(stateRm, puzzleArray);
     (document.querySelector(".puzzle") as HTMLElement).style.display = 'none';
 }
 
@@ -118,7 +119,7 @@ const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Arra
     state.addPuzzlesId(puz);
     //Update puzzle interface
     updatePuzzleDOM(state, puzzleArray);
-    localStorage.setItem("state", JSON.stringify(state));
+    updateStateLS(state);
 }
 
 //Add puzzle card to the puzzle object
@@ -135,7 +136,7 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
     const puzzleArrayMain = puzzleArray;
-    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
+    updatePuzzleLS(puzzleArrayMain);
 }
 
 export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

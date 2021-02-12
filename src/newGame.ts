@@ -5,12 +5,13 @@ import {boardAreas, puzzleArrayMain} from './data';
 import {getStateLS, getPuzzleLS} from './getLS';
 import {BoardState} from './ENUM';
 import {BoardField} from './boardField';
+import {updatePuzzleLS, updateStateLS} from './updateLS';
 export const initNewGame = () : void =>{
     //Go to the first location
     //Create default gameState
-    localStorage.setItem('state', JSON.stringify(new GameState()));
+    updateStateLS(new GameState());
     const state = getStateLS();
-    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
+    updatePuzzleLS(puzzleArrayMain);
     const puzzleArray = getPuzzleLS();
     //Reset boardFields
     const fields = document.querySelectorAll('.map__square');

@@ -3,6 +3,7 @@ from './updateDOM';
 import {getStateLS, getPuzzleLS} from './getLS';
 import {GameState} from './state';
 import {updateStoryBook} from './updateDOM';
+import {updateStateLS} from './updateLS';
 
 //Next location
 //Go to the next location
@@ -14,7 +15,7 @@ export const nextLocation = (id) : void =>{
     const paragraphArray = stateTemp.userParagraphsId;
     const evidencesArray = stateTemp.userEvidencesId;
     const storyBookArray = stateTemp.storyBook;
-    localStorage.setItem('state', JSON.stringify(new GameState()));
+    updateStateLS(new GameState());
     const state = getStateLS();
     paragraphArray.forEach((e)=>{
         state.addParagraphsId(e);
@@ -26,11 +27,10 @@ export const nextLocation = (id) : void =>{
     state.currentPageChange(stateTemp.currentPage);
     
     state.userLocationId = ++id;
-    localStorage.setItem('state', JSON.stringify(state));
+    updateStateLS(state);
     updateStoryBook();
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();
     updatePuzzleDOM(state, getPuzzleLS());
     updateProgressDOM();
-    localStorage.setItem('state', JSON.stringify(state));
 }

@@ -9,6 +9,7 @@ import PuzzleCard from './puzzleCard';
 import {read, readStressParagraph} from './readContent';
 import {updateAreaDOM, updateActionDOM, updateEvidencesDOM} from './updateDOM';
 import {getStateLS} from './getLS';
+import {updateStateLS} from './updateLS';
 
 //BoardArea validation
 //Check the status of the current board
@@ -57,7 +58,7 @@ const move = (currentField: BoardField) : void=>{
     updateAreaDOM(state);
     //Remove 1 action point;
     state.actionNumbers -= 1;
-    localStorage.setItem("state", JSON.stringify(state));
+    updateStateLS(state);
     //Update actionPoints in interface
     updateActionDOM(state.actionNumbers)
 }
@@ -77,7 +78,7 @@ const readParagraph = (id: string, paragraphsArray: Array<Paragraph>): void=>{
     if(currentParagraph){
         state.addParagraphsId(currentParagraph.id);
     }
-    localStorage.setItem("state", JSON.stringify(state));
+    updateStateLS(state);
     //Run DOM paragraphRead function
     read(currentParagraph);
 }
@@ -143,7 +144,7 @@ const stressCardAction = (state: GameState, stressParagraphs : string[]) : void=
         state.removeEvidence();
     }
     //Update state
-    localStorage.setItem('state', JSON.stringify(state));
+    updateStateLS(state);
     //Update evidences in interface
     updateEvidencesDOM();
     //Run DOM function reading random paragraph, tell the user that he lost evidence

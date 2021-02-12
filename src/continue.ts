@@ -1,5 +1,6 @@
 import { updateAreaDOM, updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook} from './updateDOM';
 import {getStateLS, getPuzzleLS} from './getLS';
+import {updateStateLS} from './updateLS';
 export const onLoadUpdate = () : void =>{
     const state = getStateLS();
     state.currentPageChange(state.storyBook.length);
@@ -14,5 +15,5 @@ export const onLoadUpdate = () : void =>{
     updateEvidencesDOM();
     updatePuzzleDOM(state, getPuzzleLS());
     updateProgressDOM();
-    localStorage.setItem('state', JSON.stringify(state));
+    updateStateLS(state);
 }
