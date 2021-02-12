@@ -109,7 +109,6 @@ const solvePuzzleModal = (
 ) => {
   //Get the current puzzle
   const currentPuzzle: Puzzle = puzzleArray.find((el) => el.id === puzzleID)!;
-
   //Get all puzzleCards that the player found
   const visitedCards: Array<PuzzleCard> = [];
   currentPuzzle.visitedCards.forEach((visitedID) => {

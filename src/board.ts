@@ -78,7 +78,6 @@ const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Para
     }
     //Run DOM paragraphRead function
     read(currentParagraph);
-    //Update story book
 }
 
 //Get content from current area
@@ -90,9 +89,7 @@ const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Para
     @param {puzzleArray} - array of all the puzzle objects
 */
 const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
-
     switch(boardField.content){
-
         case BoardContent.CLUE:
             //Update points
             updateAction(ActionPointsEnum.CLUE, state);
@@ -106,7 +103,6 @@ const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArra
             break;
         default:
     }
-
 }
 
 //Main action function
@@ -136,7 +132,6 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField,p
     @param {state} - state object, which contains main game state data
     @param {actionObj} - actionPoints object
 */
-
 const stressCardAction = (state: GameState, stressParagraphs : string[]) : void=>{
     //Add action points
     updateAction(ActionPointsEnum.STRESSCARD, state);

@@ -1,8 +1,8 @@
 import {GameState} from './state';
 import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook} 
 from './updateDOM';
-import {boardAreas, puzzleArray} from './data';
-import {getStateLS} from './getLS';
+import {boardAreas, puzzleArrayMain} from './data';
+import {getStateLS, getPuzzleLS} from './getLS';
 import {BoardState} from './ENUM';
 import {BoardField} from './boardField';
 export const initNewGame = () : void =>{
@@ -10,7 +10,8 @@ export const initNewGame = () : void =>{
     //Create default gameState
     localStorage.setItem('state', JSON.stringify(new GameState()));
     const state = getStateLS();
-
+    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
+    const puzzleArray = getPuzzleLS();
     //Reset boardFields
     const fields = document.querySelectorAll('.map__square');
     for(let i=0; i<fields.length; i++){
@@ -31,7 +32,7 @@ export const initNewGame = () : void =>{
     updateStoryBook();
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();
-    updatePuzzleDOM(state, puzzleArray);
+    updatePuzzleDOM(state,puzzleArray);
     updateProgressDOM();
     localStorage.setItem('state', JSON.stringify(state));
 }

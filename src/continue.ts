@@ -1,7 +1,6 @@
 import {GameState} from './state';
 import { updateAreaDOM, updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook, initStoryBook} from './updateDOM';
-import {puzzleArray} from './data';
-import {getStateLS} from './getLS';
+import {getStateLS, getPuzzleLS} from './getLS';
 export const onLoadUpdate = () : void =>{
     //Go the the location saved in state
     if(!localStorage.getItem('state')){
@@ -19,6 +18,6 @@ export const onLoadUpdate = () : void =>{
     updateAreaDOM(state);
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();
-    updatePuzzleDOM(state, puzzleArray);
+    updatePuzzleDOM(state, getPuzzleLS());
     updateProgressDOM();
 }

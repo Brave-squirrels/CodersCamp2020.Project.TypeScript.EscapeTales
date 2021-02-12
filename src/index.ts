@@ -3,8 +3,7 @@ import {
   boardAreas,
   paragraphsArray,
   puzzleCardArray,
-  puzzleArray,
-  stressParagraphs,
+  stressParagraphs
 } from "./data";
 import {
   getBoard,
@@ -19,7 +18,7 @@ import navigation from "./navigation";
 import { solvePuzzleModal } from "./updateDOM";
 import {initNewGame} from './newGame';
 import { onLoadUpdate } from './continue';
-import {getStateLS} from './getLS';
+import {getStateLS, getPuzzleLS} from './getLS';
 import {nextLocation} from './goNext';
 
 //Board movement event
@@ -48,7 +47,7 @@ document.addEventListener("click", (e: any): void => {
       notEnoughPoints();
       return;
     }
-
+    let puzzleArrayMain = getPuzzleLS()
     //Function which run the movement and content events
     mainAction(
       areaID,
@@ -56,9 +55,12 @@ document.addEventListener("click", (e: any): void => {
       currentField,
       paragraphsArray,
       puzzleCardArray,
-      puzzleArray
+      puzzleArrayMain
     );
+    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
     localStorage.setItem("state", JSON.stringify(state));
+    puzzleArrayMain = getPuzzleLS();
+    localStorage.setItem('puzzle', JSON.stringify({puzzleArrayMain}));
   }
 });
 
@@ -72,12 +74,12 @@ document.addEventListener("click", (e: any): void => {
     (document.querySelector(".puzzle") as HTMLElement).style.display = "block";
 
     //Add data to the modal
-    solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
+    solvePuzzleModal(puzzleID, getPuzzleLS(), puzzleCardArray);
 
     document.addEventListener("click", (evnt: any): void => {
       if (evnt.target.classList.contains(`Confirm${puzzleID}`)) {
         //Run validation puzzle function
-        solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
+        solvePuzzle(puzzleID, state, getPuzzleLS(), paragraphsArray);
       }
     });
     localStorage.setItem('state', JSON.stringify(state));

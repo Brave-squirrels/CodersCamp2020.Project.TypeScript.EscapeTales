@@ -1,5 +1,6 @@
 //Function that pull out localStorage state
 import {GameState} from './state';
+import {Puzzle} from './puzzle';
 
 export const getStateLS = () : GameState => {
     const stateData = JSON.parse(localStorage.getItem('state')!);
@@ -16,4 +17,23 @@ export const getStateLS = () : GameState => {
         stateData._storyBook,
         stateData._currentPage
     )
+}
+
+export const getPuzzleLS = () : Array<Puzzle> =>{
+    const puzzleData = JSON.parse(localStorage.getItem('puzzle')!);
+    const puzzleArray : Array<Puzzle> = [];
+    puzzleData.puzzleArrayMain.forEach((e : Puzzle)=>{
+        puzzleArray.push(
+            new Puzzle(
+                e.id,
+                e._paragraph,
+                e._puzzleCards,
+                e._visitedCards,
+                e.reward,
+                e.solution,
+                e.content
+            )
+        )
+    })
+    return puzzleArray;
 }

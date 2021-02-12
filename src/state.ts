@@ -1,6 +1,6 @@
 import {ENDING, LOCATION} from './ENUM';
 import { changePageStoryBook } from './updateDOM';
-
+import {getStateLS} from './getLS';
 /*
 @Class GameState:
     Actual game state, include:
@@ -29,7 +29,7 @@ export class GameState {
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],
-                protected _storyBook: string[] = ["Story Book",],
+                protected _storyBook: string[] = ["Story Book"],
                 protected _currentPage: number = 0
                 ) {  }
 
@@ -127,5 +127,8 @@ export class GameState {
         }
         get progressPoints(){
             return this._progressPoints;
+        }
+        get story(){
+            return this._storyBook;
         }
 }

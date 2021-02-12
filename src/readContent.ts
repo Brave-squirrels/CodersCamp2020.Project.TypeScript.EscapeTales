@@ -20,9 +20,9 @@ export const read = (paragraph: Paragraph): void => {
     speed: 80,
     loop: false,
   }).go();
-
   const date: string = getDate().toString();
   state.addPage(date,paragraph.text);
+  localStorage.setItem("state", JSON.stringify(state));
   updateStoryBook();
 };
 
