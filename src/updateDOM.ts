@@ -52,9 +52,6 @@ const updateEvidencesDOM = (): void => {
       }
     })
   })
-
-  console.log(DOMEvidences);
-
 };
 
 //Update puzzleInterface DOM
@@ -137,4 +134,4 @@ export {
   updateStoryBook,
   solvePuzzleModal,
   changePageStoryBook
-};
+}

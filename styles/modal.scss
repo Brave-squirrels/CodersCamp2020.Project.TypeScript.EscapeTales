@@ -160,7 +160,7 @@
     position: relative;
     background: transparent;
     padding: $solvePuzzlePD;
-    border: 1px solid red;
+    border: $invalidInputBorder;
     animation: shake 0.1s linear;
     animation-iteration-count: 3;
   }
