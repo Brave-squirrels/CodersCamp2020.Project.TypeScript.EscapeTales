@@ -2,7 +2,6 @@
 import {newPuzzle, newPuzzleCard} from './puzzleAction';
 import { BoardField} from './boardField';
 import {GameState} from './state';
-import ActionPoints from './actionPoints';
 import Paragraph from './paragraph';
 import{ActionPointsEnum, BoardState, BoardContent} from './ENUM';
 import {Puzzle} from './puzzle';
@@ -35,11 +34,9 @@ const getBoard = (id:string, boardAreas: Array<BoardField>) : BoardField =>{
     @param {state} - state object, which contains main game state data
     @param {actionPoints} - action points object
 */
-const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoints: ActionPoints): void=>{
+const updateAction = (numOfPoints: ActionPointsEnum,state: GameState): void=>{
 
-    actionPoints.addPoints(numOfPoints);
-
-    state.actionNumbers = actionPoints.currentPoints;
+    state.actionNumbers += numOfPoints;
 
 }
 
@@ -50,20 +47,17 @@ const updateAction = (numOfPoints: ActionPointsEnum,state: GameState, actionPoin
   @param {actionPoints} - actionPoints Object
   Mark area, as explored
 */
-const move = (currentField: BoardField, state: GameState, actionPoints: ActionPoints) : void=>{
+const move = (currentField: BoardField, state: GameState) : void=>{
 
     //Mark the board as explored
     currentField.status = BoardState.EXPLORED;
     //Push id of area to the state and mark area in DOM as explored
     state.updateVisitedAreas(currentField._fieldID);
     updateAreaDOM(state);
-    //Remove 1 action point
-    actionPoints.decrementPoints();
-
-    //Save current action points to the gameState
-    state.actionNumbers = actionPoints.currentPoints;
+    //Remove 1 action point;
+    state.actionNumbers -= 1;
     //Update actionPoints in interface
-    updateActionDOM(actionPoints.currentPoints)
+    updateActionDOM(state.actionNumbers)
 }
 
 //Read paragraph
@@ -94,15 +88,15 @@ const readParagraph = (id: string, state: GameState, paragraphsArray: Array<Para
     @param {puzzleCardArray} - array of puzzle cards
     @param {puzzleArray} - array of all the puzzle objects
 */
-const getAreaContent = (boardField: BoardField, state: GameState, actionObj: ActionPoints, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
+const getAreaContent = (boardField: BoardField, state: GameState, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>) : void=>{
 
     switch(boardField.content){
 
         case BoardContent.CLUE:
             //Update points
-            updateAction(ActionPointsEnum.CLUE, state, actionObj);
+            updateAction(ActionPointsEnum.CLUE, state);
             //Update actionPoints in interface
-            updateActionDOM(actionObj.currentPoints)
+            updateActionDOM(state.actionNumbers)
             break;
         case BoardContent.PUZZLE:
             //Run function which add puzzle if not exist and get the puzzle card
@@ -124,16 +118,16 @@ const getAreaContent = (boardField: BoardField, state: GameState, actionObj: Act
     @param {puzzleCardArray} - array of all puzzleCards
     @param {puzzleArray} - array of all puzzle objects
 */
-const mainAction = (areaID: string, state: GameState, currentField: BoardField, actionObj: ActionPoints,paragraphsArray: Array<Paragraph>, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle> ) : void=>{
+const mainAction = (areaID: string, state: GameState, currentField: BoardField,paragraphsArray: Array<Paragraph>, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle> ) : void=>{
 
      //Mark the board, as explored and remove 1 action point
-     move(currentField, state, actionObj);
+     move(currentField, state);
 
      //Read paragraph and add to the state
      readParagraph(areaID, state, paragraphsArray);
 
      //Get content from the area
-     getAreaContent(currentField, state, actionObj, puzzleCardArray,puzzleArray);
+     getAreaContent(currentField, state, puzzleCardArray,puzzleArray);
 }
 
 //Update points and remove evidence if we have any
@@ -142,19 +136,21 @@ const mainAction = (areaID: string, state: GameState, currentField: BoardField, 
     @param {actionObj} - actionPoints object
 */
 
-const stressCardAction = (state: GameState, actionObj: ActionPoints, stressParagraphs : string[]) : void=>{
+const stressCardAction = (state: GameState, stressParagraphs : string[]) : void=>{
     //Add action points
-    updateAction(ActionPointsEnum.STRESSCARD, state, actionObj);
+    updateAction(ActionPointsEnum.STRESSCARD, state);
     //Remove evidence if player have any
     if(state.userEvidencesId.length !== 0){
         state.removeEvidence();
     }
+    //Update state
+    localStorage.setItem('state', JSON.stringify(state));
     //Update evidences in interface
     updateEvidencesDOM();
     //Run DOM function reading random paragraph, tell the user that he lost evidence
     readStressParagraph(stressParagraphs);
     //Update actionPoints in interface
-    updateActionDOM(actionObj.currentPoints);
+    updateActionDOM(state.actionNumbers);
 }
 
 

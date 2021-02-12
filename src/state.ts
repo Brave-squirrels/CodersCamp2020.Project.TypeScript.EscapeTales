@@ -29,7 +29,7 @@ export class GameState {
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],
-                protected _storyBook: string[] = ["Story Book"],
+                protected _storyBook: string[] = ["Story Book",],
                 protected _currentPage: number = 0
                 ) {  }
 
@@ -64,10 +64,6 @@ export class GameState {
 
         removeEvidence(){
             this._userEvidencesId.pop();
-        }
-
-        resetProgressPoints(){
-            this._progressPoints = 0;
         }
 
         addProgressPoint(){

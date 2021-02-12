@@ -1,25 +1,14 @@
 import {GameState} from './state';
 import { updateAreaDOM, updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook} from './updateDOM';
 import {puzzleArray} from './data';
+import {getStateLS} from './getLS';
 export const onLoadUpdate = () : void =>{
+    //Go the the location saved in state
     if(!localStorage.getItem('state')){
         localStorage.setItem('state', JSON.stringify(new GameState()));
     }
-    const stateData = JSON.parse(localStorage.getItem('state')!);
-        const state = new GameState(
-        stateData._actionNumbers,
-        stateData._userParagraphsId,
-        stateData._userPuzzlesId,
-        stateData._userLocationId,
-        stateData._visitedAreasId,
-        stateData._storyLine,
-        stateData._userEvidencesId,
-        stateData._progressPoints,
-        stateData._visitedAreas,
-        stateData._storyBook,
-        stateData._currentPage
-    )
-    
+    const state = getStateLS();
+    updateStoryBook();
     updateAreaDOM(state);
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();

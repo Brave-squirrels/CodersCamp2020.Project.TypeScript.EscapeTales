@@ -5,6 +5,7 @@ import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate } from "./HTMLtem
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
 import {Evidence} from './evidence';
+import {getStateLS} from './getLS';
 
 //Update actionPoints interface
 const updateActionDOM = (number: number): void => {
@@ -14,20 +15,8 @@ const updateActionDOM = (number: number): void => {
 
 //Update storyBook DOM
 const updateStoryBook = (): void => {
-  const stateData = JSON.parse(localStorage.getItem('state')!);
-        const state = new GameState(
-        stateData._actionNumbers,
-        stateData._userParagraphsId,
-        stateData._userPuzzlesId,
-        stateData._userLocationId,
-        stateData._visitedAreasId,
-        stateData._storyLine,
-        stateData._userEvidencesId,
-        stateData._progressPoints,
-        stateData._visitedAreas,
-        stateData._storyBook,
-        stateData._currentPage
-        )
+  //Get state from localStorage
+  const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const text = state.storyBook[state.storyBook.length - 1];
   const content = pageTemplate(
@@ -39,20 +28,8 @@ const updateStoryBook = (): void => {
 };
 
 const changePageStoryBook = (index: number) => {
-  const stateData = JSON.parse(localStorage.getItem('state')!);
-        const state = new GameState(
-        stateData._actionNumbers,
-        stateData._userParagraphsId,
-        stateData._userPuzzlesId,
-        stateData._userLocationId,
-        stateData._visitedAreasId,
-        stateData._storyLine,
-        stateData._userEvidencesId,
-        stateData._progressPoints,
-        stateData._visitedAreas,
-        stateData._storyBook,
-        stateData._currentPage
-        )
+  //Get state from localStorage
+  const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
   const previousContent = pageTemplate(
@@ -65,20 +42,8 @@ const changePageStoryBook = (index: number) => {
 
 //Update evidences DOM
 const updateEvidencesDOM = (): void => {
-  const stateData = JSON.parse(localStorage.getItem('state')!);
-        const state = new GameState(
-        stateData._actionNumbers,
-        stateData._userParagraphsId,
-        stateData._userPuzzlesId,
-        stateData._userLocationId,
-        stateData._visitedAreasId,
-        stateData._storyLine,
-        stateData._userEvidencesId,
-        stateData._progressPoints,
-        stateData._visitedAreas,
-        stateData._storyBook,
-        stateData._currentPage
-        )
+  //Get state from localStorage
+  const state = getStateLS();
   //Get the HTML container
   const cnt = document.querySelector("#interface__evidences") as HTMLElement;
 
@@ -155,20 +120,8 @@ const solvePuzzleModal = (
 
 //Update progressPoints DOM
 const updateProgressDOM = (): void => {
-  const stateData = JSON.parse(localStorage.getItem('state')!);
-        const state = new GameState(
-        stateData._actionNumbers,
-        stateData._userParagraphsId,
-        stateData._userPuzzlesId,
-        stateData._userLocationId,
-        stateData._visitedAreasId,
-        stateData._storyLine,
-        stateData._userEvidencesId,
-        stateData._progressPoints,
-        stateData._visitedAreas,
-        stateData._storyBook,
-        stateData._currentPage
-        )
+  //Get state from localStorage
+  const state = getStateLS();
   switch(state.progressPoints){
     case 1:
       (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
@@ -177,6 +130,9 @@ const updateProgressDOM = (): void => {
       (document.querySelector('#token2') as HTMLElement).style.opacity = '1';
       (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
       break;
+    default:
+      (document.querySelector('#token2') as HTMLElement).style.opacity = '0.4';
+      (document.querySelector('#token1') as HTMLElement).style.opacity = '0.4';
   }
 };
 
@@ -186,8 +142,7 @@ const updateProgressDOM = (): void => {
 */
 const updateAreaDOM = (state: GameState): void => {
   state.visitedAreas.forEach((n: string) => {
-    (document.querySelector(`#${n}`) as HTMLElement).className +=
-      " map__squareVisited";
+    (document.querySelector(`#${n}`) as HTMLElement).classList.add("map__squareVisited");
   });
 };
 
@@ -199,5 +154,5 @@ export {
   updateEvidencesDOM,
   updateStoryBook,
   solvePuzzleModal,
-  changePageStoryBook
+  changePageStoryBook,
 }

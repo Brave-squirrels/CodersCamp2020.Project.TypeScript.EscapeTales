@@ -1,7 +1,6 @@
 //Import
 import { BoardField} from './boardField';
 import {GameState} from './state';
-import ActionPoints from './actionPoints';
 import Paragraph from './paragraph';
 import{BoardState, BoardContent, LOCATION, PuzzleReward} from './ENUM';
 import {Puzzle} from './puzzle';
@@ -10,9 +9,6 @@ import {Evidence} from './evidence';
 
 //Default state object
 export const state = new GameState();
-
-//Action points object
-export const actionPoints = new ActionPoints(5);
 
 //BoardFields
 export const boardAreas : Array<BoardField> = [

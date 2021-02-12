@@ -1,8 +1,8 @@
 import Paragraph from "./paragraph";
 import TypeIt from "typeit";
-import {state} from './data';
 import {updateStoryBook} from "./updateDOM";
 import {getDate} from './date'
+import {getStateLS} from './getLS';
 
 /*
     Function which open modals and read paragraph in cases such as:
@@ -11,6 +11,7 @@ import {getDate} from './date'
     @param {paragraph} - paragraph object
 */
 export const read = (paragraph: Paragraph): void => {
+  const state = getStateLS();
   (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
   (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = '';
   //Slow type effect
