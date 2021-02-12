@@ -65,18 +65,18 @@ html {
     }
 
     .board__map {
-      display: flex;
+      display: none;
+      opacity: 0;
       flex-wrap: wrap;
       width: 51vw;
       height: 35vw;
       max-height: 69vh;
-      background-image: $boardMap1BG;
       background-size: cover;
       justify-content: space-between;
       align-content: space-between;
       min-height: $boardMapMinH;
       min-width: $boardMapMinW;
-      filter: brightness(1.2);
+      filter: brightness(1.6);
 
       .map__square {
         border: $boardFieldBorder;
@@ -101,4 +101,21 @@ html {
     min-height: $interfaceMinH;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
   }
+}
+
+.activeBoard {
+  opacity: 1 !important;
+  display: flex !important;
+}
+
+#board1 {
+  background-image: $boardMap1BG;
+}
+
+#board2 {
+  background-image: $boardMap2BG;
+}
+
+#board3 {
+  background-image: $boardMap3BG;
 }

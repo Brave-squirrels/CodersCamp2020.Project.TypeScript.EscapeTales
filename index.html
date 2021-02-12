@@ -86,7 +86,6 @@
       <span class="areaExplored__close" id="areaExplored__close">&#10006;</span>
     </div>
 
-    
     <template id="menu-page">
       <div class="menu-container">
         <div class="menu">
@@ -135,6 +134,34 @@
       </div>
     </template>
 
+    <template id="board-map">
+      <div id="" class="board__map">
+        <div class="map__square" id="l{{locationId}}b11"></div>
+        <div class="map__square" id="l{{locationId}}b12"></div>
+        <div class="map__square" id="l{{locationId}}b13"></div>
+        <div class="map__square" id="l{{locationId}}b14"></div>
+        <div class="map__square" id="l{{locationId}}b15"></div>
+
+        <div class="map__square" id="l{{locationId}}b21"></div>
+        <div class="map__square" id="l{{locationId}}b22"></div>
+        <div class="map__square" id="l{{locationId}}b23"></div>
+        <div class="map__square" id="l{{locationId}}b24"></div>
+        <div class="map__square" id="l{{locationId}}b25"></div>
+
+        <div class="map__square" id="l{{locationId}}b31"></div>
+        <div class="map__square" id="l{{locationId}}b32"></div>
+        <div class="map__square" id="l{{locationId}}b33"></div>
+        <div class="map__square" id="l{{locationId}}b34"></div>
+        <div class="map__square" id="l{{locationId}}b35"></div>
+
+        <div class="map__square" id="l{{locationId}}b41"></div>
+        <div class="map__square" id="l{{locationId}}b42"></div>
+        <div class="map__square" id="l{{locationId}}b43"></div>
+        <div class="map__square" id="l{{locationId}}b44"></div>
+        <div class="map__square" id="l{{locationId}}b45"></div>
+      </div>
+    </template>
+
     <template id="game-board">
       <div class="game-container">
         <main class="main">
@@ -142,32 +169,8 @@
             <div class="board__storybook">
               <h1 style="text-align: center">Story Book</h1>
             </div>
-            <div class="board__map">
-              <!-- Add IDs for each element of map -->
-              <div class="map__square" id="l1b11"></div>
-              <div class="map__square" id="l1b12"></div>
-              <div class="map__square" id="l1b13"></div>
-              <div class="map__square" id="l1b14"></div>
-              <div class="map__square" id="l1b15"></div>
 
-              <div class="map__square" id="l1b21"></div>
-              <div class="map__square" id="l1b22"></div>
-              <div class="map__square" id="l1b23"></div>
-              <div class="map__square" id="l1b24"></div>
-              <div class="map__square" id="l1b25"></div>
-
-              <div class="map__square" id="l1b31"></div>
-              <div class="map__square" id="l1b32"></div>
-              <div class="map__square" id="l1b33"></div>
-              <div class="map__square" id="l1b34"></div>
-              <div class="map__square" id="l1b35"></div>
-
-              <div class="map__square" id="l1b41"></div>
-              <div class="map__square" id="l1b42"></div>
-              <div class="map__square" id="l1b43"></div>
-              <div class="map__square" id="l1b44"></div>
-              <div class="map__square" id="l1b45"></div>
-            </div>
+            <div id="board-container"></div>
           </div>
           <div class="board__interface">
             <div class="interface__column">

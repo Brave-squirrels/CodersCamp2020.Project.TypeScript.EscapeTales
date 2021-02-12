@@ -1,5 +1,5 @@
 import {GameState} from './state';
-import { updateAreaDOM, updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook} from './updateDOM';
+import { updateAreaDOM, updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook, initStoryBook} from './updateDOM';
 import {puzzleArray} from './data';
 import {getStateLS} from './getLS';
 export const onLoadUpdate = () : void =>{
@@ -8,6 +8,7 @@ export const onLoadUpdate = () : void =>{
         localStorage.setItem('state', JSON.stringify(new GameState()));
     }
     const state = getStateLS();
+    initStoryBook(state);
     updateStoryBook();
     updateAreaDOM(state);
     updateActionDOM(state.actionNumbers);

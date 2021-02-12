@@ -1,13 +1,14 @@
 // Render page from template
 /*
     @param {nameId} - id of template to display
+    @param {host} - html element where template will be inserted
 */
-function createFormTemplate(nameId: string) {
+function createFormTemplate(nameId: string, host: string) {
   const templateElement = document.getElementById(
     nameId
   ) as HTMLTemplateElement;
 
-  const hostElement = document.getElementById("app")! as HTMLElement;
+  const hostElement = document.getElementById(host)! as HTMLElement;
   const importedNode = document.importNode(templateElement.content, true);
 
   const element = importedNode.firstElementChild as HTMLElement;
@@ -31,11 +32,28 @@ function handleClick(oldElem: HTMLElement, newElem: HTMLElement) {
   }, 10);
 }
 
+// Render boards forom template
+/*
+    @param {num} - number of boards to render
+*/
+function boardFromTemplate(num: number) {
+  for (let i = num; i > 0; i--) {
+    createFormTemplate("board-map", "board-container");
+    const board = document.querySelector(".board__map")!;
+    board.id = `board${i}`;
+    board.innerHTML = board.innerHTML.replace(/\{\{locationId\}\}/g, `${i}`);
+
+    // first board is visible as default
+    i === 1 && board.classList.toggle("activeBoard");
+  }
+}
+
 // create html from template
 function navigationInit() {
-  createFormTemplate("home-page");
-  createFormTemplate("menu-page");
-  createFormTemplate("game-board");
+  createFormTemplate("home-page", "app");
+  createFormTemplate("menu-page", "app");
+  createFormTemplate("game-board", "app");
+  boardFromTemplate(3); // render 3 boards
 }
 
 // navigation functions for buttons

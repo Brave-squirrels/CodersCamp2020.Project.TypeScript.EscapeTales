@@ -40,6 +40,17 @@ const changePageStoryBook = (index: number) => {
   storyBook.innerHTML = previousContent;
 };
 
+export function initStoryBook(state){
+  const storyBook = document.querySelector(".board__storybook") as HTMLElement;
+  const text = state.storyBook[state.storyBook.length - 1];
+  const content = pageTemplate(
+    text,
+    state.currentPage,
+    state.storyBook.length - 1
+  );
+  storyBook.innerHTML = content;
+}
+
 //Update evidences DOM
 const updateEvidencesDOM = (): void => {
   //Get state from localStorage

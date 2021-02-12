@@ -2,8 +2,8 @@ $boardMap1BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
   url("../assets/map1.png");
 $boardMap2BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
   url("../assets/map2.png");
-// $boardMap3BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-//   url("../assets/map3.png");
+$boardMap3BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../assets/map3.png");
 $storyBookBG: url("../assets/note.jpg");
 $stressCardBG: url("../assets/stressbutton.png");
 $interfaceBG: url("../assets/wood.png");
@@ -13,9 +13,9 @@ $footerBG: linear-gradient(
   rgba(255, 125, 1, 0.1) 100%
 );
 $mainBG: url("../assets/dark.jpg");
-$boardFieldBG: rgba(59, 39, 8, 0.61);
-$boardFieldVisited: rgba(51, 34, 6, 0.205);
-$boardFieldBorder: 3px #1d0e00 solid;
+$boardFieldBG: rgba(37, 24, 4, 0.61);
+$boardFieldVisited: rgba(27, 20, 4, 0.315);
+$boardFieldBorder: 3px #140a00 solid;
 $interfaceElBG: url("../assets/card.jpg");
 $fontColorLight: #efefef;
 $hoverButtonColor: #ffbe75;

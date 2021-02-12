@@ -57,7 +57,7 @@ document.addEventListener("click", (e: any): void => {
       puzzleCardArray,
       puzzleArray
     );
-    localStorage.setItem('state', JSON.stringify(state));
+    localStorage.setItem("state", JSON.stringify(state));
   }
 });
 
@@ -166,12 +166,30 @@ document.addEventListener("click", (e: any) => {
   }
 });
 
+// Go next
+document.addEventListener("click", (e: any) => {
+  if (/goNext/.test(e.target.className)) {
+    const currentBoard = document.querySelector(".activeBoard")!;
+    const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
+    const state = getStateLS();
+    if(state.progressPoints === 2){
+      if (currentId !== 3) {
+        const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
+        currentBoard.classList.toggle("activeBoard");
+        nextBoard.classList.toggle("activeBoard");
+        initNewGame();
+        state.userLocationId += 1;
+        localStorage.setItem('state', JSON.stringify(state));
+      }
+    }
+  }
+});
 //Start new game
 document.addEventListener('click', (e : any) => {
   if(e.target === (document.querySelector('#newGameBtn') as HTMLElement) || e.target ===(document.querySelector('#resetGame') as HTMLElement)){
     initNewGame();
   }
-})
+});
 
 //Continue game
 document.addEventListener('click', (e : any)=>{

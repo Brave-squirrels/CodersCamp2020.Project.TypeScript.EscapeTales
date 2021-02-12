@@ -21,6 +21,7 @@ export const initNewGame = () : void =>{
     boardAreas.forEach((e : BoardField)=>{
         e.status = BoardState.PENDING;
     })
+
     //Reset interface
     updateStoryBook();
     updateActionDOM(state.actionNumbers);
