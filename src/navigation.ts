@@ -47,7 +47,7 @@ function navigationActions() {
   const newGameBtn = document.querySelector("#newGameBtn")! as HTMLDivElement;
   const homeBackBtn = document.querySelector("#homeBack")! as HTMLDivElement;
 
-  handleClick(home, menu);
+  handleClick(home, board);
 
   // go to menu panel
   startBtn.addEventListener("click", () => {
