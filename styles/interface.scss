@@ -62,8 +62,7 @@
 
     .interface__column--stressCard {
       font-size: clamp(15px, 2.2vw, 2.2vh);
-      font-weight: 500;
-      color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
     }
   }
 
@@ -110,9 +109,21 @@
     padding: 0.1rem;
   }
 
-  .interface__goNext {
+  .interface__goNext{
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+
+
+    .interface__column--goNext{
+      font-size: clamp(15px, 2.2vw, 2.4vh);
+    }
   }
+
+
+
+
 }
