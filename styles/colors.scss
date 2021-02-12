@@ -9,15 +9,15 @@ $footerBG: linear-gradient(
   rgba(255, 125, 1, 0.1) 100%
 );
 $mainBG: url("../assets/dark.jpg");
-$boardFieldBG: rgba(122, 99, 54, 0.34);
-$boardFieldVisited: rgba(122, 99, 54, 0.2);
-$boardFieldBorder: 3px #261c00 solid;
+$boardFieldBG: rgba(59, 39, 8, 0.61);
+$boardFieldVisited: rgba(51, 34, 6, 0.205);
+$boardFieldBorder: 3px #1d0e00 solid;
 $interfaceElBG: url("../assets/card.jpg");
 $fontColorLight: #efefef;
 $hoverButtonColor: #ffbe75;
 $modalBG: rgba(0, 0, 0, 0.6);
 $modalColor: #fff;
 $paragraphBG: grey;
-$solveButtonBorder: rgba(0,0,0,0.4);
-$solveButtonBorderFocus: rgba(0,0,0,0.7);
-$invalidInputBorder: 1px solid #B8262B;
+$solveButtonBorder: rgba(0, 0, 0, 0.4);
+$solveButtonBorderFocus: rgba(0, 0, 0, 0.7);
+$invalidInputBorder: 1px solid #b8262b;
