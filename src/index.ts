@@ -19,6 +19,7 @@ import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
 import { solvePuzzleModal } from "./updateDOM";
+import { updateLocalStorage } from './localStorage'
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -34,6 +35,7 @@ document.addEventListener("click", (e: any): void => {
       //End if the area is explored
       //Run DOM function with message that area is explored
       areaExplored();
+      updateLocalStorage();
       return;
     }
 
@@ -42,6 +44,7 @@ document.addEventListener("click", (e: any): void => {
       //End function cuz of lack of action points
       //Run DOM function with message that we don't have enough actionPoints
       notEnoughPoints();
+      updateLocalStorage();
       return;
     }
 
@@ -55,6 +58,7 @@ document.addEventListener("click", (e: any): void => {
       puzzleCardArray,
       puzzleArray
     );
+    updateLocalStorage();
   }
 });
 
@@ -72,8 +76,10 @@ document.addEventListener("click", (e: any): void => {
       if (evnt.target.classList.contains(`Confirm${puzzleID}`)) {
         //Run validation puzzle function
         solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
+        updateLocalStorage();
       }
     });
+    updateLocalStorage();
   }
 });
 
@@ -82,6 +88,7 @@ document.addEventListener("click", (e: any): void => {
   const puzzleCnt = document.querySelector(".puzzle") as HTMLElement;
   if (e.target.id === "puzzle__close" || puzzleCnt === e.target) {
     puzzleCnt.style.display = "none";
+    updateLocalStorage();
   }
 });
 
@@ -90,6 +97,7 @@ document.addEventListener("click", (e: any): void => {
   const paragraphCnt = document.querySelector(".paragraph") as HTMLElement;
   if (e.target.id === "paragraph__close" || paragraphCnt === e.target) {
     paragraphCnt.style.display = "none";
+    updateLocalStorage();
   }
 });
 
@@ -100,26 +108,28 @@ document.addEventListener("click", (e: any): void => {
     e.target.className === "fas fa-reply"
   ) {
     state.previousStoryBookPage();
+    updateLocalStorage();
   } else if (
     e.target.className === "board__storybook__arrowRight" ||
     e.target.className === "fas fa-share"
   ) {
     state.nextStoryBookPage();
+    updateLocalStorage();
   }
 });
 
 //Display instruction
 document.addEventListener("click", (e: any) => {
   if (e.target.id === "displayInstruction") {
-    (document.querySelector(".instructionModal") as HTMLElement).style.display =
-      "block";
+    (document.querySelector(".instructionModal") as HTMLElement).style.display = "block";
+    updateLocalStorage();
   }
   if (
     e.target.id === "instruction__close" ||
     (document.querySelector(".instructionModal") as HTMLElement) === e.target
   ) {
-    (document.querySelector(".instructionModal") as HTMLElement).style.display =
-      "none";
+    (document.querySelector(".instructionModal") as HTMLElement).style.display = "none";
+    updateLocalStorage();
   }
 });
 
@@ -130,6 +140,7 @@ document.addEventListener("click", (e: any) => {
     e.target.id === "interface__stressCard__title"
   ) {
     stressCardAction(state, actionPoints, stressParagraphs);
+    updateLocalStorage();
   }
 });
 
@@ -139,8 +150,8 @@ document.addEventListener("click", (e: any) => {
     e.target.id === "noPoints__close" ||
     e.target === (document.querySelector(".noPoints__modal") as HTMLElement)
   ) {
-    (document.querySelector(".noPoints__modal") as HTMLElement).style.display =
-      "none";
+    (document.querySelector(".noPoints__modal") as HTMLElement).style.display = "none";
+      updateLocalStorage();
   }
 });
 
@@ -153,6 +164,7 @@ document.addEventListener("click", (e: any) => {
     (document.querySelector(
       ".areaExplored__modal"
     ) as HTMLElement).style.display = "none";
+    updateLocalStorage();
   }
 });
 
