@@ -1,6 +1,5 @@
 import PuzzleCard from './puzzleCard';
 import {Puzzle} from './puzzle';
-import {GameState} from './state';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
@@ -78,7 +77,6 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
          updateEvidencesDOM();
     }else if (currentPuzzle.reward===PuzzleReward.PROGRESSPOINT){
         const state4 = getStateLS();
-        console.log(state4);
             if(state4.progressPoints===0){
                 state4.addProgressPoint(1);
             }else{

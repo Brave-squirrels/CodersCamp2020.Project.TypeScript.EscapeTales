@@ -1,14 +1,10 @@
 //Import
 import { BoardField} from './boardField';
-import {GameState} from './state';
 import Paragraph from './paragraph';
 import{BoardState, BoardContent, LOCATION, PuzzleReward} from './ENUM';
 import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {Evidence} from './evidence';
-
-//Default state object
-export const state = new GameState();
 
 //BoardFields
 export const boardAreas : Array<BoardField> = [
@@ -28,8 +24,8 @@ export const boardAreas : Array<BoardField> = [
     new BoardField(BoardState.PENDING, 'l1b33', 'l1b33', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b34', 'l1b34', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b35', 'l1b35', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.PUZZLE ),
+    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b43', 'l1b43', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b44', 'l1b44', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.PUZZLE),

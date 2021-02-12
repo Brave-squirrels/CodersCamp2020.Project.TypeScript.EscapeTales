@@ -72,7 +72,7 @@ export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<Puzzle
         <div>
             <input type='text' id='${puzzle.id}input' class='puzzle__solve__input'>
         </div>
-        <button class='Confirm${puzzle.id} puzzle__solve__submit'>Confirm</button>
+        <button id='${puzzle.id}' class='Confirm${puzzle.id} puzzle__solve__submit'>Confirm</button>
         </div>
         `;
     return str;

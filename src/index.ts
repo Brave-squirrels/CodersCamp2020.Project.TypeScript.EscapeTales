@@ -71,13 +71,12 @@ document.addEventListener("click", (e: any): void => {
 
     //Add data to the modal
     solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
-
-    document.addEventListener("click", (evnt: any): void => {
-      if (evnt.target.classList.contains(`Confirm${puzzleID}`)) {
-        //Run validation puzzle function
-        solvePuzzle(puzzleID, puzzleArray, paragraphsArray);
-      }
-    });
+    
+  }else if (e.target.classList.contains(`puzzle__solve__submit`)) {
+    const puzzleArray = getPuzzleLS();
+    const puzzleID = e.target.id;
+    //Run validation puzzle function
+    solvePuzzle(puzzleID, puzzleArray, paragraphsArray);
   }
 });
 

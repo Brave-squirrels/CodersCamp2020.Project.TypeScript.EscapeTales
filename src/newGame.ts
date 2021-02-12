@@ -1,5 +1,5 @@
 import {GameState} from './state';
-import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, updateStoryBook, initStoryBook} 
+import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, initStoryBook} 
 from './updateDOM';
 import {boardAreas, puzzleArrayMain} from './data';
 import {getStateLS, getPuzzleLS} from './getLS';
@@ -33,6 +33,4 @@ export const initNewGame = () : void =>{
     updateEvidencesDOM();
     updatePuzzleDOM(state,puzzleArray);
     updateProgressDOM();
-    const state2 = getStateLS();
-    localStorage.setItem('state', JSON.stringify(state2));
 }
