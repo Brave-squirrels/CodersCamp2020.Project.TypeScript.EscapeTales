@@ -20,6 +20,7 @@ import { solvePuzzleModal } from "./updateDOM";
 import {initNewGame} from './newGame';
 import { onLoadUpdate } from './continue';
 import {getStateLS} from './getLS';
+import {nextLocation} from './goNext';
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -139,7 +140,7 @@ document.addEventListener("click", (e: any) => {
     e.target.id === "interface__stressCard" ||
     e.target.id === "interface__stressCard__title"
   ) {
-    stressCardAction(state, actionPoints, stressParagraphs);
+    stressCardAction(state, stressParagraphs);
   }
 });
 
@@ -177,7 +178,7 @@ document.addEventListener("click", (e: any) => {
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");
-        initNewGame();
+        nextLocation(currentId);
         state.userLocationId += 1;
         localStorage.setItem('state', JSON.stringify(state));
       }
