@@ -22,10 +22,16 @@ export const initNewGame = () : void =>{
         e.status = BoardState.PENDING;
     })
 
+    const currentBoard = document.querySelector(".activeBoard")!;
+    const nextBoard = document.querySelector(`#board${1}`)!;
+    currentBoard.classList.toggle("activeBoard");
+    nextBoard.classList.toggle("activeBoard");
+
     //Reset interface
     updateStoryBook();
     updateActionDOM(state.actionNumbers);
     updateEvidencesDOM();
     updatePuzzleDOM(state, puzzleArray);
     updateProgressDOM();
+    localStorage.setItem('state', JSON.stringify(state));
 }

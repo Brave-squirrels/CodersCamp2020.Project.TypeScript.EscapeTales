@@ -11,8 +11,9 @@ import {updateAreaDOM, updateActionDOM, updateEvidencesDOM} from './updateDOM';
 
 //BoardArea validation
 //Check the status of the current board
-const checkStatus = (currentField: BoardField): boolean =>{
-    return currentField.status === BoardState.PENDING;
+const checkStatus = (currentField: BoardField, state: GameState): boolean =>{
+    //return currentField.status === BoardState.PENDING;
+    return state.visitedAreas.includes(currentField._fieldID);
 }
 //Check the amount of action points in game state
 const checkActions = (state: GameState):boolean =>{

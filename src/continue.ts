@@ -8,6 +8,12 @@ export const onLoadUpdate = () : void =>{
         localStorage.setItem('state', JSON.stringify(new GameState()));
     }
     const state = getStateLS();
+
+    const currentBoard = document.querySelector(".activeBoard")!;
+    const nextBoard = document.querySelector(`#board${state.userLocationId}`)!;
+    currentBoard.classList.toggle("activeBoard");
+    nextBoard.classList.toggle("activeBoard");
+
     initStoryBook(state);
     updateStoryBook();
     updateAreaDOM(state);

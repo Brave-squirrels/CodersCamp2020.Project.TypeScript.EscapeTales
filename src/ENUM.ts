@@ -30,7 +30,7 @@ export enum ENDING{
 }
 
 export enum LOCATION{
-    FIRST,
-    SECOND,
-    THIRD
+    FIRST = 1,
+    SECOND = 2,
+    THIRD = 3
 }

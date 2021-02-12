@@ -1,7 +1,6 @@
 import { GameState } from "./state";
 import { evidencesArray } from "./data";
-import { pageTemplate } from "./HTMLtemplate";
-import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate } from "./HTMLtemplate";
+import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate, pageTemplate } from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
 import {Evidence} from './evidence';
@@ -53,7 +52,6 @@ export function initStoryBook(state){
 
 //Update evidences DOM
 const updateEvidencesDOM = (): void => {
-  //Get state from localStorage
   const state = getStateLS();
   //Get the HTML container
   const cnt = document.querySelector("#interface__evidences") as HTMLElement;

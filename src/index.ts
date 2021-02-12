@@ -34,7 +34,7 @@ document.addEventListener("click", (e: any): void => {
     const currentField = getBoard(areaID, boardAreas);
 
     //Get the current board object
-    if (!checkStatus(currentField)) {
+    if (checkStatus(currentField, state)) {
       //End if the area is explored
       //Run DOM function with message that area is explored
       areaExplored();
@@ -178,9 +178,8 @@ document.addEventListener("click", (e: any) => {
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");
-        nextLocation(currentId);
         state.userLocationId += 1;
-        localStorage.setItem('state', JSON.stringify(state));
+        nextLocation(currentId);
       }
     }
   }
