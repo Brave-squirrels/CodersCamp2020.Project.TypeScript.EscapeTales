@@ -26,10 +26,10 @@ enum BoardState{
 
 //Game ending
 enum ENDING{
-    BESTENDING,
     WORSTENDING,
     MEDIUMENDING1,
-    MEDIUMENDING2
+    MEDIUMENDING2,
+    BESTENDING
 }
 
 //Location
