@@ -10,6 +10,7 @@ import { onLoadUpdate } from "./continue";
 import * as getLS from "./getLS";
 import { nextLocation } from "./goNext";
 import { updateStateLS } from "./updateLS";
+import { getEndingStory } from "./ending";
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -147,6 +148,19 @@ document.addEventListener("click", (e: any) => {
   }
 });
 
+//Close ending story
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target.id === "ending__close" ||
+    e.target === (document.querySelector(".ending__modal") as HTMLElement)
+  ) {
+    (document.querySelector(".ending__modal") as HTMLElement).style.display =
+      "none";
+  }
+});
+
+
+
 //Close areaExplored
 document.addEventListener("click", (e: any) => {
   if (
@@ -170,6 +184,10 @@ document.addEventListener("click", (e: any) => {
     if (state.progressPoints === 2) {
       if (currentId !== 3) {
         //Go the the next location
+
+        // HERE WE HAVE TO SWITCH IF WITH ELSE 
+        getEndingStory()
+      } else {
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");

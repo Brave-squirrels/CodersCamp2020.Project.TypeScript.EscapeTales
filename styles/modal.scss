@@ -241,3 +241,38 @@
     }
   }
 }
+
+
+.ending__modal{
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  background: $modalBG;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: $modalColor;
+  font-family: $lora;
+  font-size: 1.3em;
+  .ending__text {
+    padding: 1em 2em;
+    background: $paragraphBG;
+    width: 60%;
+    margin: 2em auto;
+    letter-spacing: 0.15em;
+    background-image: $interfaceElBG;
+    background-size: cover;
+    color: #000;
+    font-weight: bold;
+  }
+  .ending__close{
+    color: white;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
