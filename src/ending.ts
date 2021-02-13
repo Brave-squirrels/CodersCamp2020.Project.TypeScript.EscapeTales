@@ -9,17 +9,17 @@ export const getEndingStory = () => {
     const numberOfEvidences : number = state.userEvidencesId.length
     
     switch (numberOfEvidences) {
-        case (ENDING.BESTENDING-1):
-            endingText = 'Zakon1'
+        case (ENDING.BESTENDING):
+            endingText = 'Happy End!' // 3 evidences
             break
-        case (ENDING.MEDIUMENDING1-1):
-            endingText = 'Zakon2'
+        case (ENDING.MEDIUMENDING2):
+            endingText = 'Still good for you!' // 2 evidences
             break
-        case (ENDING.MEDIUMENDING2-1):
-            endingText = 'Zakon3'
+        case (ENDING.MEDIUMENDING1):
+            endingText = 'Not bad' // 1 evidence
             break
-        case (ENDING.WORSTENDING-1):
-            endingText = 'Zakon4'
+        case (ENDING.WORSTENDING):
+            endingText = 'Really?' // 0 evidences
             break
         default:
             endingText = 'Something went wrong, reset game.'
