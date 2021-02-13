@@ -32,8 +32,4 @@ export class BoardField {
   set status(status: BoardState) {
     this._status = status;
   }
-
-  readParagraph() {
-    // wywolanie funkcji z frontu do wczytania paragrafu
-  }
 }

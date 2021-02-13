@@ -13,9 +13,9 @@ import {PuzzleReward} from './ENUM';
 export class Puzzle {
   constructor(
     readonly id: string,
-    private _paragraph: string,
-    private _puzzleCards: string[],
-    private _visitedCards: string[],
+    public _paragraph: string,
+    public _puzzleCards: string[],
+    public _visitedCards: string[],
     readonly reward: PuzzleReward,
     readonly solution: string,
     readonly content: string

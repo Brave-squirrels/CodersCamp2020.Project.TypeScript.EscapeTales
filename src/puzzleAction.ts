@@ -1,10 +1,11 @@
 import PuzzleCard from './puzzleCard';
 import {Puzzle} from './puzzle';
-import {GameState} from './state';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
-import {updatePuzzleDOM, updateEvidencesDOM, updateProgressDOM} from './updateDOM';
+import  * as updateDOM from './updateDOM';
+import {getStateLS} from './getLS';
+import * as updateLS from './updateLS';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -21,12 +22,10 @@ const getPuzzleCard = (ID: string, puzzleCardArray: Array<PuzzleCard>) : PuzzleC
 //Solve puzzle function
 /*
     @param {puzzleDOM} - id of the current puzzle
-    @param {state} - gameState object
     @param {puzzleArray} - array of all puzzle objects
-    @param {puzzleCardArray} - array of all puzzle cards
     @param {paragraphs} - array of all paragraphs
 */
-const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
+const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
 
     //Getting value - password typed by the user
     const passwordValue = (<HTMLInputElement>document.querySelector(`#${puzzleDOM}input`)).value;
@@ -36,12 +35,25 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
 
     //Check if solution is correct
     if(passwordValue === currentPuzzle.solution){
+
         //Get reward
-        rewardPuzzle(puzzleDOM, puzzleArray, state);
+        rewardPuzzle(puzzleDOM, puzzleArray);
+
         //Find paragraph
-        const puzzleParagraph : Paragraph = paragraphs.find((c:Paragraph)=>c.id===`${puzzleDOM}solve`)!;
+        let puzzleParagraph;
+         paragraphs.forEach((c : Paragraph) => {
+            if(c.id===`${puzzleDOM}solve`){
+                puzzleParagraph = c;
+            }
+        })!;
+
         //Add paragraph to the state
+        const state = getStateLS();
         state.addParagraphsId(puzzleParagraph.id);
+
+        //Update LS state
+        updateLS.updateStateLS(state);
+
         //DOM function with paragraph and solve content
         read(puzzleParagraph);
     }else{
@@ -55,47 +67,74 @@ const solvePuzzle = (puzzleDOM: string, state: GameState, puzzleArray: Array<Puz
 /*
     @param {id} - ID of puzzle
     @param {puzzleArray} - array of all puzzle objects
-    @param {state} - GameState object
 */
-const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>, state: GameState): void => {
+const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
+
     //Find the puzzle
     const currentPuzzle: Puzzle = getPuzzle(id, puzzleArray);
-    //Use switch to get other evidence or progress
+
+    //Check content of the reward
+
     switch(currentPuzzle.reward){
         case PuzzleReward.EVIDENCE:
-            //Add evidence to the state
-            state.addEvidencesId(id);
-            //Update evidences in interface
-            updateEvidencesDOM();
-            break;
+             //Add evidence to the state
+            const stateEv = getStateLS();
+            stateEv.addEvidencesId(id);
+
+            //Update evidences in interface and LS state
+            updateLS.updateStateLS(stateEv);
+            updateDOM.updateEvidencesDOM();
+        break;
         case PuzzleReward.PROGRESSPOINT:
-            //Add progressPoint to the state
-            state.addProgressPoint();
-            //Update progressPoints in interface
-            updateProgressDOM();
-            break;
+            //Increment amount of points
+            const statePR = getStateLS();
+            statePR.progressPointInc();
+
+            //Update progressPoints in interface and LS state
+            updateLS.updateStateLS(statePR);
+            updateDOM.updateProgressDOM();
+        break;
     }
+
+    const stateRm = getStateLS();
     //Remove puzzle from the state
-    state.removePuzzle(id);
+    stateRm.removePuzzle(id);
+    updateLS.updateStateLS(stateRm);
     //Update puzzleCards and puzzle's in interface
-    updatePuzzleDOM(state, puzzleArray);
+    updateDOM.updatePuzzleDOM(stateRm, puzzleArray);
     (document.querySelector(".puzzle") as HTMLElement).style.display = 'none';
 }
 
 //Add puzzle to the state
 /*
-    @param {state} - gameState object
     @param {id} - id of the filed - same as puzzle id
+    @param {puzzleArray} - array of all the puzzles
+    @param {puzzleCardArray} - array of all puzzleCards
 */
-const newPuzzle = (state: GameState, id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
+const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
+
+    //Get state from LS
+    const state = getStateLS();
     //Check if we have active puzzle
     if(state.userPuzzlesId.includes(getPuzzleCard(id, puzzleCardArray).puzzleId)){
         return;
     }
-    //If not push to the state (whick means it's active)
-    state.addPuzzlesId(id);
-    //Update puzzle interface
-    updatePuzzleDOM(state, puzzleArray);
+
+    //If not push to the state (which means it's active) - find base on puzzleID from puzzle card
+    let puzzleID = '';
+    puzzleArray.forEach((e : Puzzle)=>{
+        e.puzzleCards.forEach((cardID : string)=>{
+            if(cardID===id){
+                puzzleID = e.id;
+            }
+        })
+    })
+
+    //Update state
+    state.addPuzzlesId(puzzleID);
+    //Update puzzle interface and state LS
+    updateDOM.updatePuzzleDOM(state, puzzleArray);
+    updateLS.updateStateLS(state);
 }
 
 //Add puzzle card to the puzzle object
@@ -111,6 +150,9 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
     const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
+    //Update LS
+    const puzzleArrayMain = puzzleArray;
+    updateLS.updatePuzzleLS(puzzleArrayMain);
 }
 
 export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

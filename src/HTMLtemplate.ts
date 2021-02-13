@@ -2,7 +2,12 @@ import {Puzzle} from './puzzle';
 import PuzzleCard from './puzzleCard';
 import {Evidence} from './evidence';
 
-
+/*
+    Story book page template
+    @param {text} - text on page
+    @param {currentPage} - current generating page
+    @param {storyBookLength} - length of all paragraph
+*/
 export const pageTemplate = (text: string, currentPage: number, storyBookLength: number) => {
     if(currentPage === 0){
         return`
@@ -40,6 +45,10 @@ export const pageTemplate = (text: string, currentPage: number, storyBookLength:
     ` ;
 };
 
+/*
+    Interface puzzle template
+    @param {puzzle} - puzzle object
+*/
 export const puzzleTemplate = (puzzle : Puzzle) : string => {
     return `
         <div class='interface__puzzle__container' id=${puzzle.id}>
@@ -48,6 +57,9 @@ export const puzzleTemplate = (puzzle : Puzzle) : string => {
     `;
 }
 
+/*
+    Evidence interface template
+*/
 export const evidenceTemplate = (evidence : Evidence) : string => {
     return `
         <div class='interface__evidence__container'>
@@ -56,6 +68,11 @@ export const evidenceTemplate = (evidence : Evidence) : string => {
     `;
 }
 
+/*
+    Puzzle solving modal template
+    @param {puzzle} - puzzle object
+    @param {visitedCards} - array of discovered puzzle cards
+*/
 export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<PuzzleCard>) : string =>{
     let str = `
     <span class="puzzle__close" id="puzzle__close">&#10006;</span>
@@ -72,7 +89,7 @@ export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<Puzzle
         <div>
             <input type='text' id='${puzzle.id}input' class='puzzle__solve__input'>
         </div>
-        <button class='Confirm${puzzle.id} puzzle__solve__submit'>Confirm</button>
+        <button id='${puzzle.id}' class='Confirm${puzzle.id} puzzle__solve__submit'>Confirm</button>
         </div>
         `;
     return str;

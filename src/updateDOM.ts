@@ -1,10 +1,10 @@
 import { GameState } from "./state";
-import { state, evidencesArray } from "./data";
-import { pageTemplate } from "./HTMLtemplate";
-import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate } from "./HTMLtemplate";
+import { evidencesArray } from "./data";
+import  * as DOMTemplate from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
 import {Evidence} from './evidence';
+import {getStateLS} from './getLS';
 
 //Update actionPoints interface
 const updateActionDOM = (number: number): void => {
@@ -14,9 +14,11 @@ const updateActionDOM = (number: number): void => {
 
 //Update storyBook DOM
 const updateStoryBook = (): void => {
+  //Get state from localStorage
+  const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
-  const text = state.storyBook[state.storyBook.length - 1];
-  const content = pageTemplate(
+  const text = state.storyBook[state.currentPage];
+  const content = DOMTemplate.pageTemplate(
     text,
     state.currentPage,
     state.storyBook.length - 1
@@ -25,9 +27,11 @@ const updateStoryBook = (): void => {
 };
 
 const changePageStoryBook = (index: number) => {
+  //Get state from localStorage
+  const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
-  const previousContent = pageTemplate(
+  const previousContent = DOMTemplate.pageTemplate(
     previousText,
     state.currentPage,
     state.storyBook.length - 1
@@ -35,8 +39,14 @@ const changePageStoryBook = (index: number) => {
   storyBook.innerHTML = previousContent;
 };
 
+function initStoryBook(){
+  const storyBook = document.querySelector(".board__storybook") as HTMLElement;
+  storyBook.innerHTML = '<h1 style="text-align: center;">Story Book</h1>';
+}
+
 //Update evidences DOM
 const updateEvidencesDOM = (): void => {
+  const state = getStateLS();
   //Get the HTML container
   const cnt = document.querySelector("#interface__evidences") as HTMLElement;
 
@@ -48,7 +58,7 @@ const updateEvidencesDOM = (): void => {
     evidencesArray.forEach((evidence : Evidence)=>{
       if(IdUser === evidence.evidenceID){
         DOMEvidences.push(evidence);
-        cnt.innerHTML += evidenceTemplate(evidence);
+        cnt.innerHTML += DOMTemplate.evidenceTemplate(evidence);
       }
     })
   })
@@ -74,7 +84,7 @@ const updatePuzzleDOM = (
     puzzleArray.forEach((puzzleObj) => {
       if (statePuzzleID === puzzleObj.id) {
         //Create DOM element base on the template
-        cnt.innerHTML += puzzleTemplate(puzzleObj);
+        cnt.innerHTML += DOMTemplate.puzzleTemplate(puzzleObj);
       }
     });
   });
@@ -93,7 +103,6 @@ const solvePuzzleModal = (
 ) => {
   //Get the current puzzle
   const currentPuzzle: Puzzle = puzzleArray.find((el) => el.id === puzzleID)!;
-
   //Get all puzzleCards that the player found
   const visitedCards: Array<PuzzleCard> = [];
   currentPuzzle.visitedCards.forEach((visitedID) => {
@@ -106,20 +115,26 @@ const solvePuzzleModal = (
   //Put data into DOM
   (document.querySelector(".puzzle") as HTMLElement).innerHTML = `
         <div class='puzzle__text'>
-            ${puzzleSolveTemplate(currentPuzzle, visitedCards)}
+            ${DOMTemplate.puzzleSolveTemplate(currentPuzzle, visitedCards)}
         </div>
     `;
 };
 
 //Update progressPoints DOM
 const updateProgressDOM = (): void => {
+  const state = getStateLS();
+  //Get state from localStorage
   switch(state.progressPoints){
     case 1:
       (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
       break;
     case 2:
       (document.querySelector('#token2') as HTMLElement).style.opacity = '1';
+      (document.querySelector('#token1') as HTMLElement).style.opacity = '1';
       break;
+    default:
+      (document.querySelector('#token2') as HTMLElement).style.opacity = '0.4';
+      (document.querySelector('#token1') as HTMLElement).style.opacity = '0.4';
   }
 };
 
@@ -129,8 +144,7 @@ const updateProgressDOM = (): void => {
 */
 const updateAreaDOM = (state: GameState): void => {
   state.visitedAreas.forEach((n: string) => {
-    (document.querySelector(`#${n}`) as HTMLElement).className +=
-      " map__squareVisited";
+    (document.querySelector(`#${n}`) as HTMLElement).classList.add("map__squareVisited");
   });
 };
 
@@ -142,5 +156,6 @@ export {
   updateEvidencesDOM,
   updateStoryBook,
   solvePuzzleModal,
-  changePageStoryBook
+  changePageStoryBook,
+  initStoryBook,
 }

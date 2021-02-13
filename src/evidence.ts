@@ -1,3 +1,8 @@
+/*
+    @Class - Evidence
+    ID
+    content
+*/
 export class Evidence {
     constructor(
         readonly _ID: string,

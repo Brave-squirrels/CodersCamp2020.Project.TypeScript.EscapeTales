@@ -1,6 +1,5 @@
-import {ENDING, LOCATION} from './ENUM';
+import  * as ENUM from './ENUM';
 import { changePageStoryBook } from './updateDOM';
-
 /*
 @Class GameState:
     Actual game state, include:
@@ -23,9 +22,9 @@ export class GameState {
     constructor(protected _actionNumbers : number = 5,
                 protected _userParagraphsId : string[] = [],
                 protected _userPuzzlesId : string[] = [], 
-                protected _userLocationId : LOCATION = LOCATION.FIRST,
+                protected _userLocationId : ENUM.LOCATION = ENUM.LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
-                protected _storyline : ENDING = ENDING.BESTENDING, 
+                protected _storyline : ENUM.ENDING = ENUM.ENDING.BESTENDING, 
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],
@@ -38,11 +37,11 @@ export class GameState {
             this._actionNumbers = newActionNumber;
         }
 
-        set userLocationId(newLocationId:LOCATION){
+        set userLocationId(newLocationId:ENUM.LOCATION){
             this._userLocationId = newLocationId;
         }
 
-        set storyline(newStoryline:ENDING){
+        set storyline(newStoryline:ENUM.ENDING){
             this._storyline = newStoryline;
         }
 
@@ -66,12 +65,8 @@ export class GameState {
             this._userEvidencesId.pop();
         }
 
-        resetProgressPoints(){
-            this._progressPoints = 0;
-        }
-
-        addProgressPoint(){
-            ++this._progressPoints;
+        progressPointInc(){
+            this._progressPoints++
         }
 
         removePuzzle(ID: string){
@@ -89,6 +84,10 @@ export class GameState {
             this._currentPage = this._storyBook.length-1;
         }
 
+        addStoryBook(story){
+            this._storyBook = story;
+        }
+
         nextStoryBookPage(){
             this._currentPage++;
             changePageStoryBook(this._currentPage);
@@ -97,6 +96,10 @@ export class GameState {
         previousStoryBookPage(){
             this._currentPage--;
             changePageStoryBook(this._currentPage);
+        }
+
+        currentPageChange(num){
+            this._currentPage = num;
         }
 
         get actionNumbers(){
@@ -131,5 +134,8 @@ export class GameState {
         }
         get progressPoints(){
             return this._progressPoints;
+        }
+        get story(){
+            return this._storyBook;
         }
 }
