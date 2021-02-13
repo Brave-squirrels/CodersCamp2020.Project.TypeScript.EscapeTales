@@ -2,14 +2,14 @@
 import * as data from "./data";
 import * as boardAction from "./board";
 import { solvePuzzle } from "./puzzleAction";
-import  * as readContent from "./readContent";
+import * as readContent from "./readContent";
 import navigation from "./navigation";
-import  * as updateDOM from "./updateDOM";
-import {initNewGame} from './newGame';
-import { onLoadUpdate } from './continue';
-import  * as getLS from './getLS';
-import {nextLocation} from './goNext';
-import {updateStateLS} from './updateLS';
+import * as updateDOM from "./updateDOM";
+import { initNewGame } from "./newGame";
+import { onLoadUpdate } from "./continue";
+import * as getLS from "./getLS";
+import { nextLocation } from "./goNext";
+import { updateStateLS } from "./updateLS";
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -39,7 +39,7 @@ document.addEventListener("click", (e: any): void => {
     }
 
     //Get puzzle array from LS
-    let puzzleArrayMain = getLS.getPuzzleLS()
+    let puzzleArrayMain = getLS.getPuzzleLS();
     //Function which run the movement and content events
     boardAction.mainAction(
       areaID,
@@ -48,7 +48,6 @@ document.addEventListener("click", (e: any): void => {
       data.puzzleCardArray,
       puzzleArrayMain
     );
-
   }
 });
 
@@ -63,8 +62,7 @@ document.addEventListener("click", (e: any): void => {
 
     //Add data to the modal
     updateDOM.solvePuzzleModal(puzzleID, puzzleArray, data.puzzleCardArray);
-    
-  }else if (e.target.classList.contains(`puzzle__solve__submit`)) {
+  } else if (e.target.classList.contains(`puzzle__solve__submit`)) {
     //Get puzzleArray from LS
     const puzzleArray = getLS.getPuzzleLS();
     //Take puzzle ID from DOM
@@ -169,7 +167,7 @@ document.addEventListener("click", (e: any) => {
     //Get state from LS
     const state = getLS.getStateLS();
     //Check if player has enough progressPoints
-    if(state.progressPoints === 2){
+    if (state.progressPoints === 2) {
       if (currentId !== 3) {
         //Go the the next location
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
@@ -178,7 +176,7 @@ document.addEventListener("click", (e: any) => {
         state.userLocationId += 1;
         nextLocation(currentId);
       }
-    }else{
+    } else {
       //Read notification
       readContent.readNotEnughPR();
     }
@@ -186,18 +184,21 @@ document.addEventListener("click", (e: any) => {
 });
 
 //Start new game
-document.addEventListener('click', (e : any) => {
-  if(e.target === (document.querySelector('#newGameBtn') as HTMLElement) || e.target ===(document.querySelector('#resetGame') as HTMLElement)){
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target === (document.querySelector("#newGameBtn") as HTMLElement) ||
+    e.target === (document.querySelector("#resetGame") as HTMLElement)
+  ) {
     initNewGame();
   }
 });
 
 //Continue game
-document.addEventListener('click', (e : any)=>{
-  if(e.target === (document.querySelector('#continueBtn') as HTMLElement)){
+document.addEventListener("click", (e: any) => {
+  if (e.target === (document.querySelector("#continueBtn") as HTMLElement)) {
     onLoadUpdate();
   }
-})
+});
 
 //Save data when refresh the site
 window.onload = onLoadUpdate;
