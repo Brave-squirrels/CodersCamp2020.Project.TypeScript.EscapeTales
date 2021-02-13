@@ -1,24 +1,13 @@
 //Import
-import {
-  boardAreas,
-  paragraphsArray,
-  puzzleCardArray,
-  stressParagraphs
-} from "./data";
-import {
-  getBoard,
-  checkActions,
-  checkStatus,
-  mainAction,
-  stressCardAction,
-} from "./board";
+import * as data from "./data";
+import * as boardAction from "./board";
 import { solvePuzzle } from "./puzzleAction";
-import { notEnoughPoints, areaExplored, readNotEnughPR } from "./readContent";
+import  * as readContent from "./readContent";
 import navigation from "./navigation";
-import { solvePuzzleModal, updateStoryBook } from "./updateDOM";
+import  * as updateDOM from "./updateDOM";
 import {initNewGame} from './newGame';
 import { onLoadUpdate } from './continue';
-import {getStateLS, getPuzzleLS} from './getLS';
+import  * as getLS from './getLS';
 import {nextLocation} from './goNext';
 import {updateStateLS} from './updateLS';
 
@@ -26,37 +15,40 @@ import {updateStateLS} from './updateLS';
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("map__square")) {
     //Get state from localStorage
-    const state = getStateLS();
+    const state = getLS.getStateLS();
     //Getting ID of DOM element to find boardArea object
     const areaID: string = e.target.id;
 
     //Getting current board object
-    const currentField = getBoard(areaID, boardAreas);
+    const currentField = boardAction.getBoard(areaID, data.boardAreas);
 
     //Get the current board object
-    if (checkStatus(currentField, state)) {
-      //End if the area is explored
+    if (boardAction.checkStatus(currentField, state)) {
       //Run DOM function with message that area is explored
-      areaExplored();
+      readContent.areaExplored();
+      //End function
       return;
     }
 
     //If we have proper amount of actionPoints
-    if (!checkActions(state)) {
-      //End function cuz of lack of action points
+    if (!boardAction.checkActions(state)) {
       //Run DOM function with message that we don't have enough actionPoints
-      notEnoughPoints();
+      readContent.notEnoughPoints();
+      //End function
       return;
     }
-    let puzzleArrayMain = getPuzzleLS()
+
+    //Get puzzle array from LS
+    let puzzleArrayMain = getLS.getPuzzleLS()
     //Function which run the movement and content events
-    mainAction(
+    boardAction.mainAction(
       areaID,
       currentField,
-      paragraphsArray,
-      puzzleCardArray,
+      data.paragraphsArray,
+      data.puzzleCardArray,
       puzzleArrayMain
     );
+
   }
 });
 
@@ -64,19 +56,21 @@ document.addEventListener("click", (e: any): void => {
 document.addEventListener("click", (e: any): void => {
   if (e.target.classList.contains("interface__puzzle__container")) {
     //Get state from localStorage
-    const puzzleArray = getPuzzleLS();
+    const puzzleArray = getLS.getPuzzleLS();
     //Display puzzle input solve modal
     const puzzleID: string = e.target.id;
     (document.querySelector(".puzzle") as HTMLElement).style.display = "block";
 
     //Add data to the modal
-    solvePuzzleModal(puzzleID, puzzleArray, puzzleCardArray);
+    updateDOM.solvePuzzleModal(puzzleID, puzzleArray, data.puzzleCardArray);
     
   }else if (e.target.classList.contains(`puzzle__solve__submit`)) {
-    const puzzleArray = getPuzzleLS();
+    //Get puzzleArray from LS
+    const puzzleArray = getLS.getPuzzleLS();
+    //Take puzzle ID from DOM
     const puzzleID = e.target.id;
     //Run validation puzzle function
-    solvePuzzle(puzzleID, puzzleArray, paragraphsArray);
+    solvePuzzle(puzzleID, puzzleArray, data.paragraphsArray);
   }
 });
 
@@ -99,21 +93,21 @@ document.addEventListener("click", (e: any): void => {
 //Change story book page
 document.addEventListener("click", (e: any): void => {
   //Get state from localStorage
-  const state = getStateLS();
+  const state = getLS.getStateLS();
   if (
     e.target.className === "board__storybook__arrowLeft" ||
     e.target.className === "fas fa-reply"
   ) {
     state.previousStoryBookPage();
     updateStateLS(state);
-    updateStoryBook();
+    updateDOM.updateStoryBook();
   } else if (
     e.target.className === "board__storybook__arrowRight" ||
     e.target.className === "fas fa-share"
   ) {
     state.nextStoryBookPage();
     updateStateLS(state);
-    updateStoryBook();
+    updateDOM.updateStoryBook();
   }
 });
 
@@ -135,12 +129,12 @@ document.addEventListener("click", (e: any) => {
 //Take stress card
 document.addEventListener("click", (e: any) => {
   //Get state from localStorage
-  const state = getStateLS();
+  const state = getLS.getStateLS();
   if (
     e.target.id === "interface__stressCard" ||
     e.target.id === "interface__stressCard__title"
   ) {
-    stressCardAction(state, stressParagraphs);
+    boardAction.stressCardAction(state, data.stressParagraphs);
   }
 });
 
@@ -172,9 +166,12 @@ document.addEventListener("click", (e: any) => {
   if (/goNext/.test(e.target.className)) {
     const currentBoard = document.querySelector(".activeBoard")!;
     const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
-    const state = getStateLS();
+    //Get state from LS
+    const state = getLS.getStateLS();
+    //Check if player has enough progressPoints
     if(state.progressPoints === 2){
       if (currentId !== 3) {
+        //Go the the next location
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");
@@ -182,10 +179,12 @@ document.addEventListener("click", (e: any) => {
         nextLocation(currentId);
       }
     }else{
-      readNotEnughPR();
+      //Read notification
+      readContent.readNotEnughPR();
     }
   }
 });
+
 //Start new game
 document.addEventListener('click', (e : any) => {
   if(e.target === (document.querySelector('#newGameBtn') as HTMLElement) || e.target ===(document.querySelector('#resetGame') as HTMLElement)){

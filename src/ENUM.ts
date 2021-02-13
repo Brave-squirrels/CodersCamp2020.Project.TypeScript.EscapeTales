@@ -1,36 +1,43 @@
 //Enum for number of actions
-export enum ActionPointsEnum {
+enum ActionPointsEnum {
     MOVE = -1,
     RESET = 6,
     STRESSCARD = 4,
     CLUE = 2
 }
 
-export enum PuzzleReward{
+//Reward from solving the puzzle
+enum PuzzleReward{
     EVIDENCE,
     PROGRESSPOINT
 }
 
-export enum BoardContent{
+//Content on board
+enum BoardContent{
     PUZZLE,
     CLUE,
     NOTHING
 }
 
-export enum BoardState{
+//State of the board
+enum BoardState{
     PENDING,
     EXPLORED
 }
 
-export enum ENDING{
+//Game ending
+enum ENDING{
     BESTENDING,
     WORSTENDING,
     MEDIUMENDING1,
     MEDIUMENDING2
 }
 
-export enum LOCATION{
+//Location
+enum LOCATION{
     FIRST = 1,
     SECOND = 2,
     THIRD = 3
 }
+
+export {LOCATION, ENDING, BoardState, PuzzleReward, ActionPointsEnum, BoardContent};

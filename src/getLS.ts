@@ -2,9 +2,13 @@
 import {GameState} from './state';
 import {Puzzle} from './puzzle';
 
-export const getStateLS = () : GameState => {
+//Get state from LS
+const getStateLS = () : GameState => {
+    //Get JSON state object
     const stateData = JSON.parse(localStorage.getItem('state')!);
-        return new GameState(
+
+    //Create new GameState with all the methods
+    return new GameState(
         stateData._actionNumbers,
         stateData._userParagraphsId,
         stateData._userPuzzlesId,
@@ -19,9 +23,12 @@ export const getStateLS = () : GameState => {
     )
 }
 
-export const getPuzzleLS = () : Array<Puzzle> =>{
+//Get puzzleArray from LS
+const getPuzzleLS = () : Array<Puzzle> =>{
+    //Get puzzle object array from LS
     const puzzleData = JSON.parse(localStorage.getItem('puzzle')!);
     const puzzleArray : Array<Puzzle> = [];
+    //Create array of puzzle object with all the methods
     puzzleData.puzzleArrayMain.forEach((e : Puzzle)=>{
         puzzleArray.push(
             new Puzzle(
@@ -37,3 +44,5 @@ export const getPuzzleLS = () : Array<Puzzle> =>{
     })
     return puzzleArray;
 }
+
+export {getPuzzleLS, getStateLS}

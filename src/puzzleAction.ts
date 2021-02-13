@@ -3,9 +3,9 @@ import {Puzzle} from './puzzle';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
 import {read, incorrectPuzzle} from './readContent';
-import {updatePuzzleDOM, updateEvidencesDOM, updateProgressDOM} from './updateDOM';
+import  * as updateDOM from './updateDOM';
 import {getStateLS} from './getLS';
-import { updatePuzzleLS, updateStateLS } from './updateLS';
+import * as updateLS from './updateLS';
 
 //Get puzzle card and main puzzle object base on id
 /*
@@ -22,9 +22,7 @@ const getPuzzleCard = (ID: string, puzzleCardArray: Array<PuzzleCard>) : PuzzleC
 //Solve puzzle function
 /*
     @param {puzzleDOM} - id of the current puzzle
-    @param {state} - gameState object
     @param {puzzleArray} - array of all puzzle objects
-    @param {puzzleCardArray} - array of all puzzle cards
     @param {paragraphs} - array of all paragraphs
 */
 const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: Array<Paragraph>):void=>{
@@ -37,8 +35,10 @@ const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: 
 
     //Check if solution is correct
     if(passwordValue === currentPuzzle.solution){
+
         //Get reward
         rewardPuzzle(puzzleDOM, puzzleArray);
+
         //Find paragraph
         let puzzleParagraph;
          paragraphs.forEach((c : Paragraph) => {
@@ -46,11 +46,15 @@ const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: 
                 puzzleParagraph = c;
             }
         })!;
+
         //Add paragraph to the state
         const state = getStateLS();
         state.addParagraphsId(puzzleParagraph.id);
+
+        //Update LS state
+        updateLS.updateStateLS(state);
+
         //DOM function with paragraph and solve content
-        updateStateLS(state);
         read(puzzleParagraph);
     }else{
         //Run DOM function that will tell that the password is incorrect
@@ -63,63 +67,74 @@ const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: 
 /*
     @param {id} - ID of puzzle
     @param {puzzleArray} - array of all puzzle objects
-    @param {state} - GameState object
 */
 const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
+
     //Find the puzzle
     const currentPuzzle: Puzzle = getPuzzle(id, puzzleArray);
-    //Use switch to get other evidence or progress
-    if(currentPuzzle.reward===PuzzleReward.EVIDENCE){
-         //Add evidence to the state
-         const stateEv = getStateLS();
-         stateEv.addEvidencesId(id);
-         //Update evidences in interface
-         updateStateLS(stateEv);
-         updateEvidencesDOM();
-    }else if (currentPuzzle.reward===PuzzleReward.PROGRESSPOINT){
-        const statePR = getStateLS();
-            if(statePR.progressPoints===0){
-                statePR.addProgressPoint(1);
-            }else{
-                statePR.addProgressPoint(2);
-            }
-            //Update progressPoints in interface
-            updateStateLS(statePR);
-            updateProgressDOM();
+
+    //Check content of the reward
+
+    switch(currentPuzzle.reward){
+        case PuzzleReward.EVIDENCE:
+             //Add evidence to the state
+            const stateEv = getStateLS();
+            stateEv.addEvidencesId(id);
+
+            //Update evidences in interface and LS state
+            updateLS.updateStateLS(stateEv);
+            updateDOM.updateEvidencesDOM();
+        break;
+        case PuzzleReward.PROGRESSPOINT:
+            //Increment amount of points
+            const statePR = getStateLS();
+            statePR.progressPointInc();
+
+            //Update progressPoints in interface and LS state
+            updateLS.updateStateLS(statePR);
+            updateDOM.updateProgressDOM();
+        break;
     }
+
     const stateRm = getStateLS();
     //Remove puzzle from the state
     stateRm.removePuzzle(id);
-    updateStateLS(stateRm);
+    updateLS.updateStateLS(stateRm);
     //Update puzzleCards and puzzle's in interface
-    updatePuzzleDOM(stateRm, puzzleArray);
+    updateDOM.updatePuzzleDOM(stateRm, puzzleArray);
     (document.querySelector(".puzzle") as HTMLElement).style.display = 'none';
 }
 
 //Add puzzle to the state
 /*
-    @param {state} - gameState object
     @param {id} - id of the filed - same as puzzle id
+    @param {puzzleArray} - array of all the puzzles
+    @param {puzzleCardArray} - array of all puzzleCards
 */
 const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Array<PuzzleCard>): void =>{
+
+    //Get state from LS
     const state = getStateLS();
     //Check if we have active puzzle
     if(state.userPuzzlesId.includes(getPuzzleCard(id, puzzleCardArray).puzzleId)){
         return;
     }
-    //If not push to the state (which means it's active)
-    let puz = '';
-    puzzleArray.forEach(e=>{
-        e.puzzleCards.forEach(n=>{
-            if(n===id){
-                puz = e.id;
+
+    //If not push to the state (which means it's active) - find base on puzzleID from puzzle card
+    let puzzleID = '';
+    puzzleArray.forEach((e : Puzzle)=>{
+        e.puzzleCards.forEach((cardID : string)=>{
+            if(cardID===id){
+                puzzleID = e.id;
             }
         })
     })
-    state.addPuzzlesId(puz);
-    //Update puzzle interface
-    updatePuzzleDOM(state, puzzleArray);
-    updateStateLS(state);
+
+    //Update state
+    state.addPuzzlesId(puzzleID);
+    //Update puzzle interface and state LS
+    updateDOM.updatePuzzleDOM(state, puzzleArray);
+    updateLS.updateStateLS(state);
 }
 
 //Add puzzle card to the puzzle object
@@ -135,8 +150,9 @@ const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArr
     const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
     //Push this ID to puzzle object (which means we got it)
     puzzleObj.addVisitedCard(puzzleCard.id);
+    //Update LS
     const puzzleArrayMain = puzzleArray;
-    updatePuzzleLS(puzzleArrayMain);
+    updateLS.updatePuzzleLS(puzzleArrayMain);
 }
 
 export {newPuzzle, newPuzzleCard, solvePuzzle, getPuzzle, getPuzzleCard};

@@ -1,6 +1,6 @@
 import { GameState } from "./state";
 import { evidencesArray } from "./data";
-import { puzzleTemplate, puzzleSolveTemplate, evidenceTemplate, pageTemplate } from "./HTMLtemplate";
+import  * as DOMTemplate from "./HTMLtemplate";
 import { Puzzle } from "./puzzle";
 import PuzzleCard from "./puzzleCard";
 import {Evidence} from './evidence';
@@ -18,7 +18,7 @@ const updateStoryBook = (): void => {
   const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const text = state.storyBook[state.currentPage];
-  const content = pageTemplate(
+  const content = DOMTemplate.pageTemplate(
     text,
     state.currentPage,
     state.storyBook.length - 1
@@ -31,7 +31,7 @@ const changePageStoryBook = (index: number) => {
   const state = getStateLS();
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   const previousText = state.storyBook[index];
-  const previousContent = pageTemplate(
+  const previousContent = DOMTemplate.pageTemplate(
     previousText,
     state.currentPage,
     state.storyBook.length - 1
@@ -39,7 +39,7 @@ const changePageStoryBook = (index: number) => {
   storyBook.innerHTML = previousContent;
 };
 
-export function initStoryBook(){
+function initStoryBook(){
   const storyBook = document.querySelector(".board__storybook") as HTMLElement;
   storyBook.innerHTML = '<h1 style="text-align: center;">Story Book</h1>';
 }
@@ -58,7 +58,7 @@ const updateEvidencesDOM = (): void => {
     evidencesArray.forEach((evidence : Evidence)=>{
       if(IdUser === evidence.evidenceID){
         DOMEvidences.push(evidence);
-        cnt.innerHTML += evidenceTemplate(evidence);
+        cnt.innerHTML += DOMTemplate.evidenceTemplate(evidence);
       }
     })
   })
@@ -84,7 +84,7 @@ const updatePuzzleDOM = (
     puzzleArray.forEach((puzzleObj) => {
       if (statePuzzleID === puzzleObj.id) {
         //Create DOM element base on the template
-        cnt.innerHTML += puzzleTemplate(puzzleObj);
+        cnt.innerHTML += DOMTemplate.puzzleTemplate(puzzleObj);
       }
     });
   });
@@ -115,7 +115,7 @@ const solvePuzzleModal = (
   //Put data into DOM
   (document.querySelector(".puzzle") as HTMLElement).innerHTML = `
         <div class='puzzle__text'>
-            ${puzzleSolveTemplate(currentPuzzle, visitedCards)}
+            ${DOMTemplate.puzzleSolveTemplate(currentPuzzle, visitedCards)}
         </div>
     `;
 };
@@ -157,4 +157,5 @@ export {
   updateStoryBook,
   solvePuzzleModal,
   changePageStoryBook,
+  initStoryBook,
 }

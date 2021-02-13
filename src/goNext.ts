@@ -1,22 +1,23 @@
-import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM} 
-from './updateDOM';
-import {getStateLS, getPuzzleLS} from './getLS';
+import * as updateDOM from './updateDOM';
+import * as getLS from './getLS';
 import {GameState} from './state';
-import {updateStoryBook} from './updateDOM';
 import {updateStateLS} from './updateLS';
 
-//Next location
-//Go to the next location
-//Reset action points
-//Remove all puzzles from previous location
-//Reset progress points
+//Go to the next location function
 export const nextLocation = (id) : void =>{
-    let stateTemp  = getStateLS();
+    //Get state from LS
+    let stateTemp  = getLS.getStateLS();
+
+    //Get all data that we need in the next location from old state
     const paragraphArray = stateTemp.userParagraphsId;
     const evidencesArray = stateTemp.userEvidencesId;
     const storyBookArray = stateTemp.storyBook;
+
+    //Create new game state
     updateStateLS(new GameState());
-    const state = getStateLS();
+    const state = getLS.getStateLS();
+
+    //Push to the game state all data that we need from previous location
     paragraphArray.forEach((e)=>{
         state.addParagraphsId(e);
     })
@@ -27,10 +28,14 @@ export const nextLocation = (id) : void =>{
     state.currentPageChange(stateTemp.currentPage);
     
     state.userLocationId = ++id;
+    
+    //Update LS
     updateStateLS(state);
-    updateStoryBook();
-    updateActionDOM(state.actionNumbers);
-    updateEvidencesDOM();
-    updatePuzzleDOM(state, getPuzzleLS());
-    updateProgressDOM();
+
+    //Update user interface
+    updateDOM.updateStoryBook();
+    updateDOM.updateActionDOM(state.actionNumbers);
+    updateDOM.updateEvidencesDOM();
+    updateDOM.updatePuzzleDOM(state, getLS.getPuzzleLS());
+    updateDOM.updateProgressDOM();
 }

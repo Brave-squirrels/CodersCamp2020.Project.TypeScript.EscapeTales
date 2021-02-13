@@ -1,18 +1,19 @@
 import {GameState} from './state';
-import { updateActionDOM, updateProgressDOM , updateEvidencesDOM , updatePuzzleDOM, initStoryBook} 
-from './updateDOM';
+import * as updateDOM from './updateDOM';
 import {boardAreas, puzzleArrayMain} from './data';
-import {getStateLS, getPuzzleLS} from './getLS';
+import * as getLS from './getLS';
 import {BoardState} from './ENUM';
 import {BoardField} from './boardField';
-import {updatePuzzleLS, updateStateLS} from './updateLS';
+import * as updateLS from './updateLS';
+
 export const initNewGame = () : void =>{
-    //Go to the first location
+
     //Create default gameState
-    updateStateLS(new GameState());
-    const state = getStateLS();
-    updatePuzzleLS(puzzleArrayMain);
-    const puzzleArray = getPuzzleLS();
+    updateLS.updateStateLS(new GameState());
+    const state = getLS.getStateLS();
+    updateLS.updatePuzzleLS(puzzleArrayMain);
+    const puzzleArray = getLS.getPuzzleLS();
+
     //Reset boardFields
     const fields = document.querySelectorAll('.map__square');
     for(let i=0; i<fields.length; i++){
@@ -24,14 +25,16 @@ export const initNewGame = () : void =>{
         e.status = BoardState.PENDING;
     })
 
+    //Go to the first location
     const currentBoard = document.querySelector(".activeBoard")!;
     const nextBoard = document.querySelector(`#board${1}`)!;
     currentBoard.classList.toggle("activeBoard");
     nextBoard.classList.toggle("activeBoard");
+
     //Reset interface
-    initStoryBook();
-    updateActionDOM(state.actionNumbers);
-    updateEvidencesDOM();
-    updatePuzzleDOM(state,puzzleArray);
-    updateProgressDOM();
+    updateDOM.initStoryBook();
+    updateDOM.updateActionDOM(state.actionNumbers);
+    updateDOM.updateEvidencesDOM();
+    updateDOM.updatePuzzleDOM(state,puzzleArray);
+    updateDOM.updateProgressDOM();
 }
