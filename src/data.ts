@@ -12,23 +12,23 @@ export const boardAreas : Array<BoardField> = [
     new BoardField(BoardState.PENDING, 'l1b11', 'l1b11', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b12', 'l1b12', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b13', 'l1b13', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b14', 'l1b14', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b15', 'l1b15', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b21', 'l1b21', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b14', 'l1b14', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b15', 'l1b15', BoardContent.CLUE),
+    new BoardField(BoardState.PENDING, 'l1b21', 'l1b21', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b22', 'l1b22', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b23', 'l1b23', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l1b24', 'l1b24', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b25', 'l1b25', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b31', 'l1b31', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b32', 'l1b32', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b33', 'l1b33', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b34', 'l1b34', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b35', 'l1b35', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.PUZZLE ),
-    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b43', 'l1b43', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b31', 'l1b31', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b32', 'l1b32', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b33', 'l1b33', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b34', 'l1b34', BoardContent.CLUE),
+    new BoardField(BoardState.PENDING, 'l1b35', 'l1b35', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l1b41', 'l1b41', BoardContent.NOTHING ),
+    new BoardField(BoardState.PENDING, 'l1b42', 'l1b42', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b43', 'l1b43', BoardContent.CLUE),
     new BoardField(BoardState.PENDING, 'l1b44', 'l1b44', BoardContent.NOTHING),
-    new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.NOTHING),
     //Second location
     new BoardField(BoardState.PENDING, 'l2b11', 'l2b11', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l2b12', 'l2b12', BoardContent.PUZZLE),
@@ -77,26 +77,26 @@ export const boardAreas : Array<BoardField> = [
 
 export const paragraphsArray : Array<Paragraph> = [
     //First location
-    new Paragraph('l1b11', LOCATION.FIRST, 1, 'Test paragraph', 'New puzzle card'),
-    new Paragraph('l1b12', LOCATION.FIRST, 1, 'U found a clue!', 'Clue'),
-    new Paragraph('l1b13', LOCATION.FIRST, 1, 'Smthing','Nothing'),
-    new Paragraph('l1b14', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b15', LOCATION.FIRST, 1, 'lmao','Nothing'),
-    new Paragraph('l1b21', LOCATION.FIRST, 1, 'asd','Nothing'),
-    new Paragraph('l1b22', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b23', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b24', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b25', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b31', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b32', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b33', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b34', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b35', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b41', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b42', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b43', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b44', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b45', LOCATION.FIRST, 1, '','Nothing'),
+    new Paragraph('l1b11', LOCATION.FIRST, 1, 'While entering the shed you noticed strange combination of numbers on one of the notes...', 'New puzzle card'),
+    new Paragraph('l1b12', LOCATION.FIRST, 1, 'You were slowly approaching the workbench, while you spotted a strange note, if you just can decode it', 'New puzzle card'),
+    new Paragraph('l1b13', LOCATION.FIRST, 1, `Near the house you noticed a strange hatch, you are trying to open it, but it's locked`,'New puzzle card'),
+    new Paragraph('l1b14', LOCATION.FIRST, 1, 'You notices that there is smoke coming out of the chimney, but the rooftop is too high','Nothing'),
+    new Paragraph('l1b15', LOCATION.FIRST, 1, 'You came to look through the window and you spotted the murderer, now you know that he is in house. You have to be careful','Clue'),
+    new Paragraph('l1b21', LOCATION.FIRST, 1, `Just an old tree, but you see an old shed, maybe it's worth to approach?`,'Nothing'),
+    new Paragraph('l1b22', LOCATION.FIRST, 1, `There's nothing in here, but this old workbench seems interesting`,'Nothing'),
+    new Paragraph('l1b23', LOCATION.FIRST, 1, 'Doors are locked with some sort of code, if you just know the letter order...','New puzzle card'),
+    new Paragraph('l1b24', LOCATION.FIRST, 1, 'This house is really old and damaged, looks like abandoned','Nothing'),
+    new Paragraph('l1b25', LOCATION.FIRST, 1, 'You found a strange mound near the tree','New puzzle card'),
+    new Paragraph('l1b31', LOCATION.FIRST, 1, `Old forest, seems interesting but you haven't found there anything that may help you`,'Nothing'),
+    new Paragraph('l1b32', LOCATION.FIRST, 1, `Nothing in here, but this old fountain is still working, strange, maybe you should check it`,'Nothing'),
+    new Paragraph('l1b33', LOCATION.FIRST, 1, 'Nothing in here, just a pile of grass and an old tree','Nothing'),
+    new Paragraph('l1b34', LOCATION.FIRST, 1, `You stopped for a while and looked at the house, it looks very messy, like no one has ever took care of that`,'Clue'),
+    new Paragraph('l1b35', LOCATION.FIRST, 1, 'Nothing there, but this near by tree looks interesting','Nothing'),
+    new Paragraph('l1b41', LOCATION.FIRST, 1, `Old forest, seems interesting but you haven't found there anything that may help you`,'Nothing'),
+    new Paragraph('l1b42', LOCATION.FIRST, 1, `It's strange that there is fountain, but you can't see where the pipes are, there has to be something underground`,'New puzzle card'),
+    new Paragraph('l1b43', LOCATION.FIRST, 1, `Road looks like no one has visited this house since many years, it's middle of nowhere, it has to be there`,'Clue'),
+    new Paragraph('l1b44', LOCATION.FIRST, 1, 'You came from there','Nothing'),
+    new Paragraph('l1b45', LOCATION.FIRST, 1, 'You came from there','Nothing'),
     //Second location
     new Paragraph('l2b11', LOCATION.SECOND, 1, '','Nothing'),
     new Paragraph('l2b12', LOCATION.SECOND, 1, '','Nothing'),
@@ -140,31 +140,26 @@ export const paragraphsArray : Array<Paragraph> = [
     new Paragraph('l3b44', LOCATION.THIRD, 1, '','Nothing'),
     new Paragraph('l3b45', LOCATION.THIRD, 1, '','Nothing'),
     //Puzzle solve paragraphs
-    new Paragraph('l1b11solve', LOCATION.FIRST, 1, '','Nothing'),
-    new Paragraph('l1b12solve', LOCATION.FIRST, 1, '','l2'),
-    new Paragraph('l1b13solve', LOCATION.FIRST, 1, '','l3'),
-    new Paragraph('l1b41solve', LOCATION.FIRST, 1, '','l3')
-
+    new Paragraph('l1b11solve', LOCATION.FIRST, 1, 'Finally you were able to crack this code', 'Progress Token'),
+    new Paragraph('l1b13solve', LOCATION.FIRST, 1, 'You were manage to put pieces together, and you discovered that the house has a secret basement, maybe this is the place where you should go', 'Progress Token'),
+    new Paragraph('l1b12solve', LOCATION.FIRST, 1, 'You noticed that the strange note was actually a map, that has marked where the bodies are buried', 'A map')
 ]
 
 //Puzzles Card array
 export const puzzleCardArray : Array<PuzzleCard> = [
-    new PuzzleCard('l1b11', 'l1b11', 'Hint1'),
-    new PuzzleCard('l1b12', 'l1b12', 'Hint2'),
-    new PuzzleCard('l1b13', 'l1b13', 'Hint8'),
-    new PuzzleCard('l1b14', 'l1b13', 'Hint3'),
-    new PuzzleCard('l1b15', 'l1b12', 'Hint3'),
-    new PuzzleCard('l1b32', 'l1b11', 'Hint32'),
-    new PuzzleCard('l1b41', 'l1b41', 'Hint3'),
-    new PuzzleCard('l1b42', 'l1b41', 'Hint32')
+    new PuzzleCard('l1b11', 'l1b11', '3 5 2 1 4'),
+    new PuzzleCard('l1b23', 'l1b11', 'A E D M R'),
+    new PuzzleCard('l1b13', 'l1b13', 'What is seen in the middle of March and April that can’t be seen at the beginning or end of either month?'),
+    new PuzzleCard('l1b42', 'l1b13', 'Rabbit Raccoon Ram Rat Rattlesnake Raven...'),
+    new PuzzleCard('l1b12', 'l1b12', 'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?'),
+    new PuzzleCard('l1b25', 'l1b12', 'You can see the whole world on it and then put it in your pocket ')
 ]
 
 //Puzzles objects array
 export const puzzleArrayMain : Array<Puzzle> = [
-    new Puzzle('l1b11','l1b11solve', ['l1b21','l1b11'], [], PuzzleReward.EVIDENCE, 'Solution', 'MainPuzzle1'),
-    new Puzzle('l1b12','l1b12solve', ['l1b12','l1b15'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle2'),
-    new Puzzle('l1b13','l1b13solve', ['l1b13','l1b14'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle3'),
-    new Puzzle('l1b41','l1b41solve', ['l1b41','l1b42'], [], PuzzleReward.PROGRESSPOINT, 'Solution2', 'MainPuzzle4')
+    new Puzzle('l1b11', 'l1b11solve', ['l1b11','l1b23'], [], PuzzleReward.PROGRESSPOINT, 'dream', 'The code'),
+    new Puzzle('l1b12', 'l1b12solve', ['l1b12','l1b25'], [], PuzzleReward.EVIDENCE, 'map', 'The way in'),
+    new Puzzle('l1b13', 'l1b13solve', ['l1b13','l1b42'], [], PuzzleReward.PROGRESSPOINT, 'r', 'Secret place')
 ]
 
 //Stress card paragraphs
@@ -175,6 +170,5 @@ export const stressParagraphs : string[] = [
 
 //Evidence objects array (to update DOM)
 export const evidencesArray : Array<Evidence> = [
-    new Evidence('l1b11', 'U found hammer or smth'),
-    new Evidence('l1b12', 'U found evidence'),
+    new Evidence('l1b12', 'Map')
 ]

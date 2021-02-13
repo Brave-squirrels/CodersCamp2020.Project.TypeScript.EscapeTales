@@ -34,7 +34,7 @@ const solvePuzzle = (puzzleDOM: string, puzzleArray: Array<Puzzle>, paragraphs: 
     const currentPuzzle : Puzzle = getPuzzle(puzzleDOM, puzzleArray);
 
     //Check if solution is correct
-    if(passwordValue === currentPuzzle.solution){
+    if(passwordValue.toLowerCase() === currentPuzzle.solution){
 
         //Get reward
         rewardPuzzle(puzzleDOM, puzzleArray);

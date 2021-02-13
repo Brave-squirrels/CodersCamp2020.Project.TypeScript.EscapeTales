@@ -23,7 +23,7 @@ export const pageTemplate = (text: string, currentPage: number, storyBookLength:
         ` ;
     }else if(currentPage === storyBookLength){
         return`
-        <h2>${text}</h2>
+        <h3>${text}</h3>
         <div class="board__storybook__arrows">
         <div class="board__storybook__arrowLeft">
             <i class="fas fa-reply"></i>
@@ -34,7 +34,7 @@ export const pageTemplate = (text: string, currentPage: number, storyBookLength:
         ` ;
     }
     return`
-    <h2>${text}</h2>
+    <h3>${text}</h3>
     <div class="board__storybook__arrows">
     <div class="board__storybook__arrowLeft">
         <i class="fas fa-reply"></i>

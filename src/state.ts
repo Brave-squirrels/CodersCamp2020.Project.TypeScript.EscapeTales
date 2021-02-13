@@ -19,7 +19,7 @@ import { changePageStoryBook } from './updateDOM';
 */
 export class GameState {
     
-    constructor(protected _actionNumbers : number = 5,
+    constructor(protected _actionNumbers : number = 6,
                 protected _userParagraphsId : string[] = [],
                 protected _userPuzzlesId : string[] = [], 
                 protected _userLocationId : ENUM.LOCATION = ENUM.LOCATION.FIRST,

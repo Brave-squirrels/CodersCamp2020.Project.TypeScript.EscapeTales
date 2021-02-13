@@ -47,7 +47,7 @@ const readStressParagraph = (stressParagraphs: string[]) : void =>{
 
   //Put data into container
   new TypeIt(".paragraph__text", {
-    strings: `${stressParagraphs[index]}`,
+    strings: `${stressParagraphs[index]} <br> You lost 1 evidence <br> You gain 4 action points`,
     speed: 80,
     loop: false,
   }).go();

@@ -1,7 +1,6 @@
 //Enum for number of actions
 enum ActionPointsEnum {
     MOVE = -1,
-    RESET = 6,
     STRESSCARD = 4,
     CLUE = 2
 }
