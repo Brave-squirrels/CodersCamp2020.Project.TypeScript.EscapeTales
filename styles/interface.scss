@@ -59,6 +59,11 @@
       &:hover {
         cursor: pointer;
       }
+
+      &:active h2 {
+        position: relative;
+        top: 1px;
+      }
     }
 
     .interface__column--stressCard {
@@ -114,6 +119,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    &:active h2 {
+      position: inherit;
+      top: 1px;
+    }
+
     &:hover {
       cursor: pointer;
     }

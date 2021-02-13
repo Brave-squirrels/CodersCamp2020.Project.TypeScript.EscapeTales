@@ -17,9 +17,9 @@ import { solvePuzzle } from "./puzzleAction";
 import { notEnoughPoints, areaExplored } from "./readContent";
 import navigation from "./navigation";
 import { solvePuzzleModal } from "./updateDOM";
-import {initNewGame} from './newGame';
-import { onLoadUpdate } from './continue';
-import {getStateLS} from './getLS';
+import { initNewGame } from "./newGame";
+import { onLoadUpdate } from "./continue";
+import { getStateLS } from "./getLS";
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -79,7 +79,7 @@ document.addEventListener("click", (e: any): void => {
         solvePuzzle(puzzleID, state, puzzleArray, paragraphsArray);
       }
     });
-    localStorage.setItem('state', JSON.stringify(state));
+    localStorage.setItem("state", JSON.stringify(state));
   }
 });
 
@@ -172,31 +172,35 @@ document.addEventListener("click", (e: any) => {
     const currentBoard = document.querySelector(".activeBoard")!;
     const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
     const state = getStateLS();
-    if(state.progressPoints === 2){
+    if (state.progressPoints === 2) {
       if (currentId !== 3) {
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");
         initNewGame();
         state.userLocationId += 1;
-        localStorage.setItem('state', JSON.stringify(state));
+        localStorage.setItem("state", JSON.stringify(state));
       }
     }
   }
 });
+
 //Start new game
-document.addEventListener('click', (e : any) => {
-  if(e.target === (document.querySelector('#newGameBtn') as HTMLElement) || e.target ===(document.querySelector('#resetGame') as HTMLElement)){
+document.addEventListener("click", (e: any) => {
+  if (
+    e.target === (document.querySelector("#newGameBtn") as HTMLElement) ||
+    e.target === (document.querySelector("#resetGame") as HTMLElement)
+  ) {
     initNewGame();
   }
 });
 
 //Continue game
-document.addEventListener('click', (e : any)=>{
-  if(e.target === (document.querySelector('#continueBtn') as HTMLElement)){
+document.addEventListener("click", (e: any) => {
+  if (e.target === (document.querySelector("#continueBtn") as HTMLElement)) {
     onLoadUpdate();
   }
-})
+});
 
 //Save data when refresh the site
 window.onload = onLoadUpdate;
