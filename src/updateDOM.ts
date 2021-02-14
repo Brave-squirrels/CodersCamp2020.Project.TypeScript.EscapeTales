@@ -148,6 +148,23 @@ const updateAreaDOM = (state: GameState): void => {
   });
 };
 
+//Update story line
+const updateStoryLine = () : void =>{
+  //Get puzzle HTML container
+  const cnt = document.querySelector("#interface__storyLine") as HTMLElement;
+
+  //Reset DOM element
+  cnt.innerHTML = '<h2 class="interface__element--title">Story Line Progress</h2>';
+
+  //Get state from LS
+  const state = getStateLS();
+
+  //Put text to the container
+  state.storyline.forEach((text : string) => {
+    cnt.innerHTML += DOMTemplate.storyLineTemplate(text);
+  })
+}
+
 export {
   updateActionDOM,
   updateProgressDOM,
@@ -158,4 +175,5 @@ export {
   solvePuzzleModal,
   changePageStoryBook,
   initStoryBook,
+  updateStoryLine
 }

@@ -6,7 +6,6 @@ import {Puzzle} from './puzzle';
 const getStateLS = () : GameState => {
     //Get JSON state object
     const stateData = JSON.parse(localStorage.getItem('state')!);
-
     //Create new GameState with all the methods
     return new GameState(
         stateData._actionNumbers,
@@ -14,7 +13,8 @@ const getStateLS = () : GameState => {
         stateData._userPuzzlesId,
         stateData._userLocationId,
         stateData._visitedAreasId,
-        stateData._storyLine,
+        stateData._storyline,
+        stateData._storylineID,
         stateData._userEvidencesId,
         stateData._progressPoints,
         stateData._visitedAreas,

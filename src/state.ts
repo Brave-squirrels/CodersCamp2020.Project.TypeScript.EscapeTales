@@ -24,7 +24,8 @@ export class GameState {
                 protected _userPuzzlesId : string[] = [], 
                 protected _userLocationId : ENUM.LOCATION = ENUM.LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
-                protected _storyline : ENUM.ENDING = ENUM.ENDING.BESTENDING, 
+                protected _storyline : string[] = [],
+                protected _storylineID: string[] = [],
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],
@@ -39,10 +40,6 @@ export class GameState {
 
         set userLocationId(newLocationId:ENUM.LOCATION){
             this._userLocationId = newLocationId;
-        }
-
-        set storyline(newStoryline:ENUM.ENDING){
-            this._storyline = newStoryline;
         }
 
         addParagraphsId(newParagraphsId:string){
@@ -102,6 +99,14 @@ export class GameState {
             this._currentPage = num;
         }
 
+        addStoryLine(text : string){
+            this._storyline.push(text);
+        }
+
+        addStoryLineID(text : string){
+            this._storylineID.push(text);
+        }
+
         get actionNumbers(){
             return this._actionNumbers;
         }
@@ -119,6 +124,9 @@ export class GameState {
         }
         get storyline(){
             return this._storyline;
+        }
+        get storylineID(){
+            return this._storylineID;
         }
         get userEvidencesId(){
             return this._userEvidencesId;

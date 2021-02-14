@@ -11,6 +11,7 @@ import * as getLS from "./getLS";
 import { nextLocation } from "./goNext";
 import { updateStateLS } from "./updateLS";
 import { getEndingStory } from "./ending";
+import {choose} from './choose';
 
 //Board movement event
 document.addEventListener("click", (e: any): void => {
@@ -178,23 +179,21 @@ document.addEventListener("click", (e: any) => {
 // Go next
 document.addEventListener("click", (e: any) => {
   if (/goNext/.test(e.target.className)) {
-    const currentBoard = document.querySelector(".activeBoard")!;
-    const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
     //Get state from LS
     const state = getLS.getStateLS();
     //Check if player has enough progressPoints
     if (state.progressPoints === 2) {
-      if (currentId !== 3) {
-        //Go the the next location
-        const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
-        currentBoard.classList.toggle("activeBoard");
-        nextBoard.classList.toggle("activeBoard");
-        state.userLocationId += 1;
-        nextLocation(currentId);
-        // HERE WE HAVE TO SWITCH IF WITH ELSE 
-        
+      if (state.userLocationId !== 3) {
+        //Open choose option base on current location
+        switch(state.userLocationId){
+          case 1:
+            (document.querySelector('#first__choose') as HTMLElement).style.display = 'block';
+            break;
+          case 2:
+            (document.querySelector('#second__choose') as HTMLElement).style.display = 'block';
+            break;
+          }
       } else {
-        
         getEndingStory()
       }
     } else {
@@ -203,6 +202,26 @@ document.addEventListener("click", (e: any) => {
     }
   }
 });
+
+//Choose event listener
+document.addEventListener('click', (e:any)=>{
+  if(e.target.className === 'choose'){
+    const state = getLS.getStateLS();
+    //Put choose option into the state
+    choose(e.target.value, state);
+
+    //Close choose modal
+    e.target.parentElement.parentElement.parentElement.style.display = 'none';
+    
+    //Go the the next location
+    const currentBoard = document.querySelector(".activeBoard")!;
+    const currentId = parseInt(currentBoard.id.toString().match(/\d/)![0]);
+    const nextBoard = document.querySelector(`#board${state.userLocationId + 1}`)!;
+    currentBoard.classList.toggle("activeBoard");
+    nextBoard.classList.toggle("activeBoard");
+    nextLocation(currentId);
+  }
+})
 
 //Start new game
 document.addEventListener("click", (e: any) => {

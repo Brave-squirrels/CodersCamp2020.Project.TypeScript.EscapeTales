@@ -8,7 +8,7 @@ import {Evidence} from './evidence';
     @param {currentPage} - current generating page
     @param {storyBookLength} - length of all paragraph
 */
-export const pageTemplate = (text: string, currentPage: number, storyBookLength: number) => {
+const pageTemplate = (text: string, currentPage: number, storyBookLength: number) => {
     if(currentPage === 0){
         return`
         <h1 style="text-align: center;">${text}</h1>
@@ -49,7 +49,7 @@ export const pageTemplate = (text: string, currentPage: number, storyBookLength:
     Interface puzzle template
     @param {puzzle} - puzzle object
 */
-export const puzzleTemplate = (puzzle : Puzzle) : string => {
+const puzzleTemplate = (puzzle : Puzzle) : string => {
     return `
         <div class='interface__puzzle__container' id=${puzzle.id}>
             ${puzzle.content}
@@ -60,7 +60,7 @@ export const puzzleTemplate = (puzzle : Puzzle) : string => {
 /*
     Evidence interface template
 */
-export const evidenceTemplate = (evidence : Evidence) : string => {
+const evidenceTemplate = (evidence : Evidence) : string => {
     return `
         <div class='interface__evidence__container'>
             ${evidence.content}
@@ -73,7 +73,7 @@ export const evidenceTemplate = (evidence : Evidence) : string => {
     @param {puzzle} - puzzle object
     @param {visitedCards} - array of discovered puzzle cards
 */
-export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<PuzzleCard>) : string =>{
+const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<PuzzleCard>) : string =>{
     let str = `
     <span class="puzzle__close" id="puzzle__close">&#10006;</span>
     <div class='puzzle__text'>
@@ -94,3 +94,13 @@ export const puzzleSolveTemplate = (puzzle : Puzzle, visitedCards : Array<Puzzle
         `;
     return str;
 }
+
+const storyLineTemplate = (text : string) : string => {
+    return `
+        <div class='interface__storyLine__container'>
+            ${text}
+        </div>
+    `;
+}
+
+export {storyLineTemplate, puzzleSolveTemplate, puzzleTemplate, evidenceTemplate, pageTemplate };

@@ -7,11 +7,12 @@ import {updateStateLS} from './updateLS';
 export const nextLocation = (id) : void =>{
     //Get state from LS
     let stateTemp  = getLS.getStateLS();
-
     //Get all data that we need in the next location from old state
     const paragraphArray = stateTemp.userParagraphsId;
     const evidencesArray = stateTemp.userEvidencesId;
     const storyBookArray = stateTemp.storyBook;
+    const storyLine = stateTemp.storyline;
+    const storylineID = stateTemp.storylineID;
 
     //Create new game state
     updateStateLS(new GameState());
@@ -24,15 +25,22 @@ export const nextLocation = (id) : void =>{
     evidencesArray.forEach((e)=>{
         state.addEvidencesId(e);
     })
+    storyLine.forEach((e)=>{
+        state.addStoryLine(e);
+    })
+    storylineID.forEach((e)=>{
+        state.addStoryLineID(e);
+    })
     state.addStoryBook(storyBookArray);
     state.currentPageChange(stateTemp.currentPage);
     
     state.userLocationId = ++id;
-    
+
     //Update LS
     updateStateLS(state);
 
     //Update user interface
+    updateDOM.updateStoryLine();
     updateDOM.updateStoryBook();
     updateDOM.updateActionDOM(state.actionNumbers);
     updateDOM.updateEvidencesDOM();

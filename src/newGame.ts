@@ -32,6 +32,7 @@ export const initNewGame = () : void =>{
     nextBoard.classList.toggle("activeBoard");
 
     //Reset interface
+    updateDOM.updateStoryLine();
     updateDOM.initStoryBook();
     updateDOM.updateActionDOM(state.actionNumbers);
     updateDOM.updateEvidencesDOM();

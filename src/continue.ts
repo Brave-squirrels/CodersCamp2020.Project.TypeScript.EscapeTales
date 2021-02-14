@@ -22,6 +22,7 @@ export const onLoadUpdate = () : void =>{
         }else{
             updateDOM.updateStoryBook();
         }
+        updateDOM.updateStoryLine();
         updateDOM.updateAreaDOM(state);
         updateDOM.updateActionDOM(state.actionNumbers);
         updateDOM.updateEvidencesDOM();

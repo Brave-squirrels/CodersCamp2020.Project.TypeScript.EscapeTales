@@ -6,7 +6,7 @@ import TypeIt from "typeit";
 export const getEndingStory = () => {
     let endingText : string
     const state = getStateLS()
-    const numberOfEvidences : number = state.userEvidencesId.length
+    const numberOfEvidences : number = state.userEvidencesId.length;
     
     switch (numberOfEvidences) {
         case (ENDING.BESTENDING):
