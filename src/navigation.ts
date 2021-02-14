@@ -1,3 +1,4 @@
+import SimpleBar from "simplebar"; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
 // Render page from template
 /*
     @param {nameId} - id of template to display
@@ -64,24 +65,22 @@ function navigationActions() {
   const startBtn = document.querySelector("#startBtn")! as HTMLDivElement;
   const newGameBtn = document.querySelector("#newGameBtn")! as HTMLDivElement;
   const homeBackBtn = document.querySelector("#homeBack")! as HTMLDivElement;
-
-  const continueBtn = document.querySelector('#continueBtn') as HTMLElement;
-
+  const continueBtn = document.querySelector("#continueBtn") as HTMLElement;
 
   // go to menu panel
   startBtn.addEventListener("click", () => {
     handleClick(home, menu);
     //Disable continue button if localStorage is empty
-    if(localStorage.getItem('state')===null){
-      continueBtn.classList.add('continue__denied');
-    }else{
-      continueBtn.classList.remove('continue__denied');
+    if (localStorage.getItem("state") === null) {
+      continueBtn.classList.add("continue__denied");
+    } else {
+      continueBtn.classList.remove("continue__denied");
     }
   });
 
-  continueBtn.addEventListener('click', ()=>{
+  continueBtn.addEventListener("click", () => {
     handleClick(menu, board);
-  })
+  });
 
   // go to board panel
   newGameBtn.addEventListener("click", () => {
@@ -94,8 +93,44 @@ function navigationActions() {
   });
 }
 
+function menuInfo() {
+  const about = document.querySelector(".menu__info--about") as HTMLElement;
+  const authors = document.querySelector(".menu__info--authors") as HTMLElement;
+  const guide = document.querySelector(".menu__info--guide") as HTMLElement;
+  const btn = document.querySelectorAll(".menu__info--btn");
+  new SimpleBar(guide, { autoHide: false, background: "red" });
+
+  btn.forEach((elem) => {
+    elem.addEventListener("click", ({ target }: any) => {
+      switch (target.innerText) {
+        case "Authors":
+          guide.style.display = "none";
+          about.style.display = "none";
+          authors.style.display = "block";
+          break;
+
+        case "Game guide":
+          authors.style.display = "none";
+          about.style.display = "none";
+          guide.style.display = "block";
+          break;
+
+        case "About game":
+          authors.style.display = "none";
+          guide.style.display = "none";
+          about.style.display = "block";
+          break;
+
+        default:
+          "error";
+      }
+    });
+  });
+}
+
 // Navigate between panels
 export default function navigation() {
   navigationInit();
   navigationActions();
+  menuInfo();
 }
