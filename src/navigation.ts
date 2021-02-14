@@ -1,4 +1,5 @@
-import SimpleBar from "simplebar"; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+import SimpleBar from "simplebar";
+
 // Render page from template
 /*
     @param {nameId} - id of template to display
@@ -93,6 +94,7 @@ function navigationActions() {
   });
 }
 
+// Buttons and informations in menu panel
 function menuInfo() {
   const about = document.querySelector(".menu__info--about") as HTMLElement;
   const authors = document.querySelector(".menu__info--authors") as HTMLElement;
@@ -102,6 +104,11 @@ function menuInfo() {
 
   btn.forEach((elem) => {
     elem.addEventListener("click", ({ target }: any) => {
+      btn.forEach((e) => {
+        e.classList.remove("active");
+      });
+      elem.classList.toggle("active");
+
       switch (target.innerText) {
         case "Authors":
           guide.style.display = "none";
