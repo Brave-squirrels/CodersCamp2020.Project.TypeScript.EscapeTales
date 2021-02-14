@@ -186,15 +186,16 @@ document.addEventListener("click", (e: any) => {
     if (state.progressPoints === 2) {
       if (currentId !== 3) {
         //Go the the next location
-
-        // HERE WE HAVE TO SWITCH IF WITH ELSE 
-        getEndingStory()
-      } else {
         const nextBoard = document.querySelector(`#board${currentId + 1}`)!;
         currentBoard.classList.toggle("activeBoard");
         nextBoard.classList.toggle("activeBoard");
         state.userLocationId += 1;
         nextLocation(currentId);
+        // HERE WE HAVE TO SWITCH IF WITH ELSE 
+        
+      } else {
+        
+        getEndingStory()
       }
     } else {
       //Read notification
