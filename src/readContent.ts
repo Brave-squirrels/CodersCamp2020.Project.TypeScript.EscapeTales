@@ -135,7 +135,7 @@ const areaExplored = (): void => {
 //Ending story read function
 const endingStory = (text : string): void => {
   (document.querySelector('.ending__modal') as HTMLElement).style.display = 'block';
-  (document.querySelector('.ending__text') as HTMLElement).innerHTML = '';
+  (document.querySelector('.ending__text') as HTMLElement).innerHTML = ``;
   new TypeIt(".ending__text", {
       strings: `${text}`,
       speed: 100,
@@ -146,6 +146,11 @@ const endingStory = (text : string): void => {
           }
       }
   }).go();
+  (document.querySelector('.ending__text') as HTMLElement).innerHTML = `
+  <button class="ending__close" id="ending__close">
+    End
+  </button>
+  `;
 };
 
 export {areaExplored, notEnoughPoints, incorrectPuzzle, readNotEnughPR, readStressParagraph, read, endingStory}

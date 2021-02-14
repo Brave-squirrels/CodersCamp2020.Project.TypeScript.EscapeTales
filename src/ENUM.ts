@@ -24,14 +24,6 @@ enum BoardState{
     EXPLORED
 }
 
-//Game ending
-enum ENDING{
-    WORSTENDING,
-    MEDIUMENDING1,
-    MEDIUMENDING2,
-    BESTENDING
-}
-
 //Location
 enum LOCATION{
     FIRST = 1,
@@ -39,4 +31,4 @@ enum LOCATION{
     THIRD = 3
 }
 
-export {LOCATION, ENDING, BoardState, PuzzleReward, ActionPointsEnum, BoardContent};
+export {LOCATION, BoardState, PuzzleReward, ActionPointsEnum, BoardContent};
