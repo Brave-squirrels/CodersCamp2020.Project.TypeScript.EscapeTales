@@ -228,8 +228,14 @@ export const puzzleArrayMain : Array<Puzzle> = [
 
 //Stress card paragraphs
 export const stressParagraphs : string[] = [
-    'StressCard1',
-    'StressCard2'
+    'This house is really creepy, your mental health is put to the test',
+    `You can't get rid of the thoughts that the murderer can be next to you`,
+    'You are afraid the you will not get out of here in one piece',
+    'Suddenly you start to feel dizzy, you are running out of time, pull yourself together',
+    'Loud screaming distracts you, you should hurry up',
+    `You can't get the feeling out of your head, that someone is always behind you, you see shadows, but there's no one there`,
+    'You realised that you are getting tired, you start to question your ability to stay focused',
+    'Your heart starts to race, your vision becomes blurry, you wonder if you are capable of doing this on your own'
 ]
 
 //Evidence objects array (to update DOM)
