@@ -71,6 +71,12 @@ function navigationActions() {
   // go to menu panel
   startBtn.addEventListener("click", () => {
     handleClick(home, menu);
+    //Disable continue button if localStorage is empty
+    if(localStorage.getItem('state')===null){
+      continueBtn.classList.add('continue__denied');
+    }else{
+      continueBtn.classList.remove('continue__denied');
+    }
   });
 
   continueBtn.addEventListener('click', ()=>{
