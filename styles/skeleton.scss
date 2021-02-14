@@ -34,6 +34,10 @@ html {
   transition: all 1s ease-out;
 }
 
+.simplebar-scrollbar::before {
+  background-color: silver !important;
+}
+
 .main {
   height: 96vh;
   display: flex;
