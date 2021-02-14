@@ -16,7 +16,7 @@
 
   //Disabled continue button styles
   .continue__denied{
-    color: rgba(0,0,0,0.8);
+    color: $disabledButtonColor;
     pointer-events: none;
   }
 
