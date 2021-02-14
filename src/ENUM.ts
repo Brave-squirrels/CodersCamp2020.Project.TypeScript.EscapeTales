@@ -2,7 +2,7 @@
 enum ActionPointsEnum {
     MOVE = -1,
     STRESSCARD = 4,
-    CLUE = 2
+    CLUE = 3
 }
 
 //Reward from solving the puzzle
