@@ -30,25 +30,25 @@ export const boardAreas : Array<BoardField> = [
     new BoardField(BoardState.PENDING, 'l1b44', 'l1b44', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l1b45', 'l1b45', BoardContent.NOTHING),
     //Second location
-    new BoardField(BoardState.PENDING, 'l2b11', 'l2b11', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b12', 'l2b12', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b13', 'l2b13', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l2b11', 'l2b11', BoardContent.CLUE),
+    new BoardField(BoardState.PENDING, 'l2b12', 'l2b12', BoardContent.CLUE),
+    new BoardField(BoardState.PENDING, 'l2b13', 'l2b13', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l2b14', 'l2b14', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l2b15', 'l2b15', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b21', 'l2b21', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l2b21', 'l2b21', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l2b22', 'l2b22', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b23', 'l2b23', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b24', 'l2b24', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b25', 'l2b25', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b31', 'l2b31', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b32', 'l2b32', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b33', 'l2b33', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b34', 'l2b34', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l2b23', 'l2b23', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b24', 'l2b24', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b25', 'l2b25', BoardContent.CLUE),
+    new BoardField(BoardState.PENDING, 'l2b31', 'l2b31', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b32', 'l2b32', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b33', 'l2b33', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b34', 'l2b34', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l2b35', 'l2b35', BoardContent.PUZZLE),
     new BoardField(BoardState.PENDING, 'l2b41', 'l2b41', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b42', 'l2b42', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b43', 'l2b43', BoardContent.PUZZLE),
-    new BoardField(BoardState.PENDING, 'l2b44', 'l2b44', BoardContent.PUZZLE),
+    new BoardField(BoardState.PENDING, 'l2b42', 'l2b42', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b43', 'l2b43', BoardContent.NOTHING),
+    new BoardField(BoardState.PENDING, 'l2b44', 'l2b44', BoardContent.NOTHING),
     new BoardField(BoardState.PENDING, 'l2b45', 'l2b45', BoardContent.PUZZLE),
     //Third location
     new BoardField(BoardState.PENDING, 'l3b11', 'l3b11', BoardContent.PUZZLE),
@@ -98,26 +98,26 @@ export const paragraphsArray : Array<Paragraph> = [
     new Paragraph('l1b44', LOCATION.FIRST, 1, 'You came from there','Nothing'),
     new Paragraph('l1b45', LOCATION.FIRST, 1, 'You came from there','Nothing'),
     //Second location
-    new Paragraph('l2b11', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b12', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b13', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b14', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b15', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b21', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b22', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b23', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b24', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b25', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b31', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b32', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b33', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b34', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b35', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b41', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b42', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b43', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b44', LOCATION.SECOND, 1, '','Nothing'),
-    new Paragraph('l2b45', LOCATION.SECOND, 1, '','Nothing'),
+    new Paragraph('l2b11', LOCATION.SECOND, 1, 'The flowers look well-groomed, someone has to take care of it','Clue'),
+    new Paragraph('l2b12', LOCATION.SECOND, 1, 'Family photos, this person is not that lonely after all','Clue'),
+    new Paragraph('l2b13', LOCATION.SECOND, 1, `There's nothing in here`,'Nothing'),
+    new Paragraph('l2b14', LOCATION.SECOND, 1, 'In the bathroom you notice traces of some sort of animal, I wonder what animal it is...','New puzzle card'),
+    new Paragraph('l2b15', LOCATION.SECOND, 1, 'Among the pots you notice some shiny thing, looks like some sort of key','New puzzle card'),
+    new Paragraph('l2b21', LOCATION.SECOND, 1, 'Nothing in here, but this carpet looks strange in some places','Nothing'),
+    new Paragraph('l2b22', LOCATION.SECOND, 1, `Under the carpet you discovered a passage to the murderers' lair, if only you had the key to open it...`,'New puzzle card'),
+    new Paragraph('l2b23', LOCATION.SECOND, 1, 'Nothing in here, but this carpet looks strange in some places','Nothing'),
+    new Paragraph('l2b24', LOCATION.SECOND, 1, 'It smells weird in this bathroom, like an animal or something','Nothing'),
+    new Paragraph('l2b25', LOCATION.SECOND, 1, `Strange, there's not running water in the tub...`,'Clue'),
+    new Paragraph('l2b31', LOCATION.SECOND, 1, 'From there you can see how messy this mansion is','Nothing'),
+    new Paragraph('l2b32', LOCATION.SECOND, 1, `It looks like under the couch carpet looks different, maybe it's worth to approach`,'Nothing'),
+    new Paragraph('l2b33', LOCATION.SECOND, 1, 'Nothing in here, but this carpet looks strange in some places','Nothing'),
+    new Paragraph('l2b34', LOCATION.SECOND, 1, 'Flowers looks healthy, but this kitchen looks kinda strange','Nothing'),
+    new Paragraph('l2b35', LOCATION.SECOND, 1, 'Among of all the papers on the table you found an electricity bill','New puzzle card'),
+    new Paragraph('l2b41', LOCATION.SECOND, 1, 'On the shelf you found a lot of photos, but what does they mean','New puzzle card'),
+    new Paragraph('l2b42', LOCATION.SECOND, 1, `It's strange, in some places the lights are not working, maybe you should check it`,'Nothing'),
+    new Paragraph('l2b43', LOCATION.SECOND, 1, 'There is nothing in here, maybe you should go somewhere else','Nothing'),
+    new Paragraph('l2b44', LOCATION.SECOND, 1, 'The lights in here are perfectly fine, but what about the kitchen','Nothing'),
+    new Paragraph('l2b45', LOCATION.SECOND, 1, 'Strange, it look like, nothing that require electricity is working in this kitchen','New puzzle card'),
     //Third location
     new Paragraph('l3b11', LOCATION.THIRD, 1, '','Nothing'),
     new Paragraph('l3b12', LOCATION.THIRD, 1, '','Nothing'),
@@ -142,7 +142,10 @@ export const paragraphsArray : Array<Paragraph> = [
     //Puzzle solve paragraphs
     new Paragraph('l1b11solve', LOCATION.FIRST, 1, 'Finally you were able to crack this code', 'Progress Token'),
     new Paragraph('l1b13solve', LOCATION.FIRST, 1, 'You were manage to put pieces together, and you discovered that the house has a secret basement, maybe this is the place where you should go', 'Progress Token'),
-    new Paragraph('l1b12solve', LOCATION.FIRST, 1, 'You noticed that the strange note was actually a map, that has marked where the bodies are buried', 'A map')
+    new Paragraph('l1b12solve', LOCATION.FIRST, 1, 'You noticed that the strange note was actually a map, that has marked where the bodies are buried', 'A map'),
+    new Paragraph('l2b15solve', LOCATION.SECOND, 1, 'Finally you were manage to open the secret passage to the basement', 'Progress Token'),
+    new Paragraph('l2b35solve', LOCATION.SECOND, 1, 'It seems like, something in this house requires a lot of power, maybe some hideout', 'Progress Token'),
+    new Paragraph('l2b14solve', LOCATION.SECOND, 1, 'It seems like the person that lives in this house own a cat, only high functional sociopath can own one of these creatures', 'A cat photography')
 ]
 
 //Puzzles Card array
@@ -152,14 +155,42 @@ export const puzzleCardArray : Array<PuzzleCard> = [
     new PuzzleCard('l1b13', 'l1b13', 'What is seen in the middle of March and April that can’t be seen at the beginning or end of either month?'),
     new PuzzleCard('l1b42', 'l1b13', 'Rabbit Raccoon Ram Rat Rattlesnake Raven...'),
     new PuzzleCard('l1b12', 'l1b12', 'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?'),
-    new PuzzleCard('l1b25', 'l1b12', 'You can see the whole world on it and then put it in your pocket ')
+    new PuzzleCard('l1b25', 'l1b12', 'You can see the whole world on it and then put it in your pocket'),
+    new PuzzleCard('l2b15', 'l2b15', `
+        Where child fear grows,
+        And adult brave becomes
+    `),
+    new PuzzleCard('l2b22', 'l2b15', `
+        Perhaps a wine is there,
+        and some jam may too
+    `),
+    new PuzzleCard('l2b35', 'l2b35', `
+    Capitol
+    `),
+    new PuzzleCard('l2b45', 'l2b35', `
+    Take your time,
+    In the darkness just sit,
+    Make your mind think,
+    End is near
+    `),
+    new PuzzleCard('l2b14', 'l2b14', `
+    No soult it has, nor cute it is,
+    Humans friend? Suppose... it is?
+    `),
+    new PuzzleCard('l2b41', 'l2b14', `
+    Four legs - for sure,
+    lives...
+    `),
 ]
 
 //Puzzles objects array
 export const puzzleArrayMain : Array<Puzzle> = [
     new Puzzle('l1b11', 'l1b11solve', ['l1b11','l1b23'], [], PuzzleReward.PROGRESSPOINT, 'dream', 'The code'),
     new Puzzle('l1b12', 'l1b12solve', ['l1b12','l1b25'], [], PuzzleReward.EVIDENCE, 'map', 'The way in'),
-    new Puzzle('l1b13', 'l1b13solve', ['l1b13','l1b42'], [], PuzzleReward.PROGRESSPOINT, 'r', 'Secret place')
+    new Puzzle('l1b13', 'l1b13solve', ['l1b13','l1b42'], [], PuzzleReward.PROGRESSPOINT, 'r', 'Secret place'),
+    new Puzzle('l2b15', 'l2b15solve', ['l2b15', 'l2b22'], [], PuzzleReward.PROGRESSPOINT, 'basement', 'Locke & key'),
+    new Puzzle('l2b35', 'l2b35solve', ['l2b35', 'l2b45'], [], PuzzleReward.PROGRESSPOINT, 'time', 'Lack of power'),
+    new Puzzle('l2b14', 'l2b14solve', ['l2b14', 'l2b41'], [], PuzzleReward.EVIDENCE, 'cat', 'An animal')
 ]
 
 //Stress card paragraphs
@@ -170,5 +201,6 @@ export const stressParagraphs : string[] = [
 
 //Evidence objects array (to update DOM)
 export const evidencesArray : Array<Evidence> = [
-    new Evidence('l1b12', 'Map')
+    new Evidence('l1b12', 'Map'),
+    new Evidence('l2b14', 'Cat photography')
 ]

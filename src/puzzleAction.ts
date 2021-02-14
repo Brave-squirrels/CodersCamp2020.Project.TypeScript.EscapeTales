@@ -129,7 +129,6 @@ const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Arra
             }
         })
     })
-
     //Update state
     state.addPuzzlesId(puzzleID);
     //Update puzzle interface and state LS
