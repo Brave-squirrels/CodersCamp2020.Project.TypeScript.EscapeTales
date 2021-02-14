@@ -23,6 +23,12 @@ const read = (paragraph: Paragraph): void => {
     strings: `${paragraph.text} <br> You gain: <br>  ${paragraph.content}`,
     speed: 80,
     loop: false,
+    startDelete: false,
+    afterStep: async (step, instance) => {
+      if((document.querySelector(".paragraph") as HTMLElement).style.display === 'none'){
+        instance.destroy();
+      }
+    }
   }).go();
   const date: string = getDate().toString();
 
@@ -50,6 +56,11 @@ const readStressParagraph = (stressParagraphs: string[]) : void =>{
     strings: `${stressParagraphs[index]} <br> You lost 1 evidence <br> You gain 4 action points`,
     speed: 80,
     loop: false,
+    afterStep: async (step, instance) => {
+      if((document.querySelector(".paragraph") as HTMLElement).style.display === 'none'){
+        instance.destroy();
+      }
+    }
   }).go();
 }
 
@@ -62,6 +73,11 @@ const readNotEnughPR = () : void => {
     strings: `You have not enough progress points`,
     speed: 80,
     loop: false,
+    afterStep: async (step, instance) => {
+      if((document.querySelector('.noPoints__modal') as HTMLElement).style.display === 'none'){
+        instance.destroy();
+      }
+    }
   }).go();
 }
 
@@ -89,6 +105,11 @@ const notEnoughPoints = (): void => {
     strings: `You have not enough action points`,
     speed: 80,
     loop: false,
+    afterStep: async (step, instance) => {
+      if((document.querySelector('.noPoints__modal') as HTMLElement).style.display === 'none'){
+        instance.destroy();
+      }
+    }
   }).go();
 };
 
@@ -103,6 +124,11 @@ const areaExplored = (): void => {
     strings: `Area has been already explored`,
     speed: 80,
     loop: false,
+    afterStep: async (step, instance) => {
+      if((document.querySelector('.areaExplored__modal') as HTMLElement).style.display === 'none'){
+        instance.destroy();
+      }
+    }
   }).go();
 };
 
