@@ -90,12 +90,12 @@ document.addEventListener("click", (e: any): void => {
 
 //Change story book page
 document.addEventListener("click", (e: any): void => {
-  //Get state from localStorage
-  const state = getLS.getStateLS();
   if (
     e.target.className === "board__storybook__arrowLeft" ||
     e.target.className === "fas fa-reply"
   ) {
+    //Get state from localStorage
+    const state = getLS.getStateLS();
     state.previousStoryBookPage();
     updateStateLS(state);
     updateDOM.updateStoryBook();
@@ -103,6 +103,8 @@ document.addEventListener("click", (e: any): void => {
     e.target.className === "board__storybook__arrowRight" ||
     e.target.className === "fas fa-share"
   ) {
+    //Get state from localStorage
+    const state = getLS.getStateLS();
     state.nextStoryBookPage();
     updateStateLS(state);
     updateDOM.updateStoryBook();
@@ -126,12 +128,12 @@ document.addEventListener("click", (e: any) => {
 
 //Take stress card
 document.addEventListener("click", (e: any) => {
-  //Get state from localStorage
-  const state = getLS.getStateLS();
   if (
     e.target.id === "interface__stressCard" ||
     e.target.id === "interface__stressCard__title"
   ) {
+    //Get state from localStorage
+    const state = getLS.getStateLS();
     boardAction.stressCardAction(state, data.stressParagraphs);
   }
 });
