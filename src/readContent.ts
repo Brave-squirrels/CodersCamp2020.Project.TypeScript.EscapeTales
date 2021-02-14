@@ -132,4 +132,20 @@ const areaExplored = (): void => {
   }).go();
 };
 
-export {areaExplored, notEnoughPoints, incorrectPuzzle, readNotEnughPR, readStressParagraph, read}
+//Ending story read function
+const endingStory = (text : string): void => {
+  (document.querySelector('.ending__modal') as HTMLElement).style.display = 'block';
+  (document.querySelector('.ending__text') as HTMLElement).innerHTML = '';
+  new TypeIt(".ending__text", {
+      strings: `${text}`,
+      speed: 100,
+      loop: false,
+      afterStep: async (step, instance) => {
+          if((document.querySelector(".ending__modal") as HTMLElement).style.display === 'none'){
+            instance.destroy();
+          }
+      }
+  }).go();
+};
+
+export {areaExplored, notEnoughPoints, incorrectPuzzle, readNotEnughPR, readStressParagraph, read, endingStory}

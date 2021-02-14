@@ -1,11 +1,10 @@
 import {getStateLS} from './getLS';
 import {ENDING} from './ENUM';
-import TypeIt from "typeit";
-
+import {endingStory} from './readContent';
 
 export const getEndingStory = () => {
-    let endingText : string
-    const state = getStateLS()
+    let endingText : string = '';
+    const state = getStateLS();
     const numberOfEvidences : number = state.userEvidencesId.length;
     
     //Add more cases base on choices
@@ -25,21 +24,10 @@ export const getEndingStory = () => {
         default:
             endingText = 'Something went wrong, reset game.'
     }
-    
-    //Something else than a modal
-    const endingStory = (): void => {
-        (document.querySelector('.ending__modal') as HTMLElement).style.display = 'block';
-        (document.querySelector('.ending__text') as HTMLElement).innerHTML = '';
-        new TypeIt(".ending__text", {
-            strings: `${endingText}`,
-            speed: 80,
-            loop: false,
-        }).go();
-    };
+    //Read the ending
+    endingStory(endingText);
     
     //Clear localStorage
     localStorage.removeItem('state');
     localStorage.removeItem('puzzle');
-
-    endingStory()
 }
