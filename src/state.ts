@@ -25,7 +25,7 @@ export class GameState {
                 protected _userLocationId : ENUM.LOCATION = ENUM.LOCATION.FIRST,
                 protected _visitedAreasId : string[] = [],
                 protected _storyline : string[] = [],
-                protected _storylineID: string[] = [],
+                protected _storylineID: number = 0,
                 protected _userEvidencesId : string[] = [],
                 protected _progressPoints: number = 0,
                 protected _visitedAreas: string[] = [],
@@ -103,8 +103,8 @@ export class GameState {
             this._storyline.push(text);
         }
 
-        addStoryLineID(text : string){
-            this._storylineID.push(text);
+        addStoryLineID(num : number){
+            this._storylineID += num;
         }
 
         get actionNumbers(){

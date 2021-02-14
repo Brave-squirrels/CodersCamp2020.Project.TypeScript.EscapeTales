@@ -28,9 +28,7 @@ export const nextLocation = (id) : void =>{
     storyLine.forEach((e)=>{
         state.addStoryLine(e);
     })
-    storylineID.forEach((e)=>{
-        state.addStoryLineID(e);
-    })
+    state.addStoryLineID(storylineID);
     state.addStoryBook(storyBookArray);
     state.currentPageChange(stateTemp.currentPage);
     

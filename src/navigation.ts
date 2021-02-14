@@ -92,6 +92,18 @@ function navigationActions() {
   homeBackBtn.addEventListener("click", () => {
     handleClick(board, home);
   });
+
+  //Close ending story -- go to the main page
+  document.addEventListener("click", (e: any) => {
+    if (
+      e.target.id === "ending__close" ||
+      e.target === (document.querySelector(".ending__modal") as HTMLElement)
+    ) {
+      handleClick(board, home);
+      (document.querySelector(".ending__modal") as HTMLElement).style.display =
+        "none";
+    }
+  });
 }
 
 // Buttons and informations in menu panel

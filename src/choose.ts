@@ -1,7 +1,8 @@
 //import {getStateLS} from './getLS';
 import {updateStateLS} from './updateLS';
 import {updateStoryLine} from './updateDOM';
-export const choose = (value: string, state) : void =>{
+import {GameState} from './state';
+export const choose = (value: string, state : GameState) : void =>{
 
     //Add story line text to the state
     switch(value){
@@ -19,8 +20,11 @@ export const choose = (value: string, state) : void =>{
         break;
     }
 
+    //Get int from value
+    const charArr : string[] = Object.assign([], value);
+
     //Add choose id to the state
-    state.addStoryLineID(value);
+    state.addStoryLineID(parseInt(charArr[3], 10));
     //Update state
     updateStateLS(state);
     updateStoryLine();

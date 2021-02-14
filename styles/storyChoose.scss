@@ -14,8 +14,8 @@
         color: #fff;
         background: $modalBG;
         padding: 1em 2em;
-        width: 60%;
-        height: 30%;
+        width: 1000px;
+        height: 300px; 
         margin: 2em auto;
         display: grid;
         grid-template-columns: 50% 50%;
@@ -29,7 +29,8 @@
             align-items: center;
         }
         .first__choose__first, .first__choose__second{
-            padding: 1em;
+            margin-bottom: 20px;
+            padding: 1.2em;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -68,8 +69,8 @@
         color: #fff;
         background: $modalBG;
         padding: 1em 2em;
-        width: 60%;
-        height: 30%;
+        width: 1000px;
+        height: 300px; 
         margin: 2em auto;
         display: grid;
         grid-template-columns: 50% 50%;
@@ -83,7 +84,8 @@
             align-items: center;
         }
         .second__choose__first, .second__choose__second{
-            padding: 1em;
+            margin-bottom: 20px;
+            padding: 1.2em;
             display: flex;
             justify-content: center;
             align-items: center;

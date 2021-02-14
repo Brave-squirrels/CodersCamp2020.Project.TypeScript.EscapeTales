@@ -8,6 +8,7 @@ export const getEndingStory = () => {
     const state = getStateLS()
     const numberOfEvidences : number = state.userEvidencesId.length;
     
+    //Add more cases base on choices
     switch (numberOfEvidences) {
         case (ENDING.BESTENDING):
             endingText = 'Happy End!' // 3 evidences
@@ -25,7 +26,7 @@ export const getEndingStory = () => {
             endingText = 'Something went wrong, reset game.'
     }
     
-    
+    //Something else than a modal
     const endingStory = (): void => {
         (document.querySelector('.ending__modal') as HTMLElement).style.display = 'block';
         (document.querySelector('.ending__text') as HTMLElement).innerHTML = '';
@@ -35,6 +36,10 @@ export const getEndingStory = () => {
             loop: false,
         }).go();
     };
+    
+    //Clear localStorage
+    localStorage.removeItem('state');
+    localStorage.removeItem('puzzle');
 
     endingStory()
 }

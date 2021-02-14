@@ -151,19 +151,6 @@ document.addEventListener("click", (e: any) => {
   }
 });
 
-//Close ending story
-document.addEventListener("click", (e: any) => {
-  if (
-    e.target.id === "ending__close" ||
-    e.target === (document.querySelector(".ending__modal") as HTMLElement)
-  ) {
-    (document.querySelector(".ending__modal") as HTMLElement).style.display =
-      "none";
-  }
-});
-
-
-
 //Close areaExplored
 document.addEventListener("click", (e: any) => {
   if (
