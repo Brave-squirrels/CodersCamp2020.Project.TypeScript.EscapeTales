@@ -40,9 +40,9 @@ Wszystkie taski dotyczące projektu można znaleźć na tablicy [Trello](https:/
 
 ## Wygląd strony
 
-![Her - start screen]("./assets/screen-menu.png")
-![Her - start screen]("./assets/screen-menu.png")
-![Her - start screen]("./assets/screen-menu.png")
+![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-start.png)
+![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-menu.png)
+![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-game.jpg)
 
 ## Praca z projektem
 
