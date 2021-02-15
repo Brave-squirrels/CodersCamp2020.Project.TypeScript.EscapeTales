@@ -1,9 +1,8 @@
 # CodersCamp2020 Project TypeScript
-### Board game by BraveSquirrels
+
+## Board game by BraveSquirrels
 
 The third project in the 6th edition of the CodersCamp 2020 programming course.
-
-####
 
 The project is a browser version of a role-playing board game inspired by the game ["Escape Tales"](https://lock.me/pl/polska/escape-tales)
 
@@ -20,7 +19,7 @@ Team:
 
 The project uses:
 
-```
+```c
 basic types
 defining own types
 types / classes / interfaces
@@ -37,6 +36,7 @@ unit tests and TDD
 You can find all the stuff about the project on the board [Trello](https://trello.com/b/HzFTZcYy/project-3-typescript-her).
 
 ## Technologies
+
 Project is created with:
 
 - HTML5
@@ -56,10 +56,10 @@ To run the project locally follow these steps:
 - Open repository in your code editor
 - Run command npm run prod
 - Run command npm run dev
-- Enter the local host that was created which by default is http://localhost:1234/
-
+- Enter the local host that was created which by default is [http://localhost:1234/](http://localhost:1234/)
 
 ## Walkthrough
+
 Working version of the site [here](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/) -> [https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/)
 
 ![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-start.png)
@@ -72,7 +72,7 @@ Working version of the site [here](https://brave-squirrels.github.io/CodersCamp2
 
 We take the following format commit message
 
-```
+```c
 <type>: <commit_message>
 ```
 
@@ -98,14 +98,3 @@ We work on branches in the `branch per feature` methodology.
 We try to create small PR. The description of the PR should be precisely described
 what does he change. Each PR must be approved by at least one
 another person.
-
----
-## Development:
-
-```c
-    npm install - we install all modules
-    npm run dev - turn on the development server
-    npm run build - project build
-    npm run test - running tests
-    npm run testAll - running tests in watch mode
-```
