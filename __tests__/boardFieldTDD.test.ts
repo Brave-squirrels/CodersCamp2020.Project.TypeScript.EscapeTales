@@ -12,10 +12,6 @@ describe('BoardField',()=>{
         expect(newField instanceof BoardField).toBe(true);
     });
 
-    test('newField should have a method of reading a paragraph',()=>{
-        expect(typeof (newField.readParagraph)).toBe('function');
-    });
-
     test('newField should have a getter for status',()=>{
         expect(typeof (newField.status)).toBe('number');
     });

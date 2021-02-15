@@ -1,7 +1,6 @@
 import {GameState} from '../src/state'
-import {ENDING, LOCATION} from '../src/ENUM';
 describe('Object gameState:', () => {
-    const testGameState = new GameState (3, ['A1p'], ['A1z'], LOCATION.SECOND, ['A2', 'A3'], ENDING.SADENDING, ['A1d'])
+    const testGameState = new GameState(5,[],[],[],1,[],0,[],0,['board1'],[],0);
 
     test('newField should be an instance of BoardField class',()=>{
         expect(testGameState instanceof GameState).toBe(true);
@@ -28,7 +27,7 @@ describe('Object gameState:', () => {
     })
 
     test('storyline should be a Enum', () => {
-        expect(typeof(testGameState.storyline)).toEqual('number')
+        expect(typeof(testGameState.storyline)).toEqual('object')
     })
 
     

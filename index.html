@@ -1,20 +1,365 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/styles.scss" />
+    <link rel="stylesheet" href="styles/main.scss" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/bbf3eee0ec.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Her</title>
-    <style>
-      #board1{
-        width: 100px;
-        height: 100px;
-        background: red;
-      }
-    </style>
   </head>
+
   <body>
-    <div id='board1' class='boardArea'></div>
+    <!--Modals-->
+
+    <div class="first__choose" id="first__choose">
+      <div class="first__choose__text">
+        <div class="first__choose__title">
+          You are entering the house. One thing drew your attention. Near the
+          doors there is lying a gun and an old oil lamp. Which one do you
+          choose?
+        </div>
+        <div class="first__choose__first">
+          <button value="l1c0" class="choose">Lamp</button>
+        </div>
+        <div class="first__choose__second">
+          <button value="l1c1" class="choose">Gun</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="second__choose" id="second__choose">
+      <div class="second__choose__text">
+        <div class="second__choose__title">
+          You are entering the basement. You don't know what to expect, but in
+          the same time you are running out of time.
+        </div>
+        <div class="second__choose__first">
+          <button value="l2c1" class="choose">Calmly go to the basement</button>
+        </div>
+        <div class="second__choose__second">
+          <button value="l2c0" class="choose">No time, run!</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="paragraph">
+      <div class="paragraph__text"></div>
+      <span class="paragraph__close" id="paragraph__close">&#10006;</span>
+    </div>
+    <div class="instructionModal">
+      <div class="instruction__text">
+        <h2>Game manual</h2>
+        <span>
+          The main game objective is to finish the plot. At the beginning of the
+          game you’ll learn parts of the story but the rest is up to you. To
+          move further you have to explore smaller parts of the main board by
+          clicking on them and solving puzzles that you’ll discover. There may
+          be many things you may find, but there is always a chance that you may
+          find nothing. The puzzles you have already discovered may be accessed
+          and solved at all times. Typing the solution in doesn’t use up your
+          action points. Exploring every small part of the board will use up one
+          of your „action points”, so choose wisely. Moving to another location
+          is a reward and doesn’t cost action points. If you find yourself in a
+          position when you don’t have any of said points, you can draw a
+          „stress card” which will give you some of them in exchange for one of
+          your evidence cards that you may find. There are many endings, and the
+          number of evidence cards you collect will define which one is yours.
+        </span>
+        <h3>Dictionary</h3>
+        <ul>
+          <li>
+            Story book - includes discovered paragraphs which describe the
+            events that have occured
+          </li>
+          <li>
+            Action points - points that allow you to move through the main
+            boards
+          </li>
+          <li>
+            Stress card- drawing a stress card gives you action points, but in
+            exchange you’ll loose one of the evidence cards
+          </li>
+          <li>
+            Evidence cards- collectable evidence on which depends the ending
+            part of your story
+          </li>
+          <li>
+            Puzzle cards- they will help you while solving some puzzles, you’ll
+            need the exact number of them
+          </li>
+          <li>
+            Progress points- the exact number of them is needed to move to
+            another location
+          </li>
+        </ul>
+        <h3>Puzzles</h3>
+        <span>
+          As said before you’ll encounter some puzzles to solve. The solution
+          might be a word, date, number sequence etc. Solving a puzzle gives you
+          the ability to make progress in the game and move to another
+          locations. The number of cards that is needed to help you find a
+          solution is always visible in your main panel.
+        </span>
+      </div>
+      <span class="instruction__close" id="instruction__close">&#10006;</span>
+    </div>
+    <div class="puzzle"></div>
+
+    <div class="noPoints__modal">
+      <div class="noPoints__text"></div>
+      <span class="noPoints__close" id="noPoints__close">&#10006;</span>
+    </div>
+    <div class="areaExplored__modal">
+      <div class="areaExplored__text"></div>
+      <span class="areaExplored__close" id="areaExplored__close">&#10006;</span>
+    </div>
+    <div class="ending__modal">
+      <div class="ending__text"></div>
+    </div>
+
+    <template id="menu-page">
+      <div class="menu-container">
+        <div class="menu">
+          <div class="menu__content">
+            <div class="menu__info">
+              <div
+                class="menu__info--text menu__info--about menu__info--active"
+              >
+                <h3>About Game</h3>
+                You play the role of a detective who investigates the case of a
+                missing girl. The investigation indicates that the girl was
+                kidnapped by an unknown man. Can you find out who the kidnapper
+                is and save the girl...
+                <br />
+                <br />
+                It is a game based on the concept of escape rooms, but with no
+                time limit to complete the game. The game focuses on the plot,
+                its exploration and solving puzzles. Decisions made during the
+                game will affect which puzzles will stand in your way, change
+                the course of history and show one of several possible endings
+                in the finale.
+              </div>
+
+              <div class="menu__info--text menu__info--authors">
+                <h3>Authors:</h3>
+                <p>Cyprian Zamiara</p>
+                <p>Michał Smalira</p>
+                <p>Maciej Chojak</p>
+                <p>Aleksander Atamańczuk</p>
+              </div>
+
+              <div class="menu__info--text menu__info--guide">
+                <h3>Game manual</h3>
+                <span>
+                  The main game objective is to finish the plot. At the
+                  beginning of the game you’ll learn parts of the story but the
+                  rest is up to you. To move further you have to explore smaller
+                  parts of the main board by clicking on them and solving
+                  puzzles that you’ll discover. There may be many things you may
+                  find, but there is always a chance that you may find nothing.
+                  The puzzles you have already discovered may be accessed and
+                  solved at all times. Typing the solution in doesn’t use up
+                  your action points. Exploring every small part of the board
+                  will use up one of your „action points”, so choose wisely.
+                  Moving to another location is a reward and doesn’t cost action
+                  points. If you find yourself in a position when you don’t have
+                  any of said points, you can draw a „stress card” which will
+                  give you some of them in exchange for one of your evidence
+                  cards that you may find. There are many endings, and the
+                  number of evidence cards you collect will define which one is
+                  yours.
+                </span>
+                <h4>Dictionary</h4>
+                <ul>
+                  <li>
+                    Story book - includes discovered paragraphs which describe
+                    the events that have occured
+                  </li>
+                  <li>
+                    Action points - points that allow you to move through the
+                    main boards
+                  </li>
+                  <li>
+                    Stress card- drawing a stress card gives you action points,
+                    but in exchange you’ll loose one of the evidence cards
+                  </li>
+                  <li>
+                    Evidence cards- collectable evidence on which depends the
+                    ending part of your story
+                  </li>
+                  <li>
+                    Puzzle cards- they will help you while solving some puzzles,
+                    you’ll need the exact number of them
+                  </li>
+                  <li>
+                    Progress points- the exact number of them is needed to move
+                    to another location
+                  </li>
+                </ul>
+                <h4>Puzzles</h4>
+                <span>
+                  As said before you’ll encounter some puzzles to solve. The
+                  solution might be a word, date, number sequence etc. Solving a
+                  puzzle gives you the ability to make progress in the game and
+                  move to another locations. The number of cards that is needed
+                  to help you find a solution is always visible in your main
+                  panel.
+                </span>
+              </div>
+              <div class="menu__info--details">
+                <button class="menu__info--btn active" type="button">
+                  About game
+                </button>
+                <button class="menu__info--btn" type="button">Authors</button>
+                <button class="menu__info--btn" type="button">
+                  Game guide
+                </button>
+              </div>
+            </div>
+            <div class="menu__button">
+              <div id="continueBtn" class="menu__button--button">continue</div>
+              <div
+                id="newGameBtn"
+                class="menu__button--button menu__button--ng"
+              >
+                new game
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!--Template-->
+    <template id="home-page">
+      <div class="home-container">
+        <div class="home">
+          <div class="home__content">
+            <div class="home__content--title">
+              can you <br />
+              escape?
+            </div>
+            <div id="startBtn" class="home__content--button">start game</div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="board-map">
+      <div id="" class="board__map">
+        <div class="map__square" id="l{{locationId}}b11"></div>
+        <div class="map__square" id="l{{locationId}}b12"></div>
+        <div class="map__square" id="l{{locationId}}b13"></div>
+        <div class="map__square" id="l{{locationId}}b14"></div>
+        <div class="map__square" id="l{{locationId}}b15"></div>
+
+        <div class="map__square" id="l{{locationId}}b21"></div>
+        <div class="map__square" id="l{{locationId}}b22"></div>
+        <div class="map__square" id="l{{locationId}}b23"></div>
+        <div class="map__square" id="l{{locationId}}b24"></div>
+        <div class="map__square" id="l{{locationId}}b25"></div>
+
+        <div class="map__square" id="l{{locationId}}b31"></div>
+        <div class="map__square" id="l{{locationId}}b32"></div>
+        <div class="map__square" id="l{{locationId}}b33"></div>
+        <div class="map__square" id="l{{locationId}}b34"></div>
+        <div class="map__square" id="l{{locationId}}b35"></div>
+
+        <div class="map__square" id="l{{locationId}}b41"></div>
+        <div class="map__square" id="l{{locationId}}b42"></div>
+        <div class="map__square" id="l{{locationId}}b43"></div>
+        <div class="map__square" id="l{{locationId}}b44"></div>
+        <div class="map__square" id="l{{locationId}}b45"></div>
+      </div>
+    </template>
+
+    <template id="game-board">
+      <div class="game-container">
+        <main class="main">
+          <div class="board">
+            <div class="board__storybook">
+              <h1 style="text-align: center">Story Book</h1>
+            </div>
+
+            <div id="board-container"></div>
+          </div>
+          <div class="board__interface">
+            <div class="interface__column">
+              <div class="interface__column--btn">
+                <h2 class="interface__column--title">Action Points</h2>
+                <div id="actionPoints" class="interface__actionPoints"></div>
+              </div>
+              <div
+                class="interface__column--btn interface__stressCard"
+                id="interface__stressCard"
+              >
+                <h2
+                  class="interface__column--stressCard"
+                  id="interface__stressCard__title"
+                >
+                  Stress Card
+                </h2>
+              </div>
+            </div>
+            <div class="interface__element" id="interface__evidences">
+              <h2 class="interface__element--title">Evidence</h2>
+            </div>
+            <div class="interface__element" id="interface__puzzle">
+              <h2 class="interface__element--title">Puzzles</h2>
+            </div>
+            <div class="interface__element" id="interface__storyLine">
+              <h2 class="interface__element--title">Story Line Progress</h2>
+            </div>
+            <div class="interface__column">
+              <div class="interface__column--btn">
+                <h2 class="interface__column--title">Progress Tokens</h2>
+                <div class="tokenCnt">
+                  <div>
+                    <img
+                      src="assets/token.png"
+                      alt="Token"
+                      class="interface__progress__token"
+                      id="token1"
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src="assets/token.png"
+                      alt="Token"
+                      class="interface__progress__token"
+                      id="token2"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="interface__column--btn interface__goNext">
+                <h2 class="interface__column--goNext">Go Next</h2>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <div class="footer__nav">
+            <i class="fas fa-info-circle" id="displayInstruction"></i>
+            <i class="fas fa-redo" id="resetGame"></i>
+            <i id="homeBack" class="fas fa-home"></i>
+          </div>
+        </footer>
+      </div>
+    </template>
+
+    <div id="app"></div>
+
     <script src="src/index.ts"></script>
   </body>
 </html>

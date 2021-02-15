@@ -1,0 +1,34 @@
+$boardMap1BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../assets/map1.png");
+$boardMap2BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../assets/map2.png");
+$boardMap3BG: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../assets/map3.png");
+$storyBookBG: url("../assets/note.jpg");
+$stressCardBG: url("../assets/stressbutton.png");
+$interfaceBG: url("../assets/wood.png");
+$footerBG: linear-gradient(
+  180deg,
+  rgba(51, 39, 27, 0.75) 0%,
+  rgba(255, 125, 1, 0.1) 100%
+);
+$mainBG: url("../assets/dark.jpg");
+$boardFieldBG: rgba(37, 24, 4, 0.61);
+$boardFieldVisited: rgba(27, 20, 4, 0.315);
+$boardFieldBorder: 3px #140a00 solid;
+$interfaceElBG: url("../assets/card.jpg");
+$fontColorLight: #efefef;
+$buttonColor: #c28f56;
+$disabledButtonColor: rgba(194,143,86, 0.4);
+$hoverButtonColor: #ffbe75;
+$modalBG: rgba(0, 0, 0, 0.6);
+$modalColor: #fff;
+$paragraphBG: silver;
+$solveButtonBorder: rgba(0, 0, 0, 0.4);
+$solveButtonBorderFocus: rgba(0, 0, 0, 0.7);
+$invalidInputBorder: 1px solid #b8262b;
+
+$chooseBG: url('../assets/house.jpeg');
+$chooseBtnBg:rgba(0,0,0,0.2);
+$chooseBtnCl:rgba(255,255,255,0.2);
+$chooseBtnBorder: 1px solid rgba(255,255,255,0.2);
