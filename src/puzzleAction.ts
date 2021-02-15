@@ -97,8 +97,9 @@ const rewardPuzzle = (id: string, puzzleArray: Array<Puzzle>) => {
     }
 
     const stateRm = getStateLS();
-    //Remove puzzle from the state
+    //Remove puzzle from the state and mark as solved
     stateRm.removePuzzle(id);
+    stateRm.addPuzzleSolved(id);
     updateLS.updateStateLS(stateRm);
     //Update puzzleCards and puzzle's in interface
     updateDOM.updatePuzzleDOM(stateRm, puzzleArray);
@@ -129,6 +130,11 @@ const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Arra
             }
         })
     })
+    //Check if we already solved this puzzle
+    if(state.puzzlesSolved.includes(puzzleID)){
+        console.log('includes');
+        return;
+    }
     //Update state
     state.addPuzzlesId(puzzleID);
     //Update puzzle interface and state LS
@@ -143,7 +149,6 @@ const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Arra
     @param {puzzleArray} - array of all Puzzle objects
 */
 const newPuzzleCard = (id: string, puzzleCardArray: Array<PuzzleCard>, puzzleArray: Array<Puzzle>): void =>{
-
     //Find puzzle card in array with current ID
     const puzzleCard : PuzzleCard = getPuzzleCard(id, puzzleCardArray);
     const puzzleObj : Puzzle = getPuzzle(puzzleCard.puzzleId, puzzleArray);
