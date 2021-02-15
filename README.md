@@ -37,7 +37,7 @@ unit tests and TDD
 You can find all the stuff about the project on the board [Trello](https://trello.com/b/HzFTZcYy/project-3-typescript-her).
 
 ## Walkthrough
-Working version of the site [here](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/) 
+Working version of the site [here](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/) -> [https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/)
 
 ![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-start.png)
 ![Her - start screen](https://github.com/Brave-squirrels/CodersCamp2020.Project.TypeScript.Her/blob/ending-feature/assets/screen-menu.png)
