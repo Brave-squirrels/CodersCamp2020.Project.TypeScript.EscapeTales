@@ -6,7 +6,7 @@ Projekt nr 3 w VI edycji kursu programowania CodersCamp 2020.
 
 ####
 
-W ramach porjektu stworzono przeglądarkową wersję fabularnej gry planszowej inspirowanej grą "Escape Tales"
+W ramach porjektu stworzono przeglądarkową wersję fabularnej gry planszowej inspirowanej grą ["Escape Tales"](https://lock.me/pl/polska/escape-tales)
 
 ### Zespół projektowy
 
