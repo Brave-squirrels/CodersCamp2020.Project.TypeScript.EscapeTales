@@ -36,6 +36,29 @@ unit tests and TDD
 
 You can find all the stuff about the project on the board [Trello](https://trello.com/b/HzFTZcYy/project-3-typescript-her).
 
+## Technologies
+Project is created with:
+
+- HTML5
+- SCSS
+- TypeScript
+- Node.js
+- jest
+
+## Setup
+
+---
+If you want to visit our webpage, just click here! WARNING Github will not open this link in a new tab, you have to do it manually.
+
+To run the project locally follow these steps:
+
+- Clone this repository
+- Open repository in your code editor
+- Run command npm run prod
+- Run command npm run dev
+- Enter the local host that was created which by default is http://localhost:1234/
+
+
 ## Walkthrough
 Working version of the site [here](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/) -> [https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/](https://brave-squirrels.github.io/CodersCamp2020.Project.TypeScript.Her/)
 
