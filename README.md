@@ -1,8 +1,25 @@
-# CodersCamp2020.Project.TypeScript.Her
+# CodersCamp2020 Project TypeScript
+
+### Gra planszowa
 
 Projekt nr 3 w VI edycji kursu programowania CodersCamp 2020.
 
-W projekcie każdy z uczestników powinien zaprezentować praktyczną znajomość poniższych zagadnień związanych z TypeScript:
+####
+
+W ramach porjektu stworzono przeglądarkową wersję fabularnej gry planszowej inspirowanej grą "Escape Tales"
+
+### Zespół projektowy
+
+Mentor: Kamil Zasada
+
+Uczestnicy:
+
+- Cyprian Zamiara
+- Michał Smalira
+- Maciej Chojak
+- Aleksander Atamańczuk
+
+W projekcie wykorzystano:
 
 ```
 typy podstawowe
@@ -15,7 +32,7 @@ typy generyczne
 testy jednostkowe i TDD
 ```
 
-Szablon projektu na [Figmie](https://www.figma.com/file/rgcmVIjGFrVnsJw0RGkoFn/Projekt-TS?node-id=0%3A1)
+#### Szablon projektu można zobaczyć na [Figmie](https://www.figma.com/file/rgcmVIjGFrVnsJw0RGkoFn/Projekt-TS?node-id=0%3A1)
 
 ## Tablica z zadaniami
 
@@ -62,12 +79,13 @@ inną osobę.
 - **--modifier** dodajemy jak chcemy w jakiś specyficzny sposób zmodyfikować element
 - nie powinno się dziedziczyć w cssie blokami i elementami (nie robi się _.block1 .block2 {}_)
 - modyfikator może dziedziczyć po bloku i elemencie
-- [link](http://getbem.com/naming/) do dokumentacji, bo sam nie wiem czy to wszystko dobrze załapałem:
 
-## Bundler:
+## Development:
 
-- npm-install - indstalujemy wszystkie moduły
-- npm run dev - włączamy serwer deweloperski
-- npm run build - build projektu
-- npm run test - odpalanie testów
-- npm run testAll - odpalanie testów w trybie watch
+```cmd
+    npm-install - indstalujemy wszystkie moduły
+    npm run dev - włączamy serwer deweloperski
+    npm run build - build projektu
+    npm run test - odpalanie testów
+    npm run testAll - odpalanie testów w trybie watch
+```
