@@ -39,6 +39,30 @@ const read = (paragraph: Paragraph): void => {
 };
 
 /*
+  Puzzle already solved
+*/
+const puzzleAlreadySolved = () : void=>{
+  //Put data in container
+  setTimeout(function(){
+    //Display modal and reset content
+    (document.querySelector(".paragraph") as HTMLElement).style.display = "block";
+    (document.querySelector('.paragraph__text') as HTMLElement).innerHTML = '';
+    new TypeIt(".paragraph__text", {
+      strings: `You already solved this puzzle`,
+      speed: 80,
+      loop: false,
+      startDelete: false,
+      afterStep: async (step, instance) => {
+        if((document.querySelector(".paragraph") as HTMLElement).style.display === 'none'){
+          instance.destroy();
+        }
+      }
+    }).go();
+  }, 10000);
+  
+}
+
+/*
     Read stressCard
     @param {stressParagraphs} - array of stress paragraphs
 */
@@ -153,4 +177,4 @@ const endingStory = (text : string): void => {
   `;
 };
 
-export {areaExplored, notEnoughPoints, incorrectPuzzle, readNotEnughPR, readStressParagraph, read, endingStory}
+export {areaExplored, notEnoughPoints, incorrectPuzzle, readNotEnughPR, readStressParagraph, read, endingStory, puzzleAlreadySolved}

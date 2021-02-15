@@ -2,7 +2,7 @@ import PuzzleCard from './puzzleCard';
 import {Puzzle} from './puzzle';
 import {PuzzleReward} from './ENUM';
 import Paragraph from './paragraph';
-import {read, incorrectPuzzle} from './readContent';
+import {read, incorrectPuzzle, puzzleAlreadySolved} from './readContent';
 import  * as updateDOM from './updateDOM';
 import {getStateLS} from './getLS';
 import * as updateLS from './updateLS';
@@ -132,7 +132,7 @@ const newPuzzle = (id: string, puzzleArray: Array<Puzzle>, puzzleCardArray: Arra
     })
     //Check if we already solved this puzzle
     if(state.puzzlesSolved.includes(puzzleID)){
-        console.log('includes');
+        puzzleAlreadySolved()
         return;
     }
     //Update state
