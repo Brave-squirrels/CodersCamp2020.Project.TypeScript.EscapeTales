@@ -37,8 +37,9 @@
           justify-content: center;
           align-items: center;
           img {
-            width: 2em;
-            height: auto;
+            height: 4vh;
+            width: auto;
+            object-fit: contain;
             opacity: 0.4;
           }
         }
@@ -101,7 +102,7 @@
   }
   .interface__storyLine__container{
     margin-top: 4px;
-    font-size: 0.8em;
+    font-size: 0.6em;
     font-weight: bold;
     padding: 2px;
     width: 100%;
