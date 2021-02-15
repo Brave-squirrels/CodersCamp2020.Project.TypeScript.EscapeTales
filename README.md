@@ -10,14 +10,14 @@ W ramach porjektu stworzono przeglądarkową wersję fabularnej gry planszowej i
 
 ### Zespół projektowy
 
-Mentor: Kamil Zasada
+Mentor: [Kamil Zasada](https://github.com/kam237zasada)
 
 Uczestnicy:
 
-- Cyprian Zamiara
-- Michał Smalira
-- Maciej Chojak
-- Aleksander Atamańczuk
+- [Cyprian Zamiara](https://github.com/Veryyapeee)
+- [Michał Smalira](https://github.com/mchojak97)
+- [Maciej Chojak](https://github.com/MajStc)
+- [Aleksander Atamańczuk](https://github.com/TenGosc007)
 
 W projekcie wykorzystano:
 
@@ -37,6 +37,12 @@ testy jednostkowe i TDD
 ## Tablica z zadaniami
 
 Wszystkie taski dotyczące projektu można znaleźć na tablicy [Trello](https://trello.com/b/HzFTZcYy/project-3-typescript-her).
+
+## Wygląd strony
+
+![Her - start screen]("./assets/screen-menu.png")
+![Her - start screen]("./assets/screen-menu.png")
+![Her - start screen]("./assets/screen-menu.png")
 
 ## Praca z projektem
 
